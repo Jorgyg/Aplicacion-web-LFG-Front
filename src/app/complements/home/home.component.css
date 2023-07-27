@@ -1,0 +1,10 @@
+body{
+    margin: 0;
+}
+
+img{
+    width: 50vw;
+    border-style: solid;
+    border-radius: 5vw;
+    border-color: rgb(84, 141, 95);
+}
