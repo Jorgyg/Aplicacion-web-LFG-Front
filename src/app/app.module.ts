@@ -36,7 +36,7 @@ import { EventosGrupoComponent } from './complements/eventos-grupo/eventos-grupo
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

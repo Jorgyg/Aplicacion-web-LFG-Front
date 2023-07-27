@@ -13,7 +13,6 @@ import { EventosGrupoComponent } from './complements/eventos-grupo/eventos-grupo
 import { PerfilComponent } from './complements/perfil/perfil.component';
 import { AjustesGrupoComponent } from './complements/ajustes-grupo/ajustes-grupo.component';
 
-
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
