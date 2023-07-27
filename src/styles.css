@@ -1,1 +1,92 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*Background-color*/
+.bg-color-1{
+    background-color: #D8F3DC;
+}
+.bg-color-2{
+    background-color: #B7E4C7;
+}
+.bg-color-3{
+    background-color: #95D5B2;
+}
+.bg-color-4{
+    background-color: #74C69D;
+
+}
+.bg-color-5{
+    background-color: #52B788;
+
+}
+.bg-color-6{
+    background-color: #40916C;
+
+}
+.bg-color-7{
+    background-color: #2D6A4F;
+
+}
+.bg-color-8{
+    background-color: #1B4332;
+
+}
+.bg-color-9{
+    background-color: #081C15;
+
+}
+/*Text-color*/
+.color-1{
+    color: #D8F3DC;
+}
+.color-2{
+    color: #B7E4C7;
+}
+.color-3{
+    color: #95D5B2;
+}
+.color-4{
+    color: #74C69D;
+}
+.color-5{
+    color: #52B788;
+}
+.color-6{
+    color: #40916C;
+}
+.color-7{
+    color: #2D6A4F;
+}
+.color-8{
+    color: #1B4332;
+}
+.color-9{
+    color: #081C15;
+}
+/*Border-color*/
+.b-color-1{
+    border-color: #D8F3DC;
+}
+.b-color-2{
+    border-color: #B7E4C7;
+}
+.b-color-3{
+    border-color: #95D5B2;
+}
+.b-color-4{
+    border-color: #74C69D;
+}
+.b-color-5{
+    border-color: #52B788;
+}
+.b-color-6{
+    border-color: #40916C;
+}
+.b-color-7{
+    border-color: #2D6A4F;
+}
+.b-color-8{
+    border-color: #1B4332;
+}
+.b-color-9{
+    border-color: #081C15;
+}
