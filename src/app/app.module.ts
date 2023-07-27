@@ -7,6 +7,14 @@ import { LoginComponent } from './complements/login/login.component';
 import { RegisterComponent } from './complements/register/register.component';
 import { HomeComponent } from './complements/home/home.component';
 import { PerfilComponent } from './complements/perfil/perfil.component';
+import { MainComponent } from './main/main.component';
+import { AjustesGrupoComponent } from './ajustes-grupo/ajustes-grupo.component';
+import { CrearGrupoComponent } from './complements/crear-grupo/crear-grupo.component';
+import { UnirseGrupoComponent } from './complements/unirse-grupo/unirse-grupo.component';
+import { ChatGrupoComponent } from './complements/chat-grupo/chat-grupo.component';
+import { LogrosGrupoComponent } from './complements/logros-grupo/logros-grupo.component';
+import { MiembrosGrupoComponent } from './complements/miembros-grupo/miembros-grupo.component';
+import { EventosGrupoComponent } from './complements/eventos-grupo/eventos-grupo.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +22,15 @@ import { PerfilComponent } from './complements/perfil/perfil.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    PerfilComponent
+    PerfilComponent,
+    MainComponent,
+    AjustesGrupoComponent,
+    CrearGrupoComponent,
+    UnirseGrupoComponent,
+    ChatGrupoComponent,
+    LogrosGrupoComponent,
+    MiembrosGrupoComponent,
+    EventosGrupoComponent
   ],
   imports: [
     BrowserModule,
