@@ -20,7 +20,7 @@ import { PerfilComponent } from './complements/perfil/perfil.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
