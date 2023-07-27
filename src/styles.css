@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 /*Background-color*/
+
 .bg-color-1{
     background-color: #D8F3DC;
 }
@@ -89,4 +90,28 @@
 }
 .b-color-9{
     border-color: #081C15;
+}
+
+.custom-input:focus {
+    background-color: #1B4332!important; /* Color de fondo al hacer hover */
+    color: #D8F3DC!important; /* Color del texto al hacer hover */
+    box-shadow: 0 0 0 3px #40916C!important; /* Sombra con color #40916C */
+    border-color: #1B4332;
+}
+
+.custom-input:focus::placeholder { 
+    color: #D8F3DC!important; /* Color del texto al hacer hover */
+}
+
+.form-check-input:checked {
+    background-color: #1B4332;
+    border-color: #D8F3DC;
+}
+
+.btn:hover{
+    background-color: #2D6A4F!important;
+    color: #D8F3DC!important;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
