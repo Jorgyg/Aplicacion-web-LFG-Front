@@ -1,0 +1,23 @@
+.custom-input:focus {
+    background-color: #1B4332!important; /* Color de fondo al hacer hover */
+    color: #D8F3DC!important; /* Color del texto al hacer hover */
+    box-shadow: 0 0 0 3px #40916C!important; /* Sombra con color #40916C */
+    border-color: #1B4332;
+}
+
+.custom-input:focus::placeholder { 
+    color: #D8F3DC!important; /* Color del texto al hacer hover */
+}
+
+.form-check-input:checked {
+    background-color: #1B4332;
+    border-color: #D8F3DC;
+}
+
+.btn:hover{
+    background-color: #2D6A4F!important;
+    color: #D8F3DC!important;
+    padding: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
