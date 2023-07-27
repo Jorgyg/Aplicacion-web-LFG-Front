@@ -14,6 +14,7 @@ import { PerfilComponent } from './complements/perfil/perfil.component';
 import { AjustesGrupoComponent } from './complements/ajustes-grupo/ajustes-grupo.component';
 
 const routes: Routes = [
+  { path: "", component: HomeComponent },
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   { path: 'register', component: RegisterComponent },
