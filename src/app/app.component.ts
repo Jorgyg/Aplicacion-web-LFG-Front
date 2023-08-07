@@ -27,7 +27,8 @@ export class AppComponent {
       '/home': '#1B4332',
       '/': '#1B4332',
       '/perfil': '#D8F3DC',
-      '/main': '#1B4332', // Cambia '/home' con la ruta real de tu HomeComponent
+      '/main': '#1B4332',
+      '/chat': '#1B4332', // Cambia '/home' con la ruta real de tu HomeComponent
       // Agrega más rutas y colores según tus necesidades
     };
 
