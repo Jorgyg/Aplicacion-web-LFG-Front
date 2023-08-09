@@ -6,6 +6,7 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   constructor(private router: Router) {
     this.changeBodyColorBasedOnRoute(this.router.url);
@@ -25,6 +26,13 @@ export class AppComponent {
       '/register': '#D8F3DC', // Cambia '/register' con la ruta real de tu RegisterComponent
       '/home': '#0000ff', // Cambia '/home' con la ruta real de tu HomeComponent
       '/crear': '#D8F3DC', // Cambia '/crear' con la ruta real de tu HomeComponent
+      '/': '#1B4332',
+      '/perfil': '#D8F3DC',
+      '/main': '#1B4332',
+      '/chat': '#1B4332',
+      '/logros': '#1B4332', 
+      '/ajustes': '#1B4332', 
+      '/miembros': '#1B4332',  // Cambia '/home' con la ruta real de tu HomeComponent
       // Agrega más rutas y colores según tus necesidades
     };
 
