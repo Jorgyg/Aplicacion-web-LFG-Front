@@ -31,7 +31,7 @@ export class AppComponent {
       '/main': '#1B4332',
       '/chat': '#1B4332',
       '/logros': '#1B4332', 
-      '/ajustes': '#1B4332',
+      '/ajustes': '#D8F3DC',
       '/eventos': '#1B4332', 
       '/miembros': '#1B4332',  // Cambia '/home' con la ruta real de tu HomeComponent
       // Agrega más rutas y colores según tus necesidades
