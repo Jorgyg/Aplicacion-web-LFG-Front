@@ -24,7 +24,8 @@ export class AppComponent {
     const routeColorMap: { [key: string]: string } = {
       '/login': '#D8F3DC', // Cambia '/login' con la ruta real de tu LoginComponent
       '/register': '#D8F3DC', // Cambia '/register' con la ruta real de tu RegisterComponent
-      '/home': '#1B4332',
+      '/home': '#0000ff', // Cambia '/home' con la ruta real de tu HomeComponent
+      '/crear': '#D8F3DC', // Cambia '/crear' con la ruta real de tu HomeComponent
       '/': '#1B4332',
       '/perfil': '#D8F3DC',
       '/main': '#1B4332',
