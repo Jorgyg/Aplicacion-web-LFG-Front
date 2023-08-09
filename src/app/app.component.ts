@@ -24,6 +24,7 @@ export class AppComponent {
       '/login': '#D8F3DC', // Cambia '/login' con la ruta real de tu LoginComponent
       '/register': '#D8F3DC', // Cambia '/register' con la ruta real de tu RegisterComponent
       '/home': '#0000ff', // Cambia '/home' con la ruta real de tu HomeComponent
+      '/crear': '#D8F3DC', // Cambia '/crear' con la ruta real de tu HomeComponent
       // Agrega más rutas y colores según tus necesidades
     };
 

@@ -15,6 +15,7 @@ import { ChatGrupoComponent } from './complements/chat-grupo/chat-grupo.componen
 import { LogrosGrupoComponent } from './complements/logros-grupo/logros-grupo.component';
 import { MiembrosGrupoComponent } from './complements/miembros-grupo/miembros-grupo.component';
 import { EventosGrupoComponent } from './complements/eventos-grupo/eventos-grupo.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { EventosGrupoComponent } from './complements/eventos-grupo/eventos-grupo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule 
   ],
   providers: [], 
   bootstrap: [AppComponent]
