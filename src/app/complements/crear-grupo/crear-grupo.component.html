@@ -1,55 +1,70 @@
-<div class="container mt-5 d-flex justify-content-center">
-    <div>
-      <h1 class="text-center color-9 mb-4">Formulario de Grupo</h1>
-      <form [formGroup]="groupForm" class="align-items-start">
-        <!-- Input para seleccionar una imagen -->
-        <div class="form-group d-flex align-items-center py-2">
-            <label for="image" class="col-form-label color-9 pr-3 mb-0">Seleccionar una imagen:</label>
-            <button class="rounded-circle">
-            </button>
+<div class="container mt-5 justify-content-center">
+  <div>
+      <div class="row">
+          <div class="col-md-12 d-flex justify-content-end">
+              <a routerLink="/main" class="align-right btn bg-color-1 color-7 m-2"><b>Volver</b></a>
           </div>
-  
-        <!-- Input para el Nombre del grupo -->
-        <div class="form-group d-flex align-items-center py-2">
-          <label for="groupName" class="col-form-label color-9 pr-3 mb-0">Nombre del grupo:</label>
-          <input type="text" class="form-control custom-input bg-color-1 b-color-9 col-sm-8 w-50" id="groupName" formControlName="groupName">
-        </div>
-  
-        <!-- Selector para el Juego -->
-        <div class="form-group d-flex align-items-center">
-          <label class="col-form-label color-9 pr-3 mb-0 py-2">Juego:</label>
-          <select formControlName="game" class="form-control custom-input bg-color-1 b-color-9 col-sm-8 w-25">
-            <option value="" disabled selected>Selecciona un juego</option>
-            <!-- Agrega aquí las opciones del selector -->
-          </select>
-        </div>
-  
-        <!-- Textarea para la Descripción -->
-        <div class="form-group d-flex align-items-start py-2">
-          <label for="description" class="col-form-label color-9 pr-3 mb-0">Descripción:</label>
-          <textarea class="form-control custom-input bg-color-1 b-color-9 col-sm-8" id="description" formControlName="description" rows="5"></textarea>
-        </div>
-  
-        <!-- Input para el número de participantes -->
-        <div class="form-group d-flex align-items-center py-2">
-          <label for="participants" class="col-form-label color-9 pr-3 mb-0">Número de Participantes:</label>
-          <input type="number" class="form-control custom-input bg-color-1 b-color-9 col-sm-8 w-25" id="participants" formControlName="participants">
-        </div>
-  
-        <!-- Selector para la Privacidad -->
-        <div class="form-group d-flex py-2 align-items-center">
-          <label class="col-form-label color-9 pr-3 mb-0">Privacidad:</label>
-          <select formControlName="privacy" class="form-control custom-input bg-color-1 b-color-9 col-sm-8 w-25">
-            <option value="public">Público</option>
-            <option value="private">Privado</option>
-          </select>
-        </div>
-  
-        <!-- Botones de guardar y cancelar -->
-        <div class="d-flex justify-content-between py-2">
-          <button type="button" class="btn btn-lg bg-color-7 color-1 b-color-9 px-4 mr-3" (click)="onSave()">Guardar</button>
-          <button type="button" class="btn btn-lg bg-color-7 color-1 b-color-9 px-4" (click)="onCancel()">Cancelar</button>
-        </div>
+      </div>
+      <h1 class="text-center color-1 mb-4">Crear grupo</h1>
+      <form [formGroup]="groupForm" class="align-items-start">
+          <!-- Input para seleccionar una imagen -->
+          <div class="row">
+              <div class="form-group d-flex align-items-center py-2">
+                  <label for="image" class="col-form-label color-1 pr-3 mb-0">Seleccionar una imagen:</label>
+                  <button class="rounded-circle">
+                  </button>
+              </div>
+          </div>
+          <!-- Input para el Nombre del grupo -->
+          <div class="row">
+              <div class="form-group d-flex align-items-center py-2">
+                  <label for="groupName" class="col-form-label color-1 pr-3 mb-0">Nombre del grupo:</label>
+                  <input type="text" class="form-control custom-input bg-color-1 b-color-1 col-sm-8 w-50" id="groupName" formControlName="groupName">
+              </div>
+          </div>
+          <!-- Selector para el Juego -->
+          <div class="row">
+              <div class="form-group d-flex align-items-center">
+                  <label class="col-form-label color-1 pr-3 mb-0 py-2">Juego:</label>
+                  <select formControlName="game" class="form-control custom-input bg-color-1 b-color-9 col-sm-8 w-25">
+                      <option value="" disabled selected>Selecciona un juego</option>
+                      <!-- Agrega aquí las opciones del selector -->
+                  </select>
+              </div>
+          </div>
+          <!-- Textarea para la Descripción -->
+          <div class="row">
+            <div class="form-group d-flex align-items-start py-2">
+                <label for="description" class="col-form-label color-1 pr-3 mb-0">Descripción:</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control custom-input bg-color-1 b-color-9 w-100" id="description" formControlName="description" rows="5"></textarea>
+                </div>
+            </div>
+          </div>        
+          <!-- Input para el número de participantes -->
+          <div class="row">
+              <div class="form-group d-flex align-items-center py-2">
+                  <label for="participants" class="col-form-label color-1 pr-3 mb-0">Número de Participantes:</label>
+                  <input type="number" class="form-control custom-input bg-color-1 b-color-9 col-sm-8 w-25" id="participants" formControlName="participants">
+              </div>
+          </div>
+          <!-- Selector para la Privacidad -->
+          <div class="row">
+              <div class="form-group d-flex py-2 align-items-center">
+                  <label class="col-form-label color-1 pr-3 mb-0">Privacidad:</label>
+                  <select formControlName="privacy" class="form-control custom-input bg-color-1 b-color-9 col-sm-8 w-25">
+                      <option value="public">Público</option>
+                      <option value="private">Privado</option>
+                  </select>
+              </div>
+          </div>
+          <!-- Botones de guardar y cancelar -->
+          <div class="row">
+              <div class="d-flex justify-content-between py-2">
+                  <button type="button" class="btn btn-lg bg-color-7 color-1 b-color-9 px-4 mr-3" (click)="onSave()">Guardar</button>
+                  <button type="button" class="btn btn-lg bg-color-7 color-1 b-color-9 px-4" (click)="onCancel()">Cancelar</button>
+              </div>
+          </div>
       </form>
-    </div>
   </div>
+</div>

@@ -25,16 +25,17 @@ export class AppComponent {
       '/login': '#D8F3DC', // Cambia '/login' con la ruta real de tu LoginComponent
       '/register': '#D8F3DC', // Cambia '/register' con la ruta real de tu RegisterComponent
       '/home': '#0000ff', // Cambia '/home' con la ruta real de tu HomeComponent
-      '/crear': '#D8F3DC', // Cambia '/crear' con la ruta real de tu HomeComponent
+      '/crear': '#1B4332', // Cambia '/crear' con la ruta real de tu HomeComponent
       '/': '#1B4332',
-      '/perfil': '#D8F3DC',
+      '/perfil': '#1B4332',
       '/main': '#1B4332',
       '/chat': '#1B4332',
       '/logros': '#1B4332', 
-      '/ajustes': '#D8F3DC',
-      '/unirse': '#D8F3DC',
+      '/ajustes': '#1B4332',
+      '/unirse': '#1B4332',
       '/eventos': '#1B4332', 
-      '/miembros': '#1B4332',  // Cambia '/home' con la ruta real de tu HomeComponent
+      '/miembros': '#1B4332',
+      '/retar': '#1B4332',  // Cambia '/home' con la ruta real de tu HomeComponent
       // Agrega más rutas y colores según tus necesidades
     };
 

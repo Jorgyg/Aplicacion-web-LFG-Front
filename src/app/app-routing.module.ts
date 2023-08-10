@@ -12,6 +12,7 @@ import { MiembrosGrupoComponent } from './complements/miembros-grupo/miembros-gr
 import { EventosGrupoComponent } from './complements/eventos-grupo/eventos-grupo.component';
 import { PerfilComponent } from './complements/perfil/perfil.component';
 import { AjustesGrupoComponent } from './complements/ajustes-grupo/ajustes-grupo.component';
+import { RetarGrupoComponent } from './complements/retar-grupo/retar-grupo.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: "eventos", component: EventosGrupoComponent },
   { path: "ajustes", component: AjustesGrupoComponent },
   { path: "perfil", component: PerfilComponent },
+  { path: "retar", component: RetarGrupoComponent },
 ];
 
 @NgModule({

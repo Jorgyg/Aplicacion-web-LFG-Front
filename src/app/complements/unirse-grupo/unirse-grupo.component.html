@@ -1,21 +1,26 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3 mb-5">
-            <label for="nombre" class="form-label color-9">Nombre del grupo:</label>
-            <input type="text" class="form-control mb-3" id="" value="">
-            <label for="nombre" class="form-label color-9">Juego:</label>
-            <select class="form-select bg-color-8 color-1 mb-3" name="participantes" id="">
+        <div class="col-md-12 d-flex justify-content-end">
+            <a routerLink="/main" class="align-right btn bg-color-1 color-7 m-2"><b>Volver</b></a>
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="text-center color-1 mb-4">Unirse a grupo</h1>
+        <div class="col-4"></div>
+        <div class="col-md-5 col-sm-12 mb-5 mt-5">
+            <label for="nombre" class="form-label color-1">Código de grupo:</label>
+            <input type="text" class="form-control bg-color-1 color-9 mb-3" id="code" value="">
+            <label for="nombre" class="form-label color-1">Juego:</label>
+            <select class="form-select bg-color-1 color-9 mb-3" name="participantes" id="game">
                 <option class="txt" value="">Lista de juegos</option>
                 <option class="txt" value="">...</option>
             </select>
         </div>
     </div>
     <div class="row">
-            <div class="col-3 mt-5">
-                <button class="btn btn-primary bg-color-7">Pedir Unirse</button>
-            </div>
-            <div class="col-3 mt-5">
-                <button class="btn btn-primary bg-color-7">Atras</button>
+            <div class="col-4"></div>
+            <div class="col-md-4 col-sm-12">
+                <button type="button" class="btn btn-lg bg-color-7 color-1 b-color-9 px-4 mr-3">Pedir unirse</button>
             </div>
     </div>
 </div>

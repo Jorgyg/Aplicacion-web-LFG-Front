@@ -1,41 +1,47 @@
 <div class="container text-center">
     <div class="row">
-        <div class="col-4 mt-5" >
-            <img src="" alt="">aqui va una imagen
-        </div>
-        <div class="col-4 mt-5" >
-            <input class="form-control custom-input bg-color-1 b-color-9" type="file" name="src-file1" aria-label="Archivo">
-        </div>
-        <div class="col-4 mt-4">
-            Usuario: <input class="form-control custom-input bg-color-1 b-color-9" type="text" name="" id="">
+        <div class="col-md-12 d-flex justify-content-end">
+            <a routerLink="/main" class="align-right btn bg-color-1 color-7 m-2"><b>Volver</b></a>
         </div>
     </div>
     <div class="row">
-        <div class="col-4 mt-5">
-        Juego favorito:
-        <select class="form-select bg-color-8 txt" name="juego" id="">
+        <h1 class="text-center color-1 mb-4">Mi perfil</h1>
+        <div class="col-md-4 col-sm-12 mt-5" >
+            <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" alt="...">
+        </div>
+        <div class="col-md-4 col-sm-12 mt-5" >
+            <input class="form-control custom-input bg-color-1 b-color-9" type="file" name="src-file1" aria-label="Archivo">
+        </div>
+        <div class="col-md-4 col-sm-12 mt-4">
+            <span class="color-1">Usuario:</span> <input class="form-control custom-input bg-color-1 b-color-9" type="text" name="" id="">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12 mt-5">
+        <span class="color-1">Juego favorito:</span>
+        <select class="form-select bg-color-1 color-9" name="juego" id="">
             <option value="">Juegos</option>
         </select>  <br>
-        Perfil:
-        <select class="form-select bg-color-8 txt" name="perfil" id="">
+        <span class="color-1">Perfil:</span>
+        <select class="form-select bg-color-1 color-9" name="perfil" id="">
             <option class="txt" value="">Publico</option>
             <option class="txt" value="">Privado</option>
         </select>  
         </div>
-        <div class="col-4 mt-5">
-            Descripción<br>
-            <textarea class="form-control" name="" id="" cols="40" rows="10"></textarea>
+        <div class="col-md-4 col-sm-12 mt-5">
+            <span class="color-1">Descripción</span><br>
+            <textarea class="form-control bg-color-1" name="" id="" cols="40" rows="10"></textarea>
         </div>
-        <div class="col-4 mt-5">
-            Conexiones:<br>
+        <div class="col-md-4 col-sm-12 mt-5">
+            <span class="color-1">Conexiones:</span><br>
         </div>
     </div>
     <div class="row">
         <div class="col-6">
-            <button class="btn btn-primary bg-color-8">Guardar</button>
+            <button class="btn bg-color-6 color-1">Guardar</button>
         </div>
         <div class="col-6">
-            <button class="btn btn-primary bg-color-8">Cancelar</button>
+            <button class="btn bg-color-6 color-1">Cancelar</button>
         </div>        
     </div>
 </div>
