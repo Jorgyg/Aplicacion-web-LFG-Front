@@ -12,3 +12,9 @@ input, select, textarea, .ml {
 .imgGame{
   height: 100px!important;
 }
+
+@media (max-width: 1080px) {
+  .desc{
+    width: 100px;
+  }
+}
