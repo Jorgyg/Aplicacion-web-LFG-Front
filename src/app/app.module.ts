@@ -3,20 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './complements/login/login.component';
-import { RegisterComponent } from './complements/register/register.component';
-import { HomeComponent } from './complements/home/home.component';
-import { PerfilComponent } from './complements/perfil/perfil.component';
-import { MainComponent } from './complements/main/main.component';
-import { AjustesGrupoComponent } from './complements/ajustes-grupo/ajustes-grupo.component';
-import { CrearGrupoComponent } from './complements/crear-grupo/crear-grupo.component';
-import { UnirseGrupoComponent } from './complements/unirse-grupo/unirse-grupo.component';
-import { ChatGrupoComponent } from './complements/chat-grupo/chat-grupo.component';
-import { LogrosGrupoComponent } from './complements/logros-grupo/logros-grupo.component';
-import { MiembrosGrupoComponent } from './complements/miembros-grupo/miembros-grupo.component';
-import { EventosGrupoComponent } from './complements/eventos-grupo/eventos-grupo.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { MainComponent } from './components/main/main.component';
+import { AjustesGrupoComponent } from './components/grupo/ajustes-grupo/ajustes-grupo.component';
+import { CrearGrupoComponent } from './components/grupo/crear-grupo/crear-grupo.component';
+import { UnirseGrupoComponent } from './components/grupo/unirse-grupo/unirse-grupo.component';
+import { ChatGrupoComponent } from './components/grupo/chat-grupo/chat-grupo.component';
+import { LogrosGrupoComponent } from './components/grupo/logros-grupo/logros-grupo.component';
+import { MiembrosGrupoComponent } from './components/grupo/miembros-grupo/miembros-grupo.component';
+import { EventosGrupoComponent } from './components/grupo/eventos-grupo/eventos-grupo.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RetarGrupoComponent } from './complements/retar-grupo/retar-grupo.component';
+import { RetarGrupoComponent } from './components/grupo/retar-grupo/retar-grupo.component';
 
 @NgModule({
   declarations: [
