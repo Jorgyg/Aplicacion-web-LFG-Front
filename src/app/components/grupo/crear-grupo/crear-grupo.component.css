@@ -13,7 +13,7 @@ input, select, textarea, .ml {
   height: 100px!important;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 780px) {
   .desc{
     width: 100px;
   }

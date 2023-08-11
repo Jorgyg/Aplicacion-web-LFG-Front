@@ -34,11 +34,10 @@
         </div>
         <div class="col-sm-8 w-50">
           <div class="d-flex flex-wrap">
-            <div *ngFor="let game of games" class="p-2 text-center" style="width: 25%;">
+            <div *ngFor="let game of games" class="p-2 text-center galeria" style="width: 25%;">
               <img [src]="game.img" class="imgGame" alt="{{ game.nombre }}" width="100%">
               <button class="btn b-color-9 bg-color-6 color-1" (click)="selectGame(game)">Seleccionar</button>
             </div>
-            
           </div>
           <!-- Botones de siguiente y anterior -->
           <div *ngIf="!isSelected" class="d-flex justify-content-between mt-3">

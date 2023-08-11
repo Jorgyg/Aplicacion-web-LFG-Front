@@ -35,6 +35,12 @@
     background-color: #081C15;
 
 }
+
+.bg-img-1{
+    background-image: url("./assets/img/bg-1.kra");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 /*Text-color*/
 .color-1{
     color: #D8F3DC;
