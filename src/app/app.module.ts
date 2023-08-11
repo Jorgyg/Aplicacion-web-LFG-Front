@@ -16,6 +16,8 @@ import { LogrosGrupoComponent } from './complements/logros-grupo/logros-grupo.co
 import { MiembrosGrupoComponent } from './complements/miembros-grupo/miembros-grupo.component';
 import { EventosGrupoComponent } from './complements/eventos-grupo/eventos-grupo.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [], 
   bootstrap: [AppComponent]
