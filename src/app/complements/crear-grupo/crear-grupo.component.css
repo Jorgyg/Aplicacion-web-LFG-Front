@@ -1,10 +1,9 @@
-.img{
-  width: 50px;
-  height: 50px;
-  background-size: cover;
-  border-radius: 50%;
-}
-
-input, select, textarea, .ml {
-  margin-left: 10px;
-}
+/* Establecer ancho fijo para los labels y los inputs */
+.col-form-label {
+    width: 200px; /* Puedes ajustar el valor según tus necesidades */
+  }
+  
+  .form-control {
+    width: 600px; /* Puedes ajustar el valor según tus necesidades */
+  }
+  
