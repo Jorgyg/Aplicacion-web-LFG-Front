@@ -29,20 +29,21 @@
         <label class="col-form-label color-1 pr-3 mb-0 py-2">Juego:</label>
         <div *ngIf="isSelected" class="pl-3 w-25">
           <img [src]="selected.img"  alt="{{ selected.img }}" width="100%">
-          <button class="btn b-color-9 bg-color-6 color-1" (click)="resetSelected()">Buscar juegos</button>
+          <button class="btn b-color-9 bg-color-6 color-1"  (click)="resetSelected()">Selecionar juego</button>
         </div>
         </div>
         <div class="col-sm-8 w-50">
           <div class="d-flex flex-wrap">
             <div *ngFor="let game of games" class="p-2 text-center galeria" style="width: 25%;">
-              <img [src]="game.img" class="imgGame" alt="{{ game.nombre }}" width="100%">
-              <button class="btn b-color-9 bg-color-6 color-1" (click)="selectGame(game)">Seleccionar</button>
+              <div class="separation-img">
+                <button class="btn imgGame" [style.backgroundImage]="'url(' + game.img + ')'" (click)="selectGame(game)"></button>
+              </div>
             </div>
           </div>
           <!-- Botones de siguiente y anterior -->
           <div *ngIf="!isSelected" class="d-flex justify-content-between mt-3">
-            <button class="btn b-color-9 bg-color-6 color-1" (click)="previousPage()">Anterior</button>
-            <button class="btn b-color-9 bg-color-6 color-1" (click)="nextPage()">Siguiente</button>
+            <button *ngIf="botonP" class="btn b-color-9 bg-color-6 color-1" (click)="previousPage()">Anterior</button>
+            <button *ngIf="botonN" class="btn b-color-9 bg-color-6 color-1" (click)="nextPage()">Siguiente</button>
           </div>
         </div>
       </div>

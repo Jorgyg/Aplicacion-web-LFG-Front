@@ -26,6 +26,9 @@ export class CrearGrupoComponent implements OnInit {
   totalPages: number = 1;
   index: number = 0;
   isSelected: boolean = false;
+  botonN: boolean = true;
+  botonP: boolean = false;
+
   selected: any = {
     nombre: "",
     img: ""
@@ -41,6 +44,12 @@ export class CrearGrupoComponent implements OnInit {
       privacy: ['']
     });
     this.imagenSeleccionada = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
+    let num = this.gamesService.return().length;
+    while(num > 0){
+      this.totalPages++;
+      num-= 14;
+    }
+    console.log(this.totalPages);
     this.getGames();
   }
 
@@ -73,7 +82,7 @@ export class CrearGrupoComponent implements OnInit {
   getGames() {
     this.games = [];
     let game = this.gamesService.return();
-    for (let i = this.index; i < this.index+10; i++) {
+    for (let i = this.index; i < this.index+12; i++) {
       if (game) {
           this.games.push({ 
             nombre: game[i].name,
@@ -106,17 +115,25 @@ export class CrearGrupoComponent implements OnInit {
   previousPage() {
     if (this.currentPage > 0) {
       this.currentPage--;
-    }
-    this.index-=10;
+      this.botonN = true;
+      if(this.currentPage == 0) {
+        this.botonP = false;
+      }
+    } 
+    this.index-=12;
     this.getGames();
 
   }
   
   nextPage() {
-    if (this.currentPage < 4) {
+    if (this.currentPage < this.totalPages) {
       this.currentPage++;
+      this.botonP = true;
+      if(this.currentPage == this.totalPages - 1) {
+        this.botonN = false;
+      }
     }
-    this.index+=10;
+    this.index+=12;
     this.getGames();
   }
 }

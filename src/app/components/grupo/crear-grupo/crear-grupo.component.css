@@ -9,8 +9,16 @@ input, select, textarea, .ml {
   margin-left: 10px;
 }
 
+.separation-img{
+  margin-left: 10px;
+
+}
+
 .imgGame{
-  height: 100px!important;
+  height: 150px!important;
+  width: 150px;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 @media (max-width: 780px) {
