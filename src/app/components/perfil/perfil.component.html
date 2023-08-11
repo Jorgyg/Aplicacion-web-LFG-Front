@@ -20,8 +20,8 @@
         <div class="col-md-4 col-sm-12 mt-5">
         <span class="color-1">Juego favorito:</span>
         <select class="form-select bg-color-1 color-9" name="juego" id="">
-            <option value="">Juegos</option>
-        </select>  <br>
+            <option *ngFor="let juego of games" [value]="juego">{{ juego }}</option>
+          </select>  <br>
         <span class="color-1">Perfil:</span>
         <select class="form-select bg-color-1 color-9" name="perfil" id="">
             <option class="txt" value="">Publico</option>
