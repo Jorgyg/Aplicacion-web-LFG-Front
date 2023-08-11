@@ -12,7 +12,7 @@ export class GamesService {
   constructor(private http: HttpClient) { }
 
   return(){
-    return this.http.get('https://api.steampowered.com/ISteamApps/GetAppList/v0002/?format=json');
+    return this.http.get('https://store.steampowered.com/api/featured/');
           
   }
 
