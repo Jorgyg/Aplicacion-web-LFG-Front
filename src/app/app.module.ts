@@ -18,6 +18,7 @@ import { EventosGrupoComponent } from './complements/eventos-grupo/eventos-grupo
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RetarGrupoComponent } from './complements/retar-grupo/retar-grupo.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
     ChatGrupoComponent,
     LogrosGrupoComponent,
     MiembrosGrupoComponent,
-    EventosGrupoComponent
+    EventosGrupoComponent,
+    RetarGrupoComponent
   ],
   imports: [
     BrowserModule,

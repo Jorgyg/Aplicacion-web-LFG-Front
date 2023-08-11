@@ -1,1 +1,38 @@
-<p>ajustes-grupo works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-end">
+            <a routerLink="/chat" class="align-right btn bg-color-1 color-7 m-2"><b>Volver</b></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-md-4 col-sm-12 mt-5">
+            <h1 class="text-center color-1 mb-4">Ajustes de grupo</h1>
+            <label for="nombre" class="form-label color-1">Nombre del grupo</label>
+            <input type="text" class="form-control mb-3 bg-color-1" id="" value="ejemploDeNombreGrupo">
+            <label for="nombre" class="form-label color-1">Numero de participantes</label>
+            <select class="form-select bg-color-1 color-9 mb-3" name="participantes" id="">
+                <option class="txt color-9" value="">1</option>
+                <option class="txt color-9" value="">2</option>
+                <option class="txt color-9" value="">...</option>
+            </select>
+            <label for="nombre" class="form-label color-1">Privacidad</label>
+            <select class="form-select bg-color-1 color-9 mb-3" name="privacidad" id="">
+                <option class="color-1 color-9" value="">Publico</option>
+                <option class="color-1 color-9" value="">Privado</option>
+            </select>
+            <label for="nombre" class="form-label color-1">Maximo Administradores</label>
+            <select class="form-select bg-color-1 color-9" name="maxadm" id="">
+                <option class="color-9" value="">1</option>
+                <option class="color-9" value="">2</option>
+                <option class="color-9" value="">3</option>
+            </select>
+            <label for="nombre" class="form-label color-5">Default 1</label>
+            <div class="col-3">
+                <div class="col-6 mt-5">
+                    <button class="btn color-1 bg-color-7">Aplicar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
