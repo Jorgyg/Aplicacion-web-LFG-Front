@@ -17,6 +17,8 @@ import { MiembrosGrupoComponent } from './components/grupo/miembros-grupo/miembr
 import { EventosGrupoComponent } from './components/grupo/eventos-grupo/eventos-grupo.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RetarGrupoComponent } from './components/grupo/retar-grupo/retar-grupo.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { RetarGrupoComponent } from './components/grupo/retar-grupo/retar-grupo.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule 
   ],
   providers: [], 
   bootstrap: [AppComponent]
