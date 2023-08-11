@@ -21,14 +21,17 @@ export class CrearGrupoComponent implements OnInit {
   games: any[] = [];
   filteredGames: any[] = [];
   searchText: string = '';
-  currentPage: number = 1;
+  currentPage: number = 0;
   itemsPerPage: number = 10;
   totalPages: number = 1;
-  idGame: number = 1;
-  game: any;
+  index: number = 0;
+  isSelected: boolean = false;
+  selected: any = {
+    nombre: "",
+    img: ""
+  };
   constructor(private formBuilder: FormBuilder,
               private gamesService: GamesService) {}
-
   ngOnInit() {
     this.groupForm = this.formBuilder.group({
       groupName: [''],
@@ -68,40 +71,52 @@ export class CrearGrupoComponent implements OnInit {
   }
 
   getGames() {
-      this.gamesService.return().subscribe((result) => {
-        console.log(result);
+    this.games = [];
+    let game = this.gamesService.return();
+    for (let i = this.index; i < this.index+10; i++) {
+      if (game) {
+          this.games.push({ 
+            nombre: game[i].name,
+            img: game[i].large_capsule_image
+          });
         
-      });
-      this.idGame++;  
+      } else {
+        break; // Detener el bucle si no hay más juegos disponibles
+      }
+    } 
+  }
+
+  selectGame(game: any) {
+    this.games = [];
+    this.isSelected = true;
+    this.index = 0;
+    this.currentPage = 0;
+    this.selected = {
+      nombre: game.nombre,
+      img: game.img
+    };
+  }
+
+  resetSelected() {
+    this.isSelected = false;
+    this.getGames();
   }
   
-  filterGames() {
-    if (this.searchText) {
-      this.filteredGames = this.games.filter(game => game.name.toLowerCase().includes(this.searchText.toLowerCase()));
-    } else {
-      this.filteredGames = this.games;
-    }
-    this.totalPages = Math.ceil(this.filteredGames.length / this.itemsPerPage);
-    this.paginateGames();
-  }
-  
-  paginateGames() {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    this.filteredGames = this.filteredGames.slice(startIndex, endIndex);
-  }
   
   previousPage() {
-    if (this.currentPage > 1) {
+    if (this.currentPage > 0) {
       this.currentPage--;
-      this.paginateGames();
     }
+    this.index-=10;
+    this.getGames();
+
   }
   
   nextPage() {
-    if (this.currentPage < this.totalPages) {
+    if (this.currentPage < 4) {
       this.currentPage++;
-      this.paginateGames();
     }
+    this.index+=10;
+    this.getGames();
   }
 }

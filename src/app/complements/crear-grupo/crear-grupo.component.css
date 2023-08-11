@@ -8,3 +8,7 @@
 input, select, textarea, .ml {
   margin-left: 10px;
 }
+
+.imgGame{
+  height: 100px!important;
+}

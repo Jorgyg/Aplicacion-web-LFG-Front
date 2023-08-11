@@ -22,26 +22,37 @@
         <input type="text" class="form-control custom-input bg-color-1 b-color-9 col-sm-8 w-50" id="groupName" formControlName="groupName">
       </div>
 
-      <div class="form-group d-flex align-items-center">
+      <div class="form-group d-flex games">
+        <div class="d-flex">
         <label class="col-form-label color-9 pr-3 mb-0 py-2">Juego:</label>
+        <div *ngIf="isSelected" class="pl-3 w-25">
+          <img [src]="selected.img"  alt="{{ selected.img }}" width="100%">
+          {{selected.nombre}}
+          <button class="btn btn-secondary" (click)="resetSelected()">Buscar juegos</button>
+        </div>
+        
+        </div>
         <div class="col-sm-8 w-50">
-          <input type="text" class="form-control mb-2" [(ngModel)]="searchText" (input)="getGames()" placeholder="Buscar...">
-          <select formControlName="game" class="form-control">
-            <option *ngFor="let game of games" [value]="game.appid">{{game.name}}</option>
-          </select>
-          <nav aria-label="Page navigation" class="mt-2">
-            <ul class="pagination justify-content-center">
-              <li class="page-item" [class.disabled]="currentPage === 1">
-                <button class="page-link" (click)="previousPage()">Anterior</button>
-              </li>
-              <li class="page-item" [class.disabled]="currentPage === totalPages">
-                <button class="page-link" (click)="nextPage()">Siguiente</button>
-              </li>
-            </ul>
-          </nav>
+          <div class="d-flex flex-wrap">
+            <div *ngFor="let game of games" class="p-2 text-center" style="width: 25%;">
+              <img [src]="game.img" class="imgGame" alt="{{ game.nombre }}" width="100%">
+              <div>{{ game.nombre }}</div>
+              <button class="btn btn-secondary" (click)="selectGame(game)">Seleccionar</button>
+            </div>
+            
+          </div>
+      
+          <!-- Botones de siguiente y anterior -->
+          <div *ngIf="!isSelected" class="d-flex justify-content-between mt-3">
+            <button class="btn btn-secondary" (click)="previousPage()">Anterior</button>
+            <button class="btn btn-secondary" (click)="nextPage()">Siguiente</button>
+          </div>
         </div>
       </div>
       
+      
+      
+
 
       <!-- Textarea para la Descripción -->
       <div class="form-group d-flex align-items-start py-2">
