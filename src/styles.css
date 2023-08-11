@@ -1,6 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* general */
+
+html{
+    background-image: url("./assets/img/bg-1.png") !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+body{
+    background-color: transparent !important;
+}
+
+
 /*Background-color*/
+
 
 .bg-color-1{
     background-color: #D8F3DC;
@@ -36,11 +50,6 @@
 
 }
 
-.bg-img-1{
-    background-image: url("./assets/img/bg-1.kra");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 /*Text-color*/
 .color-1{
     color: #D8F3DC;
@@ -98,6 +107,8 @@
     border-color: #081C15;
 }
 
+/*Estilos para input*/
+
 .custom-input:focus {
     background-color: #1B4332!important; /* Color de fondo al hacer hover */
     color: #D8F3DC!important; /* Color del texto al hacer hover */
@@ -113,6 +124,8 @@
     background-color: #1B4332;
     border-color: #D8F3DC;
 }
+
+/*Estilos para botones*/
 
 .btn:hover{
     background-color: #2D6A4F!important;
