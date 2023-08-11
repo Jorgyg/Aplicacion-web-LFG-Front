@@ -25,8 +25,8 @@ export class AppComponent {
       '/login': '#D8F3DC', // Cambia '/login' con la ruta real de tu LoginComponent
       '/register': '#D8F3DC', // Cambia '/register' con la ruta real de tu RegisterComponent
       '/home': '#0000ff', // Cambia '/home' con la ruta real de tu HomeComponent
-      '/crear': '#1B4332', // Cambia '/crear' con la ruta real de tu HomeComponent
-      '/': '#1B4332',
+      '/crear': '#D8F3DC', // Cambia '/crear' con la ruta real de tu HomeComponent
+      '/unirse': '#D8F3DC', // Cambia '/crear' con la ruta real de tu HomeComponent
       '/perfil': '#1B4332',
       '/main': '#1B4332',
       '/chat': '#1B4332',
