@@ -41,3 +41,15 @@ nav a:hover{
         85vh;
     }
 }
+
+.leave{
+    background-color: red!important;
+}
+.i{
+    font-size: 20px;
+    margin-left: 20px;
+}
+.bi-x-octagon-fill{
+    color: red!important;
+    font-size: 100px!important;
+}

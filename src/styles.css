@@ -128,7 +128,11 @@ body{
 /*Estilos para botones*/
 
 .btn:hover{
-    background-color: #2D6A4F!important;
-    color: #D8F3DC!important;
+    background-color: #2D6A4F;
+    color: #D8F3DC;
+    transform: scale(1.1);
+}
+
+.cancel:hover, .btn-danger:hover{
     transform: scale(1.1);
 }

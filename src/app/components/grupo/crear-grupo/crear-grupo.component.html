@@ -1,7 +1,9 @@
 <div class="container mt-5 justify-content-center">
     <div class="row">
         <div class="col-md-12 d-flex justify-content-end">
-            <a routerLink="/main" class="align-right btn bg-color-1 color-7 m-2"><b>Volver</b></a>
+            <a routerLink="/main" class="align-right btn bg-color-1 color-7 m-2"><b><span class="material-symbols-outlined">
+              keyboard_return
+              </span></b></a>
         </div>
     </div>
     <h1 class="text-center color-1 mb-4">Formulario de Grupo</h1>
@@ -42,8 +44,8 @@
           </div>
           <!-- Botones de siguiente y anterior -->
           <div *ngIf="!isSelected" class="d-flex justify-content-between mt-3">
-            <button *ngIf="botonP" class="btn b-color-9 bg-color-6 color-1" (click)="previousPage()">Anterior</button>
-            <button *ngIf="botonN" class="btn b-color-9 bg-color-6 color-1" (click)="nextPage()">Siguiente</button>
+            <button *ngIf="botonP" class="btn b-color-9 bg-color-6 color-1" (click)="previousPage()"><i class="fas fa-arrow-left"></i></button>
+            <button *ngIf="botonN" class="btn b-color-9 bg-color-6 color-1" (click)="nextPage()"><i class="fas fa-arrow-right"></i></button>
           </div>
         </div>
       </div>
@@ -67,8 +69,12 @@
       </div>
       <!-- Botones de guardar y cancelar -->
       <div class="d-flex justify-content-between py-2">
-        <button type="button" class="btn btn-lg bg-color-7 color-1 b-color-9 px-4 mr-3" (click)="onSave()">Guardar</button>
-        <button type="button" class="btn btn-lg bg-color-7 color-1 b-color-9 px-4" (click)="onCancel()">Cancelar</button>
+        <button type="button" class="btn btn-lg bg-color-7 color-1 b-color-9 mr-3" (click)="onSave()"><span class="material-symbols-outlined">
+          save_as
+          </span></button>
+        <button type="button" class="btn btn-lg cancel color-1 b-color-9" (click)="onCancel()"><span class="material-symbols-outlined">
+          cancel
+          </span></button>
       </div>
     </form>
 </div>
