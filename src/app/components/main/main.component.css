@@ -10,6 +10,24 @@ nav a:hover{
     color: white;
 }
 
+input:focus{
+    width: 400px;
+}
+
+/* Pequeña animacion para las flechas */
+
+@keyframes horizontal-shaking {
+    0% { transform: translateX(0) }
+    25% { transform: translateX(5px) }
+    50% { transform: translateX(-5px) }
+    75% { transform: translateX(5px) }
+    100% { transform: translateX(0) }
+}
+
+.arrow:focus {
+    animation: horizontal-shaking 1s;
+}
+
 /* Estilos del div que contiene las cartas con cada grupo */
 
 .card-container {
