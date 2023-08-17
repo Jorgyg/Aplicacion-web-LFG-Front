@@ -90,14 +90,14 @@ export class MainComponent {
     /* Evitamos que el enlace nos lleve a otra pagina y no ejecute el script */
     event.preventDefault();
     if (page === 'prev' && this.currentPage > 1) {
-      this.showPage(this.currentPage - 1);
-    } else if (page === 'next' && this.currentPage < Math.ceil(this.cardData.length / this.cardsPerPage)) {
-      this.showPage(this.currentPage + 1);
+        this.showPage(this.currentPage - 1);
+      } else if (page === 'next' && this.currentPage < Math.ceil(this.cardData.length / this.cardsPerPage)) {
+        this.showPage(this.currentPage + 1);
+      }
     }
-  }
 
-  ampliar(){
-  }
+    ampliar(){
+    }
 
     firstLinkActivated = false;
   

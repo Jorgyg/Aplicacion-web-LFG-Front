@@ -36,12 +36,12 @@ nav a:hover{
 }
 
 .card-container::-webkit-scrollbar-thumb {
-    background-color: #D8F3DC; /* Cambia el color de la barra de desplazamiento */
+    background-color: transparent; /* Cambia el color de la barra de desplazamiento */
     border-radius: 5px;
 }
 
 .card-container::-webkit-scrollbar-thumb:hover {
-    background-color: #D8F3DC; /* Cambia el color al pasar el cursor por encima */
+    background-color: transparent; /* Cambia el color al pasar el cursor por encima */
 }
 
 /* En caso de que la pantalla se haga mas pequeña, se adapta los limites del div para que aparezca un sroll, evitando perder de vista otros elementos de la web */
@@ -75,6 +75,6 @@ nav a:hover{
 }
 
 .fade-out {
-opacity: 0;
-transition: opacity 1s ease-in-out;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
