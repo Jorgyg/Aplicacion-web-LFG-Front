@@ -70,12 +70,12 @@ nav a:hover{
     font-size: 100px!important;
 }
 
-.enlarged-card {
+.enlarged-card, .enlarged-card:hover {
     transform: scale(2);
     transition: transform 1s ease-in-out;
 }
 
 .fade-out {
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out transformZ();
 }
