@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
+  /* Elemento que utilizaremos para cambiar el estilo de cualquier etiqueta del html */
+  elementStyle: { [key: string]: string } = {};
   /*Se indica el numero de grupos que habrá por pagina y la pagina actual, que por defecto será la primera*/
   cardsPerPage: number = 4;
   currentPage: number = 1;
@@ -85,9 +87,9 @@ export class MainComponent {
     } else if (page === 'next' && this.currentPage < Math.ceil(this.cardData.length / this.cardsPerPage)) {
       this.showPage(this.currentPage + 1);
     }
-  }  
+  }
 
-  initializePagination(): void {
-    this.showPage(1);
+  ampliar(){
+    
   }
 }

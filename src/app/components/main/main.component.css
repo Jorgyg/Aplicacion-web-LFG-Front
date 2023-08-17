@@ -48,6 +48,10 @@ nav a:hover{
 }
 
 /* Estilos para los iconos */
+.btnPag{
+    background-color: rgb(62, 139, 198);
+}
+
 .leave{
     background-color: red!important;
 }
