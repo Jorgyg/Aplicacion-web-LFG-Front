@@ -28,7 +28,8 @@ nav a:hover{
 }
 
 .card:hover{
-    transform: scale(1.05);
+    will-change: transform !important;
+    transform: scale(1.04);
 }
 
 .card-container::-webkit-scrollbar {

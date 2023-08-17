@@ -108,7 +108,6 @@ export class MainComponent {
       this.firstLinkActivated = true;
     }
 
-
     const cardElements = document.querySelectorAll('.card');
 
     cardElements.forEach((cardElement: Element, i: number) => {

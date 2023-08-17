@@ -41,10 +41,12 @@
             </div>
         </div>
     </div>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item"><a href="#" class="btn bg-color-6 color-1 mx-3 btnPag" (click)="changePage('prev', $event)"><i class="fas fa-angle-left"></i></a></li>
-            <li class="page-item"><a href="#" class="btn bg-color-6 color-1 btnPag" (click)="changePage('next', $event)"><i class="fas fa-angle-right"></i></a></li>
-        </ul>
-    </nav>  
+    <div class="row">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a href="#" class="btn bg-color-6 color-1 mx-3 btnPag" (click)="changePage('prev', $event)"><i class="fas fa-angle-left"></i></a></li>
+                <li class="page-item"><a href="#" class="btn bg-color-6 color-1 btnPag" (click)="changePage('next', $event)"><i class="fas fa-angle-right"></i></a></li>
+            </ul>
+        </nav>  
+    </div>
 </div>
