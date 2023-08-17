@@ -10,13 +10,17 @@ nav a:hover{
     color: white;
 }
 
+/* Estilos del div que contiene las cartas con cada grupo */
+
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
     gap: 10px;
-    max-height: 90vh;
+    max-height: 80vh;
     overflow: auto;
 }
+
+/* Estilos de las cartas que contienen los grupos */
 
 .card {
     flex: 0 0 18rem;
@@ -35,13 +39,18 @@ nav a:hover{
     background-color: #D8F3DC; /* Cambia el color al pasar el cursor por encima */
 }
 
+/* En caso de que la pantalla se haga mas pequeña, se adapta los limites del div para que aparezca un sroll, evitando perder de vista otros elementos de la web */
 @media (max-width: 1200px) {
-    .card-container{
+    .scroll{
         max-height: 
-        85vh;
+        60vh;
+    }
+    html{
+        background-repeat: repeat !important;
     }
 }
 
+/* Estilos para los iconos */
 .leave{
     background-color: red!important;
 }

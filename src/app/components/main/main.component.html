@@ -9,9 +9,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a routerLink="" class="color-4 text-decoration-none mx-3"><i class="fas fa-house i"></i></a> &nbsp;
-                    </li>
-                    <li class="nav-item">
                         <a routerLink="/crear"  class="color-4 text-decoration-none mx-3"><i class="fas fa-plus i"></i></a> &nbsp;
                     </li>
                     <li class="nav-item">
@@ -33,126 +30,26 @@
         </nav>
     </div>
     <div class="card-container">
-        <div class="card bg-color-1 m-2">
-            <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" class="card-img-top" alt="...">
+        <!-- Por cada grupo que tengamos en la array, creamos un div de tipo card de Bootstrap. Ademas, dividimos cada carta por paginas a partir del valor en CardsPerPage-->
+        <div *ngFor="let card of cardData.slice((currentPage-1)*cardsPerPage, currentPage*cardsPerPage)"
+            class="card bg-color-1 m-2">
+            <img [src]="card.imageUrl" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Grupo</h5>
-                <p class="card-text">Descripción del grupo</p>
-                <a routerLink="/chat" class="btn bg-color-6 color-1 mx-1"><i class="fas fa-eye"></i></a>
-                <a routerLink="#" class="btn bg-color-6 color-1 leave"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-</svg></a>
+            <h5 class="card-title">{{card.title}}</h5>
+            <p class="card-text">{{card.description}}</p>
+            <a routerLink="/chat" class="btn bg-color-6 color-1 mx-1"><i class="fas fa-eye"></i></a>
+            <a routerLink="#" class="btn bg-color-6 color-1 leave">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                </svg>
+            </a>
             </div>
         </div>
-        <div class="card bg-color-1 m-2">
-            <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Grupo</h5>
-                <p class="card-text">Descripción del grupo</p>
-                <a routerLink="/chat" class="btn bg-color-6 color-1 mx-1"><i class="fas fa-eye"></i></a>
-                <a routerLink="#" class="btn bg-color-6 color-1 leave"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-</svg></a>
-            </div>
-        </div>
-        <div class="card bg-color-1 m-2">
-            <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Grupo</h5>
-                <p class="card-text">Descripción del grupo</p>
-                <a routerLink="/chat" class="btn bg-color-6 color-1 mx-1"><i class="fas fa-eye"></i></a>
-                <a routerLink="#" class="btn bg-color-6 color-1 leave"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-</svg></a>
-            </div>
-        </div>
-        <div class="card bg-color-1 m-2">
-            <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Grupo</h5>
-                <p class="card-text">Descripción del grupo</p>
-                <a routerLink="/chat" class="btn bg-color-6 color-1 mx-1"><i class="fas fa-eye"></i></a>
-                <a routerLink="#" class="btn bg-color-6 color-1 leave"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-</svg></a>
-            </div>
-        </div>
-        <div class="card bg-color-1 m-2">
-            <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Grupo</h5>
-                <p class="card-text">Descripción del grupo</p>
-                <a routerLink="/chat" class="btn bg-color-6 color-1 mx-1"><i class="fas fa-eye"></i></a>
-                <a routerLink="#" class="btn bg-color-6 color-1 leave"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-</svg></a>
-            </div>
-        </div>
-        <div class="card bg-color-1 m-2">
-            <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Grupo</h5>
-                <p class="card-text">Descripción del grupo</p>
-                <a routerLink="/chat" class="btn bg-color-6 color-1 mx-1"><i class="fas fa-eye"></i></a>
-                <a routerLink="#" class="btn bg-color-6 color-1 leave"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-</svg></a>
-            </div>
-        </div>
-        <div class="card bg-color-1 m-2">
-            <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Grupo</h5>
-                <p class="card-text">Descripción del grupo</p>
-                <a routerLink="/chat" class="btn bg-color-6 color-1 mx-1"><i class="fas fa-eye"></i></a>
-                <a routerLink="#" class="btn bg-color-6 color-1 leave"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-</svg></a>
-            </div>
-        </div>
-        <div class="card bg-color-1 m-2">
-            <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Grupo</h5>
-                <p class="card-text">Descripción del grupo</p>
-                <a routerLink="/chat" class="btn bg-color-6 color-1 mx-1"><i class="fas fa-eye"></i></a>
-                <a routerLink="#" class="btn bg-color-6 color-1 leave"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-</svg></a>
-            </div>
-        </div>
-        <div class="card bg-color-1 m-2">
-            <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Grupo</h5>
-                <p class="card-text">Descripción del grupo</p>
-                <a routerLink="/chat" class="btn bg-color-6 color-1 mx-1"><i class="fas fa-eye"></i></a>
-                <a routerLink="#" class="btn bg-color-6 color-1 leave"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-</svg></a>
-            </div>
-        </div>
-        <div class="card bg-color-1 m-2">
-            <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Grupo</h5>
-                <p class="card-text">Descripción del grupo</p>
-                <a routerLink="/chat" class="btn bg-color-6 color-1 mx-1"><i class="fas fa-eye"></i></a>
-                <a routerLink="#" class="btn bg-color-6 color-1 leave"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-</svg></a>
-            </div>
-        </div>
-        <div class="card bg-color-1 m-2">
-            <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Grupo</h5>
-                <p class="card-text">Descripción del grupo</p>
-                <a routerLink="/chat" class="btn bg-color-6 color-1 mx-1"><i class="fas fa-eye"></i></a>
-                <a routerLink="#" class="btn bg-color-6 color-1 leave"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-</svg></a>
-            </div>
-        </div>
-    </div>    
+    </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a href="#" class="btn btn-primary mx-3" (click)="changePage('prev', $event)"><i class="fas fa-angle-left"></i></a></li>
+            <li class="page-item"><a href="#" class="btn btn-primary" (click)="changePage('next', $event)"><i class="fas fa-angle-right"></i></a></li>
+        </ul>
+    </nav>
 </div>
