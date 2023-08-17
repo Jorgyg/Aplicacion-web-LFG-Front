@@ -17,6 +17,7 @@ export class MainComponent {
   /*Se indica el numero de grupos que habrá por pagina y la pagina actual, que por defecto será la primera*/
   cardsPerPage: number = 4;
   currentPage: number = 1;
+  selectedCardIndex: number | null = null;
   /*Creamos una array para cada grupo. Para casos prácticos, hemos creado cartas "falsas" para comprobar su funcionalidad*/
   cardData: Array<any> = [
     {
@@ -96,24 +97,13 @@ export class MainComponent {
   }
 
   ampliar(){
-      selectedCardIndex: number | null = null;
-  groups: Group[] = [
-    { title: 'Grupo 1', description: 'Descripción del grupo 1' },
-    { title: 'Grupo 2', description: 'Descripción del grupo 2' },
-    { title: 'Grupo 3', description: 'Descripción del grupo 3' },
-    { title: 'Grupo 1', description: 'Descripción del grupo 1' },
-    { title: 'Grupo 2', description: 'Descripción del grupo 2' },
-    { title: 'Grupo 3', description: 'Descripción del grupo 3' },
-    { title: 'Grupo 1', description: 'Descripción del grupo 1' },
-    { title: 'Grupo 2', description: 'Descripción del grupo 2' },
-    { title: 'Grupo 3', description: 'Descripción del grupo 3' },
-    // Agrega más grupos según sea necesario
-  ];
-  firstLinkActivated = false;
+  }
+
+    firstLinkActivated = false;
   
     constructor(private renderer: Renderer2, private router: Router) {}
 
-  enlargeAndNavigate(index: number) {
+    enlargeAndNavigate(index: number) {
     if (!this.firstLinkActivated) {
       this.firstLinkActivated = true;
     }
@@ -136,4 +126,4 @@ export class MainComponent {
     }, 1000); // Redirige después de 0.3 segundos (300 ms)
   }
 }
-}
+

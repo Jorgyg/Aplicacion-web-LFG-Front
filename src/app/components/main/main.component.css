@@ -72,8 +72,9 @@ nav a:hover{
 .enlarged-card {
     transform: scale(2);
     transition: transform 1s ease-in-out;
-  }
-  .fade-out {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
+}
+
+.fade-out {
+opacity: 0;
+transition: opacity 1s ease-in-out;
+}
