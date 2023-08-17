@@ -24,6 +24,11 @@ nav a:hover{
 
 .card {
     flex: 0 0 18rem;
+    transition: transform 0.3s ease-in-out, opacity 1s ease-in-out;
+}
+
+.card:hover{
+    transform: scale(1.05);
 }
 
 .card-container::-webkit-scrollbar {
@@ -63,3 +68,12 @@ nav a:hover{
     color: red!important;
     font-size: 100px!important;
 }
+
+.enlarged-card {
+    transform: scale(2);
+    transition: transform 1s ease-in-out;
+  }
+  .fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }

@@ -35,3 +35,21 @@ body{
 .chat::-webkit-scrollbar-thumb:hover {
     background-color: #D8F3DC; /* Cambia el color al pasar el cursor por encima */
 }
+
+.setting:hover{
+    cursor: pointer;
+    transition: 0.4s;
+    transform: rotate(720deg);
+    -webkit-transform: rotate(720deg);
+    -ms-transform: rotate(720deg);
+    
+}
+
+.members{
+    transition: transform 1s;
+
+    &:hover{
+        transform: translate(0, -2px);
+    }
+}
+
