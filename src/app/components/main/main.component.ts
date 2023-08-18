@@ -79,7 +79,17 @@ export class MainComponent {
       imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
       title: 'Grupo 12',
       description: 'Descripción del grupo',
+    },{
+      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
+      title: 'Grupo 11',
+      description: 'Descripción del grupo',
+    },
+    {
+      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
+      title: 'Grupo 12',
+      description: 'Descripción del grupo',
     }
+
   ];
   /*Metodo para cambiar la página actual por la pagina destino*/
   showPage(page: number): void {

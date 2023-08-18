@@ -30,7 +30,7 @@
         </nav>
     </div>
     <div class="card-container">
-        <div *ngFor="let group of cardData; let i = index" class="card bg-color-1 m-2" [class.fade-out]="firstLinkActivated && selectedCardIndex !== i" [ngClass]="{'enlarged': selectedCardIndex === i}">
+        <div *ngFor="let group of cardData.slice((currentPage-1)*cardsPerPage, currentPage * cardsPerPage); let i = index" class="card bg-color-1 m-2" [class.fade-out]="firstLinkActivated && selectedCardIndex !== i" [ngClass]="{'enlarged': selectedCardIndex === i}">
             <img src="{{ group.imageUrl }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ group.title }}</h5>

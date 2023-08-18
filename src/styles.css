@@ -133,6 +133,12 @@ body{
 
 .cancel:hover, .btn-danger:hover{
     transform: scale(1.1);
+    background-color: rgb(193, 0, 0)!important;
+}
+
+.btn-primary:hover {
+  transform: scale(1.1);
+    background-color: rgb(34, 34, 236)!important;
 }
 
 @keyframes left {
