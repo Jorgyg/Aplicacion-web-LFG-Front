@@ -29,19 +29,18 @@ export class AppComponent implements OnInit {
     const bg: { [key: string]: string } = {
       '/': '/assets/img/bg-1.png',
       '/home': '/assets/img/bg-1.png',
-      '/about': '/assets/img/bg-1.jpg',
-      "login":'',
-      "register":'',
-      "main":'',
-      "crear":'',
-      "unirse":'',
-      "chat": '',
-      "logros":'',
-      "miembros": '',
-      "eventos":'',
-      "ajustes":'',
-      "perfil":'',
-      "retar":''
+      "/login":'/assets/img/bg-2.png',
+      "/register":'/assets/img/bg-3.png',
+      "/main":'/assets/img/bg-4.png',
+      "/crear":'/assets/img/bg-6.png',
+      "/unirse":'',
+      "/chat": '',
+      "/logros":'',
+      "/miembros": '',
+      "/eventos":'',
+      "/ajustes":'',
+      "/perfil":'/assets/img/bg-5.png',
+      "/retar":''
     };
     //Comprueba que la url recibida se encuentra en la constante de rutas y le asigna el background que le pertenece
     if (bg[url]) {

@@ -2,6 +2,10 @@
 
 /* general */
 
+html{
+    background-color: #1B4332;
+}
+
 body{
     background-color: transparent !important;
 }
