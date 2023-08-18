@@ -54,6 +54,10 @@ nav a:hover{
     font-size: 20px;
     margin-left: 20px;
 }
+
+.i:hover{
+    transform: scale(1.2);
+}
 .bi-x-octagon-fill{
     color: red!important;
     font-size: 100px!important;

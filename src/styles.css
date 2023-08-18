@@ -136,3 +136,128 @@ body{
 .cancel:hover, .btn-danger:hover{
     transform: scale(1.1);
 }
+
+@keyframes left {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-5px);
+    }
+  }
+
+.align-right:hover .key{
+    cursor: pointer;
+    animation: left 1s infinite;
+}
+
+a.setting:hover span.set {
+    cursor: pointer;
+    transition: 0.4s;
+    transform: rotate(720deg);
+  }
+  
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  a.members:hover span.mem {
+    cursor: pointer;
+    animation: bounce 1s infinite;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(5deg);
+    }
+  }
+  
+  a.logros:hover span.trp {
+    cursor: pointer;
+    animation: rotate 0.5s infinite;
+  }
+  
+  a.events:hover span.ev{
+    cursor: pointer;
+    animation: bounce 1s infinite;
+  }
+
+  @keyframes crazyAnimation {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    25% {
+      transform: rotate(45deg) scale(1.2);
+    }
+    50% {
+      transform: rotate(-45deg) scale(0.8);
+    }
+    75% {
+      transform: rotate(30deg) scale(1.1);
+    }
+    100% {
+      transform: rotate(0deg) scale(1);
+    }
+  }
+  
+  a.sword:hover span.sw {
+    display: inline-block;
+    transition: transform 0.4s ease-in-out;
+    animation: crazyAnimation 3s infinite;
+  }
+
+  
+  @keyframes iconEnlarge {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.2);
+    }
+  }
+
+  .enlarged:hover .fa-eye {
+    animation: iconEnlarge 0.4s alternate infinite;
+  }
+  
+
+  @keyframes trash {
+    0% {
+      transform: rotate(0deg);
+    }
+    30% {
+      transform: rotate(15deg);
+    }
+    40% {
+      transform: rotate(-15deg);
+    }
+    50% {
+      transform: rotate(15deg);
+    }
+    60% {
+      transform: rotate(-15deg);
+    }
+    70% {
+        transform: rotate(0deg);
+      }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .leave:hover .fa-trash-can{
+    animation: trash 1s infinite;
+
+  }
