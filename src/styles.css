@@ -150,9 +150,24 @@ body{
     }
   }
 
-.align-right:hover .key{
+  @keyframes right {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(5px);
+    }
+  }
+
+.align-right:hover .key, .left:hover .fa-angle-left{
     cursor: pointer;
     animation: left 1s infinite;
+}
+
+
+.right:hover .fa-angle-right{
+  cursor: pointer;
+  animation: right 1s infinite;
 }
 
 a.setting:hover span.set {

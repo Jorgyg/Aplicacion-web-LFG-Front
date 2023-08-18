@@ -22,12 +22,13 @@ export class CrearGrupoComponent implements OnInit {
   filteredGames: any[] = [];
   searchText: string = '';
   currentPage: number = 0;
-  itemsPerPage: number = 10;
-  totalPages: number = 1;
+  totalPages: number = 0;
   index: number = 0;
   isSelected: boolean = false;
   botonN: boolean = true;
   botonP: boolean = false;
+  isGameNameVisible: boolean = false;
+  currentGameName: string = '';
 
   selected: any = {
     nombre: "",
@@ -45,11 +46,11 @@ export class CrearGrupoComponent implements OnInit {
     });
     this.imagenSeleccionada = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
     let num = this.gamesService.return().length;
+
     while(num > 0){
       this.totalPages++;
-      num-= 14;
+      num-= 12;
     }
-    console.log(this.totalPages);
     this.getGames();
   }
 
@@ -77,6 +78,18 @@ export class CrearGrupoComponent implements OnInit {
 
   cancelarSeleccion() {
     this.image = [];
+  }
+
+   // Agrega esta función para mostrar el nombre del juego
+   showGameName(gameName: string) {
+    this.currentGameName = gameName;
+    this.isGameNameVisible = true;
+  }
+
+  // Agrega esta función para ocultar el nombre del juego
+  hideGameName() {
+    this.isGameNameVisible = false;
+    this.currentGameName = '';
   }
 
   getGames() {
