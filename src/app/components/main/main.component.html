@@ -9,9 +9,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a routerLink="" class="color-4 text-decoration-none mx-3"><i class="fas fa-house i"></i></a> &nbsp;
-                    </li>
-                    <li class="nav-item">
                         <a routerLink="/crear"  class="color-4 text-decoration-none mx-3"><i class="fas fa-plus i"></i></a> &nbsp;
                     </li>
                     <li class="nav-item">
@@ -42,5 +39,13 @@
             <a routerLink="#" class="btn bg-color-6 color-1 leave"><i class="fas fa-trash-can"></i></a>
           </div>
         </div>
-      </div>
+    </div>
+    <div class="row">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a href="#" class="btn bg-color-6 color-1 mx-3 btnPag arrow" (click)="changePage('prev', $event)"><i class="fas fa-angle-left"></i></a></li>
+                <li class="page-item"><a href="#" class="btn bg-color-6 color-1 btnPag arrow" (click)="changePage('next', $event)"><i class="fas fa-angle-right"></i></a></li>
+            </ul>
+        </nav>  
+    </div>
 </div>

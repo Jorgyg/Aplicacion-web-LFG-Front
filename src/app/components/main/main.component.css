@@ -10,13 +10,35 @@ nav a:hover{
     color: white;
 }
 
+input:focus{
+    width: 400px;
+}
+
+/* Pequeña animacion para las flechas */
+
+@keyframes horizontal-shaking {
+    0% { transform: translateX(0) }
+    25% { transform: translateX(5px) }
+    50% { transform: translateX(-5px) }
+    75% { transform: translateX(5px) }
+    100% { transform: translateX(0) }
+}
+
+.arrow:focus {
+    animation: horizontal-shaking 1s;
+}
+
+/* Estilos del div que contiene las cartas con cada grupo */
+
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
     gap: 10px;
-    max-height: 90vh;
+    max-height: 80vh;
     overflow: auto;
 }
+
+/* Estilos de las cartas que contienen los grupos */
 
 .card {
     flex: 0 0 18rem;
@@ -24,7 +46,8 @@ nav a:hover{
 }
 
 .card:hover{
-    transform: scale(1.05);
+    will-change: transform !important;
+    transform: scale(1.04);
 }
 
 .card-container::-webkit-scrollbar {
@@ -32,19 +55,25 @@ nav a:hover{
 }
 
 .card-container::-webkit-scrollbar-thumb {
-    background-color: #D8F3DC; /* Cambia el color de la barra de desplazamiento */
+    background-color: transparent; /* Cambia el color de la barra de desplazamiento */
     border-radius: 5px;
 }
 
 .card-container::-webkit-scrollbar-thumb:hover {
-    background-color: #D8F3DC; /* Cambia el color al pasar el cursor por encima */
+    background-color: transparent; /* Cambia el color al pasar el cursor por encima */
 }
 
+/* En caso de que la pantalla se haga mas pequeña, se adapta los limites del div para que aparezca un sroll, evitando perder de vista otros elementos de la web */
 @media (max-width: 1200px) {
-    .card-container{
+    .scroll{
         max-height: 
-        85vh;
+        60vh;
     }
+}
+
+/* Estilos para los iconos */
+.btnPag{
+    background-color: rgb(62, 139, 198);
 }
 
 .leave{
@@ -63,11 +92,12 @@ nav a:hover{
     font-size: 100px!important;
 }
 
-.enlarged-card {
+.enlarged-card, .enlarged-card:hover {
     transform: scale(2);
     transition: transform 1s ease-in-out;
-  }
-  .fade-out {
+}
+
+.fade-out {
     opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
+    transition: opacity 1s ease-in-out transformZ();
+}

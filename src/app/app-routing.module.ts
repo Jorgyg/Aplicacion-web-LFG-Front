@@ -16,7 +16,7 @@ import { RetarGrupoComponent } from './components/grupo/retar-grupo/retar-grupo.
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "home", component: HomeComponent },
+  { path: "home", component: HomeComponent, data:{background: "./assets/img/logo1.png"}},
   { path: "login", component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: "main", component: MainComponent },
