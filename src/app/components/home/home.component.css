@@ -5,3 +5,13 @@ body{
 img{
     width: 50vw;
 }
+
+.container.enlarged .content {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.container.enlarged img {
+    transition: transform 1s ease-in-out;
+    transform: scale(1.5);
+}
