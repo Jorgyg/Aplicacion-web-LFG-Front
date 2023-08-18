@@ -13,10 +13,12 @@ export class EventosGrupoComponent {
   cardsPerPage: number = 4;
   currentPage: number = 1;
   selectedEventIndex: number | null = null;
+  firstLinkActivated = false;
+
   /*Creamos una array para cada grupo. Para casos prácticos, hemos creado cartas "falsas" para comprobar su funcionalidad*/
   eventData: Array<any> = [
     {
-      title: 'Evento 1',
+      title: 'Evento 1', 
       date: '31/01/2024',
     },
     {
@@ -56,6 +58,8 @@ export class EventosGrupoComponent {
       date: '22/01/2024',
     }
   ];
+  constructor(private renderer: Renderer2, private router: Router) {}
+
   /*Metodo para cambiar la página actual por la pagina destino*/
   showPage(page: number): void {
     this.currentPage = page;
@@ -70,10 +74,6 @@ export class EventosGrupoComponent {
         this.showPage(this.currentPage + 1);
       }
     }
-
-    firstLinkActivated = false;
-  
-    constructor(private renderer: Renderer2, private router: Router) {}
 
     enlargeAndNavigate(index: number) {
     if (!this.firstLinkActivated) {
