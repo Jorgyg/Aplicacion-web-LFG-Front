@@ -33,14 +33,14 @@ export class AppComponent implements OnInit {
       "/register":'/assets/img/bg-3.png',
       "/main":'/assets/img/bg-4.png',
       "/crear":'/assets/img/bg-6.png',
-      "/unirse":'',
-      "/chat": '',
-      "/logros":'',
-      "/miembros": '',
-      "/eventos":'',
-      "/ajustes":'',
+      "/unirse":'/assets/img/bg-7.png',
+      "/chat": '/assets/img/bg-1.png',
+      "/logros":'/assets/img/bg-1.png',
+      "/miembros": '/assets/img/bg-8.png',
+      "/eventos":'/assets/img/bg-9.png',
+      "/ajustes":'/assets/img/bg-5.png',
       "/perfil":'/assets/img/bg-5.png',
-      "/retar":''
+      "/retar":'/assets/img/bg-10.png'
     };
     //Comprueba que la url recibida se encuentra en la constante de rutas y le asigna el background que le pertenece
     if (bg[url]) {
