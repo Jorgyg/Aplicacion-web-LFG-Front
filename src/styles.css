@@ -2,12 +2,6 @@
 
 /* general */
 
-html{
-    background-image: url("./assets/img/bg-1.png") !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-}
-
 body{
     background-color: transparent !important;
 }
