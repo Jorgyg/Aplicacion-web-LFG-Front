@@ -96,8 +96,6 @@ export class MainComponent {
       }
     }
 
-    ampliar(){
-    }
 
     firstLinkActivated = false;
   
