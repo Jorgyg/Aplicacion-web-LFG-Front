@@ -15,7 +15,7 @@ export class MainComponent {
   /* Elemento que utilizaremos para cambiar el estilo de cualquier etiqueta del html */
   elementStyle: { [key: string]: string } = {};
   /*Se indica el numero de grupos que habrá por pagina y la pagina actual, que por defecto será la primera*/
-  cardsPerPage: number = 4;
+  cardsPerPage: number = 8;
   currentPage: number = 1;
   selectedCardIndex: number | null = null;
   /*Creamos una array para cada grupo. Para casos prácticos, hemos creado cartas "falsas" para comprobar su funcionalidad*/

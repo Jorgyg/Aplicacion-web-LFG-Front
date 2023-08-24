@@ -31,18 +31,31 @@ input:focus{
 /* Estilos del div que contiene las cartas con cada grupo */
 
 .card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
-    max-height: 80vh;
+    max-height: 85vh;
     overflow: auto;
+}
+
+.small-card-body {
+    padding: 0.5rem;
+}
+
+.card{
+    max-width: 300px;
 }
 
 /* Estilos de las cartas que contienen los grupos */
 
 .card {
-    flex: 0 0 18rem;
+    flex: 0 0 calc(18rem - 20px);
     transition: transform 0.3s ease-in-out, opacity 1s ease-in-out;
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+
 }
 
 .card:hover{

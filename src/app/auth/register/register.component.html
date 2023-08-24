@@ -1,27 +1,26 @@
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-12">
-            <h1 class="text-center color-1">Registrarse</h1>
-            <form>
-                <div class="mb-3">
-                    <label for="nombre" class="form-label color-1">Username:</label>
-                    <input type="text" class="form-control custom-input bg-color-1 b-color-9" id="username" placeholder="Introduce tu username">
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label color-1">Email:</label>
-                    <input type="email" class="form-control custom-input bg-color-1 b-color-9" id="email" placeholder="Introduce tu email">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label color-1">Contraseña: </label>
-                    <input type="password" class="form-control custom-input bg-color-1 b-color-9" id="password" placeholder="Introduce tu contraseña">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword2" class="form-label color-1">Repetir contraseña:</label>
-                    <input type="password" class="form-control custom-input bg-color-1 b-color-9" id="repeat" placeholder="Repite la contraseña">
-                </div>
-                <button type="submit" class="btn bg-color-7 color-1">Registrarse</button>
-                <a routerLink="/login" class="px-3 color-1">Ya tengo una cuenta...</a>
-            </form>
+<div class="container d-flex align-items-center" style="min-height: 100vh;">
+    <div class="w-100">
+      <h1 class="text-center color-1 mb-4">Registrarse</h1>
+      <form class="w-25 mx-auto">
+        <div class="form-group">
+          <label for="username" class="color-1 py-3"><i class="fas fa-user"></i> Username:</label>
+          <input type="text" class="form-control custom-input bg-color-1 b-color-9" id="username" placeholder="Introduce tu username">
         </div>
+        <div class="form-group">
+          <label for="email" class="color-1 py-3"><i class="fas fa-envelope"></i> Email:</label>
+          <input type="email" class="form-control custom-input bg-color-1 b-color-9" id="email" placeholder="Introduce tu email">
+        </div>
+        <div class="form-group">
+          <label for="password" class="color-1 py-3"><i class="fas fa-lock"></i> Contraseña:</label>
+          <input type="password" class="form-control custom-input bg-color-1 b-color-9" id="password" placeholder="Introduce tu contraseña">
+        </div>
+        <div class="form-group">
+          <label for="repeatPassword" class="color-1 py-3"><i class="fas fa-lock"></i> Repetir contraseña:</label>
+          <input type="password" class="form-control custom-input bg-color-1 b-color-9" id="repeatPassword" placeholder="Repite la contraseña">
+        </div>
+        <a routerLink="/login" class="d-block text-center py-2 color-1">Ya tengo una cuenta...</a>
+        <button type="submit" class="btn bg-color-7 color-1 b-color-9 btn-block w-50 mx-auto">Registrarse</button>
+      </form>
     </div>
-</div>
+  </div>
+  
