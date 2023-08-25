@@ -42,7 +42,7 @@
     </div>
     
     <div class="row">
-        <div class="col-12 d-flex justify-content-center"> <!-- Agregado contenedor y clases de centrado -->
+        <div class="col-12 d-flex justify-content-center enlarged" [class.fade-out]="firstLinkActivated"> 
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item"><a href="#" class="btn bg-color-6 color-1 mx-3 btnPag arrow left" (click)="changePage('prev', $event)"><i class="fas fa-angle-left"></i></a></li>
