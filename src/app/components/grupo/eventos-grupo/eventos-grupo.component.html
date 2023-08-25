@@ -1,12 +1,12 @@
 <div class="container-fluid">
-    <div class="row mx-3">
+    <div class="row m-3">
         <div class="col-md-1 mx-4">
             <a routerLink="/chat" class="align-right btn bg-color-1 color-7 m-2"><b><span class="material-symbols-outlined key">
                 keyboard_return
                 </span></b></a>
         </div>
     </div>
-    <div class="row px-5">
+    <div class="row px-5 mt-5">
         <ul class="list-group-container">
             <div *ngFor="let group of eventData.slice((currentPage-1)*cardsPerPage, currentPage * cardsPerPage); let i = index" class="card bg-color-1 m-2" [class.fade-out]="firstLinkActivated && selectedEventIndex !== i" [ngClass]="{'enlarged': selectedEventIndex === i}">
                 <li class="list-group-item bg-color-1" aria-current="true">
@@ -26,7 +26,7 @@
             </ul>
         </nav>  
     </div>
-    <div class="row justify-content-center"> <!-- Centro los divs horizontalmente -->
+    <div class="row justify-content-center px-1">
         <form class="align-items-start p-5 row">
             <div class="form-group align-items-center py-2 col-md-6 col-sm-12">
                 <input type="text" placeholder="Nombre" class="form-control custom-input bg-color-1 b-color-9 col-sm-8" id="eventName" formControlName="eventName">
