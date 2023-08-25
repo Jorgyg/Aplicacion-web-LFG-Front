@@ -1,0 +1,75 @@
+.img {
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+input,
+select,
+textarea,
+.ml {
+  margin-left: 10px;
+}
+
+.separation-img {
+  margin-left: 10px;
+}
+
+button {
+  padding-bottom: 5px !important;
+}
+
+.imgGame {
+  height: 75px !important;
+  width: 150px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 780px) {
+  .desc {
+    width: 100px;
+  }
+}
+
+.cancel {
+  background-color: red;
+}
+
+.game-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn.imgGame {
+  /* Estilos para el botón del juego */
+  transition: transform 0.3s ease; /* Transición suave del escalado */
+}
+
+.game-name {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 0;
+  border-radius: 0 0 4px 4px;
+  font-size: 12px;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Agrega la transición de escalado */
+}
+
+.game-item:hover .game-name {
+  opacity: 1;
+  transform: scale(1); /* Mantener el mismo escalado que la imagen */
+}
+
+.imgGame:hover + .game-name {
+  display: block;
+}

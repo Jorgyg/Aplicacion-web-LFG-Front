@@ -1,0 +1,111 @@
+.logo{
+    width: 100px;
+}
+
+body{
+    margin: 0;
+}
+
+nav a:hover{
+    color: white;
+}
+
+input:focus{
+    width: 400px;
+}
+
+/* Pequeña animacion para las flechas */
+
+@keyframes horizontal-shaking {
+    0% { transform: translateX(0) }
+    25% { transform: translateX(5px) }
+    50% { transform: translateX(-5px) }
+    75% { transform: translateX(5px) }
+    100% { transform: translateX(0) }
+}
+
+.arrow:focus {
+    animation: horizontal-shaking 1s;
+}
+
+/* Estilos del div que contiene las cartas con cada grupo */
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-height: 85vh;
+    overflow: auto;
+}
+
+.small-card-body {
+    padding: 0.5rem;
+}
+
+.card{
+    max-width: 300px;
+}
+
+/* Estilos de las cartas que contienen los grupos */
+
+.card {
+    flex: 0 0 calc(18rem - 20px);
+    transition: transform 0.3s ease-in-out, opacity 1s ease-in-out;
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+
+}
+
+.card:hover{
+    will-change: transform !important;
+    transform: scale(1.04);
+}
+
+.card-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.card-container::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Cambia el color de la barra de desplazamiento */
+    border-radius: 5px;
+}
+
+.card-container::-webkit-scrollbar-thumb:hover {
+    background-color: transparent; /* Cambia el color al pasar el cursor por encima */
+}
+
+/* En caso de que la pantalla se haga mas pequeña, se adapta los limites del div para que aparezca un sroll, evitando perder de vista otros elementos de la web */
+@media (max-width: 1200px) {
+    .scroll{
+        max-height: 
+        60vh;
+    }
+}
+
+/* Estilos para los iconos */
+.btnPag{
+    background-color: rgb(62, 139, 198);
+}
+
+.leave{
+    background-color: red!important;
+}
+.i{
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.i:hover{
+    transform: scale(1.2);
+}
+.bi-x-octagon-fill{
+    color: red!important;
+    font-size: 100px!important;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-in-out transformZ();
+}

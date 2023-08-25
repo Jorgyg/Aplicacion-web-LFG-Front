@@ -1,9 +1,0 @@
-/* Establecer ancho fijo para los labels y los inputs */
-.col-form-label {
-    width: 200px; /* Puedes ajustar el valor según tus necesidades */
-  }
-  
-  .form-control {
-    width: 600px; /* Puedes ajustar el valor según tus necesidades */
-  }
-  

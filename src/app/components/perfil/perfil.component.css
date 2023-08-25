@@ -1,0 +1,14 @@
+body{
+  background-color: aqua !important;
+}
+
+img{
+  width: 200px;
+}
+textarea {
+    resize: none;
+  }
+
+  .cancel{
+    background-color: red;
+  }

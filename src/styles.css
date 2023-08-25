@@ -1,6 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* general */
+
+html{
+    background-color: #1B4332;
+}
+
+body{
+    background-color: transparent !important;
+}
+
+
 /*Background-color*/
+
 
 .bg-color-1{
     background-color: #D8F3DC;
@@ -35,6 +47,7 @@
     background-color: #081C15;
 
 }
+
 /*Text-color*/
 .color-1{
     color: #D8F3DC;
@@ -92,6 +105,8 @@
     border-color: #081C15;
 }
 
+/*Estilos para input*/
+
 .custom-input:focus {
     background-color: #1B4332!important; /* Color de fondo al hacer hover */
     color: #D8F3DC!important; /* Color del texto al hacer hover */
@@ -108,8 +123,160 @@
     border-color: #D8F3DC;
 }
 
+/*Estilos para botones*/
+
 .btn:hover{
-    background-color: #2D6A4F!important;
-    color: #D8F3DC!important;
+    background-color: #2D6A4F;
+    color: #D8F3DC;
     transform: scale(1.1);
 }
+
+.cancel:hover, .btn-danger:hover{
+    transform: scale(1.1);
+    background-color: rgb(193, 0, 0)!important;
+}
+
+.btn-primary:hover {
+  transform: scale(1.1);
+    background-color: rgb(34, 34, 236)!important;
+}
+
+@keyframes left {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-5px);
+    }
+  }
+
+  @keyframes right {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(5px);
+    }
+  }
+
+.align-right:hover .key, .left:hover .fa-angle-left{
+    cursor: pointer;
+    animation: left 1s infinite;
+}
+
+
+.right:hover .fa-angle-right{
+  cursor: pointer;
+  animation: right 1s infinite;
+}
+
+a.setting:hover span.set {
+    cursor: pointer;
+    transition: 0.4s;
+    transform: rotate(720deg);
+  }
+  
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  a.members:hover span.mem {
+    cursor: pointer;
+    animation: bounce 1s infinite;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(5deg);
+    }
+  }
+  
+  a.logros:hover span.trp {
+    cursor: pointer;
+    animation: rotate 0.5s infinite;
+  }
+  
+  a.events:hover span.ev{
+    cursor: pointer;
+    animation: bounce 1s infinite;
+  }
+
+  @keyframes crazyAnimation {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    25% {
+      transform: rotate(45deg) scale(1.2);
+    }
+    50% {
+      transform: rotate(-45deg) scale(0.8);
+    }
+    75% {
+      transform: rotate(30deg) scale(1.1);
+    }
+    100% {
+      transform: rotate(0deg) scale(1);
+    }
+  }
+  
+  a.sword:hover span.sw {
+    display: inline-block;
+    transition: transform 0.4s ease-in-out;
+    animation: crazyAnimation 3s infinite;
+  }
+
+  
+  @keyframes iconEnlarge {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.2);
+    }
+  }
+
+  .enlarged:hover .fa-eye {
+    animation: iconEnlarge 0.4s alternate infinite;
+  }
+  
+
+  @keyframes trash {
+    0% {
+      transform: rotate(0deg);
+    }
+    30% {
+      transform: rotate(15deg);
+    }
+    40% {
+      transform: rotate(-15deg);
+    }
+    50% {
+      transform: rotate(15deg);
+    }
+    60% {
+      transform: rotate(-15deg);
+    }
+    70% {
+        transform: rotate(0deg);
+      }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .leave:hover .fa-trash-can{
+    animation: trash 1s infinite;
+
+  }

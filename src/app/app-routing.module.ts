@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './complements/login/login.component';
-import { RegisterComponent } from './complements/register/register.component';
-import { MainComponent } from './complements/main/main.component';
-import { HomeComponent } from './complements/home/home.component';
-import { CrearGrupoComponent } from './complements/crear-grupo/crear-grupo.component';
-import { UnirseGrupoComponent } from './complements/unirse-grupo/unirse-grupo.component';
-import { ChatGrupoComponent } from './complements/chat-grupo/chat-grupo.component';
-import { LogrosGrupoComponent } from './complements/logros-grupo/logros-grupo.component';
-import { MiembrosGrupoComponent } from './complements/miembros-grupo/miembros-grupo.component';
-import { EventosGrupoComponent } from './complements/eventos-grupo/eventos-grupo.component';
-import { PerfilComponent } from './complements/perfil/perfil.component';
-import { AjustesGrupoComponent } from './complements/ajustes-grupo/ajustes-grupo.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { MainComponent } from './components/main/main.component';
+import { HomeComponent } from './components/home/home.component';
+import { CrearGrupoComponent } from './components/grupo/crear-grupo/crear-grupo.component';
+import { UnirseGrupoComponent } from './components/grupo/unirse-grupo/unirse-grupo.component';
+import { ChatGrupoComponent } from './components/grupo/chat-grupo/chat-grupo.component';
+import { LogrosGrupoComponent } from './components/grupo/logros-grupo/logros-grupo.component';
+import { MiembrosGrupoComponent } from './components/grupo/miembros-grupo/miembros-grupo.component';
+import { EventosGrupoComponent } from './components/grupo/eventos-grupo/eventos-grupo.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { AjustesGrupoComponent } from './components/grupo/ajustes-grupo/ajustes-grupo.component';
+import { RetarGrupoComponent } from './components/grupo/retar-grupo/retar-grupo.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "home", component: HomeComponent },
+  { path: "home", component: HomeComponent, data:{background: "./assets/img/logo1.png"}},
   { path: "login", component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: "main", component: MainComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: "eventos", component: EventosGrupoComponent },
   { path: "ajustes", component: AjustesGrupoComponent },
   { path: "perfil", component: PerfilComponent },
+  { path: "retar", component: RetarGrupoComponent },
 ];
 
 @NgModule({
