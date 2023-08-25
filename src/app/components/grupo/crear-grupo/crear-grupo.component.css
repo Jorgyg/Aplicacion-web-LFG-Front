@@ -1,37 +1,39 @@
-.img{
+.img {
   width: 50px;
   height: 50px;
   background-size: cover;
   border-radius: 50%;
 }
 
-input, select, textarea, .ml {
+input,
+select,
+textarea,
+.ml {
   margin-left: 10px;
 }
 
-.separation-img{
+.separation-img {
   margin-left: 10px;
-
 }
 
-button{
-  padding-bottom: 5px!important;
+button {
+  padding-bottom: 5px !important;
 }
 
-.imgGame{
-  height: 75px!important;
+.imgGame {
+  height: 75px !important;
   width: 150px;
   background-size: 100%;
   background-repeat: no-repeat;
 }
 
 @media (max-width: 780px) {
-  .desc{
+  .desc {
     width: 100px;
   }
 }
 
-.cancel{
+.cancel {
   background-color: red;
 }
 
