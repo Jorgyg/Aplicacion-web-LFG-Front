@@ -20,7 +20,7 @@ export class CrearGrupoComponent implements OnInit {
   image?: string[] = [];
   games: any[] = [];
   filteredGames: any[] = [];
-  searchText: string = '';
+  searchText =  '';
   currentPage: number = 0;
   totalPages: number = 0;
   index: number = 0;
@@ -95,18 +95,35 @@ export class CrearGrupoComponent implements OnInit {
   getGames() {
     this.games = [];
     let game = this.gamesService.return();
-    for (let i = this.index; i < this.index+12; i++) {
-      if (game) {
+    console.log(this.searchText);
+
+    for (let i = this.index; i < this.index + 12; i++) {
+      if (game) {    
+        if (this.searchText == '') {
           this.games.push({ 
             nombre: game[i].name,
             img: game[i].large_capsule_image
           });
-        
+        } else {
+          if (game[i].name.toLowerCase().startsWith(this.searchText.toLowerCase())) {
+            this.games.push({
+              nombre: game[i].name,
+              img: game[i].large_capsule_image,
+            });
+          }       
+        }        
       } else {
         break; // Detener el bucle si no hay más juegos disponibles
       }
     } 
   }
+
+  onSearchTextChange(event: any) {
+    const newSearchText = event.target.value;
+    this.searchText = newSearchText;
+    this.getGames();
+  }
+  
 
   selectGame(game: any) {
     this.games = [];
