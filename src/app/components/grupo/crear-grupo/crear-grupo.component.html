@@ -1,89 +1,97 @@
 <div class="container d-flex align-items-center">
-  <div class="w-100 mt-5">
-    <h1 class="text-center color-1 mb-4">Formulario de Grupo</h1>
-    <form [formGroup]="groupForm" class="align-items-start col-md-12">
-      <div class="form-group row">
-        <label for="image" class="col-form-label col-md-2 color-1">Seleccionar una imagen:</label>
-        <div class="col-md-4">
-          <button class="img ml" [style.backgroundImage]="imagenSeleccionada ? 'url(' + imagenSeleccionada + ')' : ''" (click)="seeImg()"></button>
-        </div>
-        <div *ngIf="image && image.length > 0" class="col-md-6">
-          <div *ngFor="let imag of image" class="mb-2">
-            <button class="img ml" [style.backgroundImage]="'url(' + imag + ')'" (click)="seleccionarImagen(imag)"></button>
+  <div class="row">
+    <h1 class="text-center color-1 mb-1">Formulario de Grupo</h1>
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <form [formGroup]="groupForm" class="align-items-start col-md-12">
+        <div class="form-group row">
+          <label for="image" class="col-form-label col-md-12 color-1">Seleccionar una imagen:</label>
+          <div class="col-md-4">
+            <button class="img ml" [style.backgroundImage]="imagenSeleccionada ? 'url(' + imagenSeleccionada + ')' : ''"
+              (click)="seeImg()"></button>
           </div>
-          <button class="btn btn-secondary mt-2" (click)="cancelarSeleccion()">Cerrar</button>
+          <div *ngIf="image && image.length > 0" class="col-md-6">
+            <div *ngFor="let imag of image" class="mb-2">
+              <button class="img ml" [style.backgroundImage]="'url(' + imag + ')'"
+                (click)="seleccionarImagen(imag)"></button>
+            </div>
+            <button class="btn btn-secondary mt-2" (click)="cancelarSeleccion()">Cerrar</button>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <label for="groupName" class="col-form-label col-md-2 color-1">Nombre del grupo:</label>
-        <div class="col-md-10">
-          <input type="text" class="form-control custom-input bg-color-1 b-color-9" id="groupName" formControlName="groupName">
+        <div class="form-group row">
+          <label for="groupName" class="col-form-label col-md-12 color-1">Nombre del grupo:</label>
+          <div class="col-md-10">
+            <input type="text" class="form-control custom-input bg-color-1 b-color-9" id="groupName"
+              formControlName="groupName">
+          </div>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <label for="game" class="col-form-label col-md-2 color-1">Juego:</label>
-        <div class="col-md-4" [ngStyle]="{ 'display': isSelected ? '' : 'none' }">
-                <img [src]="selected.img" alt="{{ selected.img }}" class="imgSelected rounded" width="300px">
-                <button class="btn b-color-9 bg-color-6 color-1 mt-3" (click)="resetSelected()">Seleccionar juego</button>
-        </div>
-        <div class="col-md-8">
-          <div class="d-flex flex-wrap">
-            <div *ngFor="let game of games" class="p-2 text-center galeria">
-              <div class="game-item"
-                   (mouseenter)="showGameName(game.nombre)"
-                   (mouseleave)="hideGameName()">
-                <button class="btn imgGame"
-                        [style.backgroundImage]="'url(' + game.img + ')'" (click)="selectGame(game)"></button>
-                <div class="game-name"
-                     *ngIf="isGameNameVisible && currentGameName === game.nombre">{{ game.nombre }}
+        <div class="form-group row">
+          <label for="game" class="col-form-label col-md-12 color-1">Juego:</label>
+          <div class="col-md-12" [ngStyle]="{ 'display': isSelected ? '' : 'none' }">
+            <img [src]="selected.img" alt="{{ selected.img }}" class="imgSelected rounded" width="100%">            
+            <button class="btn b-color-9 bg-color-6 mt-3 color-1" (click)="resetSelected()">Seleccionar juego</button>            
+          </div>
+          <div class="col-md-12">
+            <div class="d-flex flex-wrap">
+              <div *ngFor="let game of games" class="p-2 text-center galeria">
+                <div class="game-item" (mouseenter)="showGameName(game.nombre)" (mouseleave)="hideGameName()">
+                  <button class="btn imgGame" [style.backgroundImage]="'url(' + game.img + ')'"
+                    (click)="selectGame(game)"></button>
+                  <div class="game-name" *ngIf="isGameNameVisible && currentGameName === game.nombre">{{ game.nombre }}
+                  </div>
                 </div>
               </div>
             </div>
+            <!-- Botones de siguiente y anterior -->
+            <div *ngIf="!isSelected" class="d-flex justify-content-between mt-3">
+              <button *ngIf="botonP" class="btn b-color-9 bg-color-6 color-1" (click)="previousPage()"><i
+                  class="fas fa-arrow-left"></i></button>
+              <button *ngIf="botonN" class="btn b-color-9 bg-color-6 color-1" (click)="nextPage()"><i
+                  class="fas fa-arrow-right"></i></button>
+            </div>
           </div>
-          <!-- Botones de siguiente y anterior -->
-          <div *ngIf="!isSelected" class="d-flex justify-content-between mt-3">
-            <button *ngIf="botonP" class="btn b-color-9 bg-color-6 color-1" (click)="previousPage()"><i class="fas fa-arrow-left"></i></button>
-            <button *ngIf="botonN" class="btn b-color-9 bg-color-6 color-1" (click)="nextPage()"><i class="fas fa-arrow-right"></i></button>
+        </div>
+
+        <div class="form-group row mt-3">
+          <label for="description" class="col-form-label col-md-12 color-1">Descripción:</label>
+          <div class="col-md-10">
+            <textarea class="form-control custom-input bg-color-1 b-color-9" id="description"
+              formControlName="description" rows="5"></textarea>
           </div>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <label for="description" class="col-form-label col-md-2 color-1">Descripción:</label>
-        <div class="col-md-10">
-          <textarea class="form-control custom-input bg-color-1 b-color-9" id="description" formControlName="description" rows="5"></textarea>
+        <div class="form-group row">
+          <label for="participants" class="col-form-label col-md-12 color-1">Número de Participantes:</label>
+          <div class="col-md-10">
+            <input type="number" class="form-control custom-input bg-color-1 b-color-9" id="participants"
+              formControlName="participants">
+          </div>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <label for="participants" class="col-form-label col-md-2 color-1">Número de Participantes:</label>
-        <div class="col-md-10">
-          <input type="number" class="form-control custom-input bg-color-1 b-color-9" id="participants" formControlName="participants">
+        <div class="form-group row">
+          <label class="col-form-label col-md-12 color-1">Privacidad:</label>
+          <div class="col-md-10">
+            <select formControlName="privacy" class="form-control custom-input bg-color-1 b-color-9">
+              <option value="public">Público</option>
+              <option value="private">Privado</option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group row">
-        <label class="col-form-label col-md-2 color-1">Privacidad:</label>
-        <div class="col-md-10">
-          <select formControlName="privacy" class="form-control custom-input bg-color-1 b-color-9">
-            <option value="public">Público</option>
-            <option value="private">Privado</option>
-          </select>
+        <div class="form-group row">
+          <div class="col-md-10 offset-md-2 mt-3 mb-5">
+            <button type="button" class="btn btn-lg bg-color-7 color-1 b-color-9 me-3" (click)="onSave()">
+              <span class="material-symbols-outlined">save_as</span>
+            </button>
+            <button type="button" class="btn btn-lg cancel color-1 b-color-9" (click)="onCancel()">
+              <span class="material-symbols-outlined">cancel</span>
+            </button>
+          </div>
         </div>
-      </div>
-
-      <div class="form-group row">
-        <div class="col-md-10 offset-md-2">
-          <button type="button" class="btn btn-lg bg-color-7 color-1 b-color-9 mr-3" (click)="onSave()">
-            <span class="material-symbols-outlined">save_as</span>
-          </button>
-          <button type="button" class="btn btn-lg cancel color-1 b-color-9" (click)="onCancel()">
-            <span class="material-symbols-outlined">cancel</span>
-          </button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
+    <div class="col-md-3"></div>
   </div>
 </div>
