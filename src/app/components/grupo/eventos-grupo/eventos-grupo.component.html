@@ -1,13 +1,13 @@
 <div class="container-fluid">
-    <div class="row justify-content-center"> <!-- Centro los divs horizontalmente -->
+    <div class="row mx-3">
         <div class="col-md-1 mx-4">
             <a routerLink="/chat" class="align-right btn bg-color-1 color-7 m-2"><b><span class="material-symbols-outlined key">
                 keyboard_return
                 </span></b></a>
         </div>
     </div>
-    <div class="row justify-content-center"> <!-- Centro los divs horizontalmente -->
-        <ul class="list-group-container px-2">
+    <div class="row px-5">
+        <ul class="list-group-container">
             <div *ngFor="let group of eventData.slice((currentPage-1)*cardsPerPage, currentPage * cardsPerPage); let i = index" class="card bg-color-1 m-2" [class.fade-out]="firstLinkActivated && selectedEventIndex !== i" [ngClass]="{'enlarged': selectedEventIndex === i}">
                 <li class="list-group-item bg-color-1" aria-current="true">
                     <span class="align-left">{{group.title}}</span>
@@ -18,7 +18,7 @@
             </div>
         </ul>
     </div>
-    <div class="row justify-content-center"> <!-- Centro los divs horizontalmente -->
+    <div class="row px-5">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item"><a href="#" class="btn bg-color-6 color-1 mx-3 btnPag arrow"  (click)="changePage('prev', $event)"><i class="fas fa-angle-left"></i></a></li>
