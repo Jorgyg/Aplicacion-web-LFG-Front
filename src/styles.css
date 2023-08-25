@@ -131,6 +131,21 @@ body{
     transform: scale(1.1);
 }
 
+.btn-warning:hover{
+  transform: scale(1.1);
+  background-color: rgb(177, 195, 73) !important;
+}
+
+.btn-success:hover{
+  transform: scale(1.1);
+  background-color: rgb(71, 227, 89) !important;
+}
+
+.btn-info:hover{
+  transform: scale(1.1);
+  background-color: rgb(64, 195, 215) !important;
+}
+
 .cancel:hover, .btn-danger:hover{
     transform: scale(1.1);
     background-color: rgb(193, 0, 0)!important;
