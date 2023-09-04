@@ -5,6 +5,10 @@
   border-radius: 50%;
 }
 
+.imgSelected{
+  width: 300px;
+}
+
 input,
 select,
 textarea,
@@ -72,4 +76,12 @@ button {
 
 .imgGame:hover + .game-name {
   display: block;
+}
+
+.participants {
+  width: 8%;
+}
+
+.privacy {
+  width: 15%;
 }
