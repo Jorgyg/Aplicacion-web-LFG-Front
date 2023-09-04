@@ -74,12 +74,12 @@ export class EventosGrupoComponent {
         this.showPage(this.currentPage + 1);
       }
     }
-
+    /* Activa el primer enlace si no nos encontramos en el */
     enlargeAndNavigate(index: number) {
     if (!this.firstLinkActivated) {
       this.firstLinkActivated = true;
     }
-
+    /* Seleccionamos todas las cartas y le añadimos o eliminamos la siguiente clase para emular una seleccion */
     const cardElements = document.querySelectorAll('.card');
 
     cardElements.forEach((cardElement: Element, i: number) => {
