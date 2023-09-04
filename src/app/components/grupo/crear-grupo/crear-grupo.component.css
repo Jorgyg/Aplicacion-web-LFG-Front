@@ -9,12 +9,7 @@
   width: 300px;
 }
 
-input,
-select,
-textarea,
-.ml {
-  margin-left: 10px;
-}
+
 
 .separation-img {
   margin-left: 10px;
@@ -79,9 +74,5 @@ button {
 }
 
 .participants {
-  width: 8%;
-}
-
-.privacy {
   width: 15%;
 }
