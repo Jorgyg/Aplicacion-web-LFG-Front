@@ -1,4 +1,5 @@
 <div class="container text-center">
+    <!-- Volver -->
     <div class="row">
         <div class="col-md-1 d-flex justify-content-end">
             <a routerLink="/main" class="align-right btn bg-color-1 color-7 m-2"><b><span class="material-symbols-outlined key">
@@ -6,6 +7,7 @@
                 </span></b></a>
         </div>
     </div>
+    <!-- Seccion de usuario donde introduces tu nombre y tu foto de perfil-->
     <div class="row">
         <h1 class="text-center color-1 mb-4">Mi perfil</h1>
         <div class="col-md-4 col-sm-12 mt-5" >
@@ -18,32 +20,38 @@
             <span class="color-1">Usuario:</span> <input class="form-control custom-input bg-color-1 b-color-9" type="text" name="" id="">
         </div>
     </div>
+    <!-- Seccion donde seleccionas un juego de los disponibles en la api como tu favorito -->
     <div class="row">
         <div class="col-md-4 col-sm-12 mt-5">
         <span class="color-1">Juego favorito:</span>
         <select class="form-select bg-color-1 color-9" name="juego" id="">
             <option *ngFor="let juego of games" [value]="juego">{{ juego }}</option>
         </select>  <br>
+        <!-- Hacer que tu perfil sea público o privado -->
         <span class="color-1">Perfil:</span>
         <select class="form-select bg-color-1 color-9" name="perfil" id="">
             <option class="txt" value="">Publico</option>
             <option class="txt" value="">Privado</option>
         </select>  
         </div>
+        <!-- Descripcion del grupo -->
         <div class="col-md-4 col-sm-12 mt-5">
             <span class="color-1">Descripción</span><br>
             <textarea class="form-control bg-color-1" name="" id="" cols="40" rows="10"></textarea>
         </div>
+        <!-- Conexiones de la api -->
         <div class="col-md-4 col-sm-12 mt-5">
             <span class="color-1">Conexiones:</span><br>
         </div>
     </div>
     <div class="row">
+        <!-- Guardar los cambios -->
         <div class="col-6">
             <button class="btn bg-color-6 color-1"><span class="material-symbols-outlined">
                 save_as
                 </span></button>
         </div>
+        <!-- Cancelar los cambios y reestablecer los inputs a default -->
         <div class="col-6 ">
             <button class="btn color-1 cancel"><span class="material-symbols-outlined ">
                 cancel

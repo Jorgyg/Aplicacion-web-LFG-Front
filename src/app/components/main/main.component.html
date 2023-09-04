@@ -1,6 +1,7 @@
 <div class="container-fluid">
     <div class="position-sticky row">
         <nav class="navbar navbar-expand-lg bg-color-9">
+            <!-- Seccion del navbar con los iconos para cada accion respectivamente, el logo y un buscador de grupos -->
             <div class="container-fluid">
                 <img class="navbar-brand color-1" routerLink="#" src="./assets/img/logo2.png" class="logo">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,6 +30,7 @@
             </div>
         </nav>
     </div>
+    <!-- Creamos una carta por cada grupo de nuestra base de datos junto con su imagen, el nombre y su descripcion, ademas de un boton para solicitar unirse-->
     <div class="card-container mt-4">
         <div *ngFor="let group of cardData.slice((currentPage-1)*cardsPerPage, currentPage * cardsPerPage); let i = index" class="card bg-color-1 m-2" [class.fade-out]="firstLinkActivated && selectedCardIndex !== i" [ngClass]="{'enlarged': selectedCardIndex === i}">
             <img src="{{ group.imageUrl }}" class="card-img-top" alt="...">
@@ -40,7 +42,7 @@
             </div>
         </div>
     </div>
-    
+    <!-- Botones para navegar entre grupos -->
     <div class="row">
         <div class="col-12 d-flex justify-content-center enlarged" [class.fade-out]="firstLinkActivated"> 
             <nav aria-label="Page navigation example">
