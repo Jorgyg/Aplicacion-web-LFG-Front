@@ -1,0 +1,23 @@
+.img{
+    height: 300px;
+}
+
+@media (max-width: 880px) {
+    .img{
+        height: 100px;
+    }
+}
+
+@media (max-width: 400px) {
+    .img{
+        height: 50px;
+    }
+
+    .col-6{
+        width: 200px!important;
+    }
+
+    .col-4{
+        width: 50px!important;
+    }
+}
