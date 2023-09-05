@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { TokenStorageService } from './services/token-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,32 @@ import { filter } from 'rxjs/operators';
 
 export class AppComponent implements OnInit {
 
+  //Creamos las variables que necesitaremos para token
+
+  private roles: string[] = [];
+  isLoggedin = false;
+  showAdminBoard = false;
+  username?: string;
+
   //Creamos una variable para guardar el background según la url que recibe el programa
   backgroundUrl!: string;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void{
+    //Comprobamos la sesion guardada en el Storage y guardamos la informacion en las variables
+    this.isLoggedin = !!this.tokenStorageService.getToken();
+
+    if(this.isLoggedin){
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.rolApp;
+
+      this.showAdminBoard = this.roles.includes('admin');
+
+      this.username = user.username;
+    } /*else{
+      this.router.navigate(["/login"]);
+    }*/ //Descomentar cuando sea funcional
+    
     // Al iniciar la ruta, guarda el evento que pertenece a la url de la ruta en la que estemos
     this.router.events
     .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
@@ -22,8 +44,10 @@ export class AppComponent implements OnInit {
       //Llama al metodo setBackgroundImage donde le pasamos por parámetro la url de la ruta actual
       this.cambiarFondo(event.url);
     });
+
   }
 
+  //Metodo para cambiar el fondo segun la ruta
   private cambiarFondo(url: string): void {
     //Creamos una constante con cada ruta de la app y el background que le pertenece
     const bg: { [key: string]: string } = {

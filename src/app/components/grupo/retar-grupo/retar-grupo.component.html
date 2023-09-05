@@ -1,21 +1,16 @@
-<div class="container-fluid text-center">
-    <div class="row d-flex justify-content-left align-items-center mt-2">
+<div class="container text-center">
+    <!-- Volver -->
+    <div class="row m-2">
         <div class="col-md-1">
             <a routerLink="/chat" class="btn bg-color-1 color-7 m-2"><b><span class="material-symbols-outlined key">
                 keyboard_return
                 </span></b></a>
         </div>
-    </div>
-    <div class="color-1 row d-flex justify-content-center align-items-center"> 
-        <span class="material-symbols-outlined sw col d-flex justify-content-end">swords</span>
-        <h1 class="text-center b-color-9 mb-4 col">Retar a grupo</h1>
-        <span class="material-symbols-outlined sw col d-flex justify-content-start">swords</span>
-    </div>
-    <div class="row d-flex justify-content-center align-items-center">
-        <div class="col-4">
-            <img src="https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/bltceaa6cf20d328bd5/5eb7cdc1b1f2e27c950d2aaa/V_AGENTS_587x900_Jett.png" class="img" alt="">
-        </div>
-        <div class="col-6  mb-5 mt-5 w-25">
+    </div> 
+    <!-- Formulario para buscar un grupo por su codigo de grupo y retarlo, adjuntando un mensaje de reto-->
+    <div class="row d-flex justify-content-center align-items-center mt-5">
+        <h1 class="text-center b-color-9 color-1 mb-4">Retar a grupo</h1>
+        <div class="col-md-5 col-sm-12 mb-5 mt-5">
             <label for="nombre" class="form-label color-1">Código de grupo:</label>
             <input type="text" class="form-control bg-color-1 color-9 mb-3" id="groupCode" value="">
             <label for="nombre" class="form-label color-1">Mensaje:</label>
@@ -25,9 +20,10 @@
             <img src="./assets/img/RE.png" class="img" alt="">
         </div>
     </div>
+    <!-- Boton para enviar el reto a un grupo -->
     <div class="row d-flex justify-content-center align-items-center">
         <div class="col-md-4 col-sm-12">
-            <a type="button" class="btn btn-lg bg-color-7 color-1 b-color-9 px-4 mr-3 sword"><b>
+            <a type="button" class="btn btn-danger px-4 mr-1 sword"><b>
                 <span class="material-symbols-outlined sw">swords</span></b>
             </a>
         </div>
