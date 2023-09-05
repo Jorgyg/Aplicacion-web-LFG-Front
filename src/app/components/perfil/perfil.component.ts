@@ -10,7 +10,7 @@ export class PerfilComponent implements OnInit {
   games: any [] = [];
   constructor(private formBuilder: FormBuilder,
     private gamesService: GamesService) {}
-
+  //Crea una array con todos los juegos disponibles en la base de datos
   ngOnInit() {
     let game = this.gamesService.return();
     let lenght = this.gamesService.return().length;

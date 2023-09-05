@@ -13,7 +13,7 @@ import { EventosGrupoComponent } from './components/grupo/eventos-grupo/eventos-
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { AjustesGrupoComponent } from './components/grupo/ajustes-grupo/ajustes-grupo.component';
 import { RetarGrupoComponent } from './components/grupo/retar-grupo/retar-grupo.component';
-
+//Rutas a cada vista de la aplicacion
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "home", component: HomeComponent, data:{background: "./assets/img/logo1.png"}},

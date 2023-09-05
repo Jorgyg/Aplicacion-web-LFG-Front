@@ -1,5 +1,6 @@
 import { Component, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenStorageService } from '../../services/token-storage.service';
 
 interface Group {
   title: string;
@@ -109,7 +110,7 @@ export class MainComponent {
 
     firstLinkActivated = false;
   
-    constructor(private renderer: Renderer2, private router: Router) {}
+    constructor(private renderer: Renderer2, private router: Router, private tokenStorageService: TokenStorageService) {}
 
     enlargeAndNavigate(index: number) {
     if (!this.firstLinkActivated) {
@@ -131,6 +132,13 @@ export class MainComponent {
     setTimeout(() => {
       this.router.navigate(['/chat']);
     }, 1000); // Redirige después de 0.3 segundos (300 ms)
+  }
+
+  //Cerrar sesion
+
+  logout(): void{
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
 }
 
