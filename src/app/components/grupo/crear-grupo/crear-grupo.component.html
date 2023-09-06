@@ -54,7 +54,7 @@
                 <input type="text" class="form-control custom-input bg-color-1 b-color-9 w-25" [value]="searchText" (input)="onSearchTextChange($event)" placeholder="Buscar juegos...">
               </div>
               <br>
-              <div class="w-50 w-sm">
+              <div class="w-50 w-sm">           
                 <div class="d-flex flex-wrap justify-content-center">
                   <div *ngFor="let game of games" class="p-2 text-center galeria">
                     <div class="game-item" (mouseenter)="showGameName(game.nombre)" (mouseleave)="hideGameName()">

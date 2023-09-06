@@ -2,11 +2,15 @@ body{
     margin: 0;
 }
 
+/* Al desplazarse por la web, esta clase mantiene el div en la parte superior de la pantalla */
+
 .sticky-row {
     position: sticky;
     top: 0;
     z-index: 1;
 }
+
+/* Background personalizado */
 
 .custom-bg{
     background-color: #2b674c !important;
@@ -15,6 +19,8 @@ body{
     text-align: right;
 }
 
+/* Personalizacion de la seccion del chat */
+
 .chat {
     width: 96%;
     height: 79vh;
@@ -22,6 +28,8 @@ body{
     border: none;
     padding: 10px;
 }
+
+/* Personalizacion del scrollbar del chat */
 
 .chat::-webkit-scrollbar {
     width: 8px;
@@ -35,8 +43,3 @@ body{
 .chat::-webkit-scrollbar-thumb:hover {
     background-color: #D8F3DC; /* Cambia el color al pasar el cursor por encima */
 }
-
-
-  
- 
-  
