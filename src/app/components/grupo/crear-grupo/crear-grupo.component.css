@@ -5,24 +5,20 @@
   border-radius: 50%;
 }
 
-.imgSelected{
-  width: 300px;
+.btn-lg{
+  width: 50px;
+  height: 50px;
 }
 
-input,
-select,
-textarea,
-.ml {
-  margin-left: 10px;
+.imgSelected{
+  width: 300px;
 }
 
 .separation-img {
   margin-left: 10px;
 }
 
-button {
-  padding-bottom: 5px !important;
-}
+
 
 .imgGame {
   height: 75px !important;
@@ -31,9 +27,52 @@ button {
   background-repeat: no-repeat;
 }
 
-@media (max-width: 780px) {
+@media (max-width: 880px) {
   .desc {
     width: 100px;
+  }
+
+  .junto{
+    flex-direction: column!important;
+  }
+
+  .screen{
+    display: flex!important;
+    text-align: center;
+  }
+
+  .w-sm{
+    width: 100%!important;
+  }
+  .imgGame{
+    width: 100px!important;
+  }
+
+  .w-25 {
+    width: 50%!important;
+  }
+
+  .game-item{
+    height: 50px;
+  }
+
+  .btn{
+    width: 25px;
+  }
+
+  .btn-lg{
+    width: 30px;
+    height: 30px;
+  }
+
+  span{
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .w-sm{
+    width: 75%!important;
   }
 }
 
@@ -79,9 +118,5 @@ button {
 }
 
 .participants {
-  width: 8%;
-}
-
-.privacy {
   width: 15%;
 }
