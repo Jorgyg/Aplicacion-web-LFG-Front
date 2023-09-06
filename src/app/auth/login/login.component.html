@@ -2,24 +2,27 @@
   <div class="w-100">
     <h1 class="text-center color-1 mb-4">Iniciar sesión</h1>
     <div class="col-md-4 col-sm-12 mx-auto">
-      <form>
+      <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
         <div class="form-group">
           <div>
-            <label for="emailUsername" class="color-1 py-3"><i class="fas fa-user"></i> Email/Username:</label>
-            <input type="text" class="form-control custom-input bg-color-1 b-color-9" id="emailUsername" placeholder="Enter email/username">
+            <label for="username" class="color-1 py-3"><i class="fas fa-user"></i>Username:</label>
+            <input [(ngModel)]="form.username" required #username="ngModel" type="text" class="form-control custom-input bg-color-1 b-color-9" id="username" name="username" placeholder="Introduce tu nombre de usuario">
             <small class="color-1">No compartiremos tu información con nadie más.</small>
           </div>
         </div>
         <div class="form-group">
           <div>
-            <label for="password" class="color-1 py-3"><i class="fas fa-lock"></i> Password:</label>
-            <input type="password" class="form-control custom-input bg-color-1 b-color-9" id="password" placeholder="Enter password">
+            <label for="passwd" class="color-1 py-3"><i class="fas fa-lock"></i> Password:</label>
+            <input required minlength="6" [(ngModel)]="form.passwd" type="password" class="form-control custom-input bg-color-1 b-color-9" name="passwd" id="passwd" placeholder="Introduce tu contraseña">
           </div>
         </div>
         <div class="form-check py-3">
           <input type="checkbox" class="form-check-input custom-input bg-color-1 b-color-9" id="checkMeOut">
           <label class="form-check-label color-1 mr-3 mb-0" for="checkMeOut">Recuérdame</label>
           <a routerLink="/register" class="px-3 color-1 a">¿No tienes una cuenta? ¡Regístrate!</a>
+        </div>
+        <div class="alert alert-danger m-1 mb-1" role="alert" *ngIf="f.submitted && isLoginFailed">
+          El inicio de sesión ha fallado, inténtelo de nuevo
         </div>
         <button type="submit" class="btn btn-success btn-block w-25 mx-auto">Login</button>
       </form>
