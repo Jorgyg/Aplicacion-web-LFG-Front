@@ -20,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RetarGrupoComponent } from './components/grupo/retar-grupo/retar-grupo.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BoardAdminComponent } from './components/board-admin/board-admin.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     LogrosGrupoComponent,
     MiembrosGrupoComponent,
     EventosGrupoComponent,
-    RetarGrupoComponent
+    RetarGrupoComponent,
+    BoardAdminComponent
   ],
   imports: [
     BrowserModule,
