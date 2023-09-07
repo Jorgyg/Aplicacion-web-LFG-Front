@@ -85,6 +85,12 @@ input:focus{
 }
 
 /* Estilos para los iconos */
+
+.logout{
+    background-color: transparent;
+    border-style: none;
+}
+
 .btnPag{
     background-color: rgb(62, 139, 198);
 }
