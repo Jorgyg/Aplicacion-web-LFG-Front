@@ -139,6 +139,7 @@ export class MainComponent {
   logout(): void{
     this.tokenStorageService.signOut();
     window.location.reload();
+    this.router.navigate(['/home']);
   }
 }
 
