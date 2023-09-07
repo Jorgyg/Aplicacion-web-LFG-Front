@@ -80,8 +80,8 @@ export class CrearGrupoComponent implements OnInit {
     this.image = [];
   }
 
-   // Agrega esta función para mostrar el nombre del juego
-   showGameName(gameName: string) {
+  // Agrega esta función para mostrar el nombre del juego
+  showGameName(gameName: string) {
     this.currentGameName = gameName;
     this.isGameNameVisible = true;
   }
@@ -141,7 +141,6 @@ export class CrearGrupoComponent implements OnInit {
     this.getGames();
   }
   
-  
   previousPage() {
     if (this.currentPage > 0) {
       this.currentPage--;
@@ -166,4 +165,9 @@ export class CrearGrupoComponent implements OnInit {
     this.index+=12;
     this.getGames();
   }
+
+  onSubmit(){
+    
+  }
+
 }
