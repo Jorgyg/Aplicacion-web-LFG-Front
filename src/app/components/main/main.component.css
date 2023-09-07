@@ -50,6 +50,14 @@ input:focus{
 
 /* Estilos de las cartas que contienen los grupos */
 
+.text-adjust{
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
+
 .card {
     flex: 0 0 calc(18rem - 20px);
     transition: transform 0.3s ease-in-out, opacity 1s ease-in-out;

@@ -37,14 +37,12 @@ export class AppComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       this.roles = user.rolApp;
 
-      this.showAdminBoard = this.roles.includes('admin');
+      //this.showAdminBoard = this.roles.includes('admin');
 
       this.username = user.username;
     } else {
       this.router.navigate(["/login"]);
     }
-    
-
   }
 
   //Metodo para cambiar el fondo segun la ruta
