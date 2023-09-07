@@ -17,7 +17,7 @@
             <input class="form-control custom-input bg-color-1 b-color-9" type="file" name="src-file1" aria-label="Archivo">
         </div>
         <div class="col-md-4 col-sm-12 mt-4">
-            <span class="color-1">Usuario:</span> <input class="form-control custom-input bg-color-1 b-color-9" type="text" name="" id="">
+            <span class="color-1">Usuario:</span> <input class="form-control custom-input bg-color-1 b-color-9" value={{currentUser.infoUser.nombre}} type="text" name="" id="">
         </div>
     </div>
     <!-- Seccion donde seleccionas un juego de los disponibles en la api como tu favorito -->
@@ -29,9 +29,9 @@
         </select>  <br>
         <!-- Hacer que tu perfil sea público o privado -->
         <span class="color-1">Perfil:</span>
-        <select class="form-select bg-color-1 color-9" name="perfil" id="">
-            <option class="txt" value="">Publico</option>
-            <option class="txt" value="">Privado</option>
+        <select class="form-select bg-color-1 color-9" name="perfil" id="privacidad">
+            <option class="txt" value="publico">Publico</option>
+            <option class="txt" value="privado">Privado</option>
         </select>  
         </div>
         <!-- Descripcion del grupo -->
