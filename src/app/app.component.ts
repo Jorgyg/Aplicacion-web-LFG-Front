@@ -43,6 +43,8 @@ export class AppComponent implements OnInit {
     } else {
       this.router.navigate(["/login"]);
     }
+    
+
   }
 
   //Metodo para cambiar el fondo segun la ruta

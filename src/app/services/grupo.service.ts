@@ -1,8 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 const API_URL = 'https://localhost:7082/api/Grupos/';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +22,13 @@ export class GrupoService {
     return this.http.get(API_URL);
   }
 
-  // postGrupo(username: string, email: string, passwd: string): Observable<any>{
-  //   return this.http.post(AUTH_API + 'signup', {
-  //     username,
-  //     email,
-  //     passwd
-  //   }, httpOptions)
-  // }
+  postGrupo(CodGrupo: string, Nombre: string, Privacidad: string, Descripcion: string, Participantes: number): Observable<any>{
+    return this.http.post(API_URL + 'crear', {
+      CodGrupo,
+      Nombre,
+      Privacidad,
+      Descripcion,
+      Participantes
+    }, httpOptions)
+  }
 }

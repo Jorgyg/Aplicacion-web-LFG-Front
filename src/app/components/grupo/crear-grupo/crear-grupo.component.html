@@ -8,24 +8,14 @@
     <div>
       <h1 class="text-center color-1 mb-4">Formulario de Grupo</h1>
     </div>
-      <form [formGroup]="groupForm" (ngSubmit)="f.form.valid" #f="ngForm">
+      <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
         <div class="d-flex justify-content-center junto">
           <div class="form-group container">
-            <div class="row justify-content-sm-center screen justify-content-center">
-              <label for="emailUsername" class="col-form-label col-md-6 color-1 text-center">Seleccionar una imagen:</label>
+            <div class="row justify-content-sm-center">
+              <label for="groupName" class="col-form-label color-1 text-center">Codigo de grupo:</label>
             </div>
             <div class="row justify-content-sm-center">
-                <div class="d-flex justify-content-center">
-                  <button class="img" [style.backgroundImage]="imagenSeleccionada ? 'url(' + imagenSeleccionada + ')' : ''" (click)="seeImg()"></button>
-                </div>
-                <div class="d-flex justify-content-center mt-2">
-                  <div *ngFor="let imag of image">
-                    <button class="img" [style.backgroundImage]="'url(' + imag + ')'" (click)="seleccionarImagen(imag)"></button>
-                  </div>
-                </div>
-                <div class="d-flex justify-content-center">
-                  <button *ngIf="image && image.length > 0" class="btn btn-secondary mt-2" (click)="cancelarSeleccion()">Cerrar</button>
-                </div>
+              <input  name="codgrupo" [(ngModel)]="form.codgrupo" required maxlength="10" type="number" class="form-control  col-smd-12 custom-input bg-color-1 b-color-9 w-50" id="groupName">
             </div>
           </div>
           <div class="form-group container">
@@ -33,7 +23,7 @@
               <label for="groupName" class="col-form-label color-1 text-center">Nombre del grupo:</label>
             </div>
             <div class="row justify-content-sm-center">
-              <input type="text" class="form-control  col-smd-12 custom-input bg-color-1 b-color-9 w-50" id="groupName" formControlName="groupName">
+              <input  name="nombre" [(ngModel)]="form.nombre" required  type="text" class="form-control  col-smd-12 custom-input bg-color-1 b-color-9 w-50" id="groupName">
             </div>
           </div>
         </div>
@@ -77,7 +67,7 @@
             <label for="description" class="col-form-label col-md-2 color-1 text-center">Descripción:</label>
           </div>
           <div class="row justify-content-sm-center">
-            <textarea class="form-control custom-input bg-color-1 b-color-9 w-50" id="description" formControlName="description" rows="5"></textarea>
+            <textarea  name="descripcion" [(ngModel)]="form.descripcion" required  class="form-control custom-input bg-color-1 b-color-9 w-50" id="description" rows="5"></textarea>
           </div>
         </div>
         <div class="d-flex justify-content-center junto">
@@ -86,7 +76,7 @@
               <label for="participants" class="col-form-label color-1 text-center">Número de Participantes:</label>
             </div>
             <div class="row justify-content-sm-center">
-              <input type="number" class="form-control custom-input bg-color-1 b-color-9 participants" id="participants" formControlName="participants">
+              <input type="number" name="participantes" [(ngModel)]="form.participantes" required  class="form-control custom-input bg-color-1 b-color-9 participants" id="participants" >
             </div>
           </div>
           <div class="form-group container">
@@ -94,7 +84,7 @@
               <label class="col-form-label color-1 text-center">Privacidad:</label>
             </div>
             <div class="row justify-content-sm-center">
-              <select formControlName="privacy" class="form-control custom-input bg-color-1 b-color-9 w-25">
+              <select name="privacidad" [(ngModel)]="form.privacidad" required class="form-control custom-input bg-color-1 b-color-9 w-25">
                 <option value="public">Público</option>
                 <option value="private">Privado</option>
               </select>
@@ -104,11 +94,8 @@
           <div class="form-group container">
             <div class="row justify-content-sm-center">
               <div class="d-flex justify-content-between p-4">
-                <button type="button" class="btn btn-lg bg-color-7 color-1 b-color-9 d-flex justify-content-center align-items-center" (click)="onSave()">
+                <button type="submit" class="btn btn-lg btn-primary color-1 b-color-9 d-flex justify-content-center align-items-center">
                   <span class="material-symbols-outlined">save_as</span>
-                </button>
-                <button type="button" class="btn btn-lg cancel color-1 b-color-9 d-flex justify-content-center align-items-center" (click)="onCancel()">
-                  <span class="material-symbols-outlined">cancel</span>
                 </button>
               </div>
             </div>

@@ -2,6 +2,18 @@
     height: 300px;
 }
 
+.jinx{
+    transform: scaleX(-1);
+}
+
+.head{
+width: 50px;
+}
+
+.foot{
+    width: 200px;
+}
+
 @media (max-width: 880px) {
     .img{
         height: 100px;
