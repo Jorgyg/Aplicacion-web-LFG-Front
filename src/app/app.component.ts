@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
     //Comprobamos la sesion guardada en el Storage y guardamos la informacion en las variables
     this.isLoggedin = !!this.tokenStorageService.getToken();
     //Si el usuario está logeado guarda la información del token en local, en caso de no estarlo es mandado a la pantalla principal
-    if(this.isLoggedin){
+    /**if(this.isLoggedin){
       const user = this.tokenStorageService.getUser();
       this.roles = user.rolApp;
 
@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
       this.username = user.username;
     } else {
       this.router.navigate(["/login"]);
-    }
+    }*/
     
 
   }
