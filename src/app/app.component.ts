@@ -23,20 +23,6 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void{
-    //Comprobamos la sesion guardada en el Storage y guardamos la informacion en las variables
-    this.isLoggedin = !!this.tokenStorageService.getToken();
-
-    if(this.isLoggedin){
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.rolApp;
-
-      this.showAdminBoard = this.roles.includes('admin');
-
-      this.username = user.username;
-    } /*else{
-      this.router.navigate(["/login"]);
-    }*/ //Descomentar cuando sea funcional
-    
     // Al iniciar la ruta, guarda el evento que pertenece a la url de la ruta en la que estemos
     this.router.events
     .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
@@ -44,6 +30,20 @@ export class AppComponent implements OnInit {
       //Llama al metodo setBackgroundImage donde le pasamos por parámetro la url de la ruta actual
       this.cambiarFondo(event.url);
     });
+    //Comprobamos la sesion guardada en el Storage y guardamos la informacion en las variables
+    this.isLoggedin = !!this.tokenStorageService.getToken();
+    //Si el usuario está logeado guarda la información del token en local, en caso de no estarlo es mandado a la pantalla principal
+    if(this.isLoggedin){
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.rolApp;
+
+      this.showAdminBoard = this.roles.includes('admin');
+
+      this.username = user.username;
+    } else {
+      this.router.navigate(["/login"]);
+    }
+    
 
   }
 

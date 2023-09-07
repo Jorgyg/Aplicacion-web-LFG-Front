@@ -134,12 +134,12 @@ export class MainComponent {
     }, 1000); // Redirige después de 0.3 segundos (300 ms)
   }
 
-  //Cerrar sesion
+    //Cerrar sesion
 
-  logout(): void{
-    this.tokenStorageService.signOut();
-    window.location.reload();
-    this.router.navigate(['/home']);
-  }
+    logout(): void{
+      alert(window.sessionStorage.getItem('auth-user'));
+      this.tokenStorageService.signOut();
+      this.router.navigate(['/home']);
+    }
 }
 
