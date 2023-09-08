@@ -4,10 +4,7 @@
       <b><span class="material-symbols-outlined key">keyboard_return</span></b>
     </a>
   </div>
-  <div class="row">
-    <h1 class="text-center color-1 mb-4">Crear grupo !</h1>
-  </div>
-  <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" class="row">
+  <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" class="row mt-3">
     <div class="alert alert-danger m-1 mb-1" role="alert" *ngIf="f.submitted && noValido">
       Solicitud no válida, revise el contenido e intente de nuevo.
     </div>
@@ -57,11 +54,11 @@
       </div>
     </div>
     <div class="row d-flex mt-2">
-      <div class="form-group col-md-6 d-flex justify-content-center mb-2">
+      <div class="form-group col-md-12 d-flex justify-content-center mb-2">
         <label for="participants" class="col-form-label color-1 text-center mb-1">Número de Participantes:&nbsp;&nbsp;</label>
         <input type="number" name="participantes" [(ngModel)]="form.participantes" required  class="form-control custom-input bg-color-1 b-color-9 participants" id="participants" >
       </div>
-      <div class="form-group col-md-6 d-flex justify-content-center">
+      <div class="form-group col-md-12 d-flex justify-content-center">
         <label class="col-form-label color-1 text-center mb-1">Privacidad:&nbsp;&nbsp;</label>
         <select name="privacidad" [(ngModel)]="form.privacidad" required class="mb-1 form-control custom-input bg-color-1 b-color-9 w-25">
           <option value="public">Público</option>
@@ -74,17 +71,9 @@
       <div class="form-group col-md-12 d-flex justify-content-center">
         <textarea  name="descripcion" [(ngModel)]="form.descripcion" required  class="form-control custom-input bg-color-1 b-color-9 w-50" id="description" rows="5"></textarea>
       </div>
-    </div>
-    <div class="row">
-      <div class="form-group container">
-        <div class="row justify-content-sm-center">
-          <div class="d-flex justify-content-center p-4">
-            <button type="submit" class="btn btn-lg btn-success d-flex justify-content-center align-items-center">
-              <span class="material-symbols-outlined">save_as</span>
-            </button>
-          </div>
-        </div>
-      </div>
+      <button type="submit" class="btn col-md-2 btn-lg btn-success d-flex justify-content-center align-items-center">
+        <span class="material-symbols-outlined">save_as</span>
+      </button>
     </div>
   </form>
 </div>
