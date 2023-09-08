@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { GamesService } from '../../../services/games.service';
 import { GrupoService } from 'src/app/services/grupo.service';
+import { Router } from '@angular/router';
+import { timeInterval } from 'rxjs';
 
 @Component({
   selector: 'app-crear-grupo',
@@ -19,6 +21,8 @@ export class CrearGrupoComponent implements OnInit {
     juego: null,
     fotogrupo: null
   };
+
+  noValido = false;
 
   imagenSeleccionada: string | null = null;
 
@@ -41,7 +45,8 @@ export class CrearGrupoComponent implements OnInit {
   };
   constructor(private formBuilder: FormBuilder,
               private gamesService: GamesService,
-              private groupService: GrupoService) {}
+              private groupService: GrupoService,
+              private router: Router) {}
   ngOnInit() {
     this.imagenSeleccionada = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
     let num = this.gamesService.return().length;
@@ -152,20 +157,22 @@ export class CrearGrupoComponent implements OnInit {
     this.index+=12;
     this.getGames();
   }
-
+  
   onSubmit(): void{
 
     const { codgrupo, nombre, privacidad, descripcion, participantes, juego, fotogrupo} = this.form;
 
     this.groupService.postGrupo(codgrupo, nombre, privacidad, descripcion, participantes, juego, fotogrupo).subscribe(
 
-      data=>{
-        console.log(data);
-      },
-      err => {
-        console.log(err);
-      }
-
+    data=>{
+      console.log(data);
+      this.noValido = false;
+      this.router.navigate(['/main']);
+    },
+    err => {
+      console.log(err);
+      this.noValido = true;
+    }
     );
   }
 }

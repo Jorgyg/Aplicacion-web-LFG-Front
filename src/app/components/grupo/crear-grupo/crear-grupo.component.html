@@ -1,105 +1,90 @@
-<div class=" d-flex align-items-center justify-content-center">
-  <div class="w-75">
-    <div class="form-group">
-      <a routerLink="/main" class="align-right btn bg-color-1 color-7 mt-2">
-        <b><span class="material-symbols-outlined key">keyboard_return</span></b>
-      </a>
-    </div>
-    <div>
-      <h1 class="text-center color-1 mb-4">Formulario de Grupo</h1>
-    </div>
-      <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
-        <div class="d-flex justify-content-center junto">
-          <div class="form-group container">
-            <div class="row justify-content-sm-center">
-              <label for="groupName" class="col-form-label color-1 text-center">Codigo de grupo:</label>
-            </div>
-            <div class="row justify-content-sm-center">
-              <input  name="codgrupo" [(ngModel)]="form.codgrupo" required maxlength="10" type="number" class="form-control  col-smd-12 custom-input bg-color-1 b-color-9 w-50" id="groupName">
-            </div>
-          </div>
-          <div class="form-group container">
-            <div class="row justify-content-sm-center">
-              <label for="groupName" class="col-form-label color-1 text-center">Nombre del grupo:</label>
-            </div>
-            <div class="row justify-content-sm-center">
-              <input  name="nombre" [(ngModel)]="form.nombre" required  type="text" class="form-control  col-smd-12 custom-input bg-color-1 b-color-9 w-50" id="groupName">
-            </div>
-          </div>
-        </div>
-        <div class="form-group container">
-          <div class="row justify-content-sm-center">
-            <label for="game" class="col-form-label color-1 text-center">Juego:</label>
-          </div>
-          <div class="row justify-content-sm-center">
-            <div [ngStyle]="{ 'display': isSelected ? '' : 'none' }">
-              <div class="d-flex justify-content-center">
-                <img [src]="selected.img" alt="{{ selected.img }}" class="imgSelected rounded">
-              </div>
-              <div class="d-flex justify-content-center mt-2">
-                <button class="btn b-color-9 bg-color-6 color-1" (click)="resetSelected()">Seleccionar juego</button>
-              </div>
-            </div>
-              <div *ngIf="!isSelected" class="d-flex justify-content-center">
-                <input type="text" class="form-control custom-input bg-color-1 b-color-9 w-25" [value]="searchText" (input)="onSearchTextChange($event)" placeholder="Buscar juegos...">
-              </div>
-              <br>
-              <div class="w-50 w-sm">           
-                <div class="d-flex flex-wrap justify-content-center">
-                  <div *ngFor="let game of games" class="p-2 text-center galeria">
-                    <div class="game-item" (mouseenter)="showGameName(game.nombre)" (mouseleave)="hideGameName()">
-                      <button class="btn imgGame" [style.backgroundImage]="'url(' + game.img + ')'" (click)="selectGame(game)"></button>
-                      <div class="game-name" *ngIf="isGameNameVisible && currentGameName === game.nombre">{{ game.nombre }}</div>
-                    </div>
-                  </div>
-                </div>
-                <div *ngIf="!isSelected" class=" mt-3">
-                  <div class="d-flex justify-content-center">
-                    <button *ngIf="botonP" class="btn b-color-9 bg-color-6 color-1 mx-2 d-flex justify-content-center align-items-center" (click)="previousPage()"><i class="fas fa-arrow-left"></i></button>
-                    <button *ngIf="botonN" class="btn b-color-9 bg-color-6 color-1 mx-2 d-flex justify-content-center align-items-center" (click)="nextPage()"><i class="fas fa-arrow-right"></i></button>
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-        <div class="form-group container">
-          <div class="row justify-content-sm-center">
-            <label for="description" class="col-form-label col-md-2 color-1 text-center">Descripción:</label>
-          </div>
-          <div class="row justify-content-sm-center">
-            <textarea  name="descripcion" [(ngModel)]="form.descripcion" required  class="form-control custom-input bg-color-1 b-color-9 w-50" id="description" rows="5"></textarea>
-          </div>
-        </div>
-        <div class="d-flex justify-content-center junto">
-          <div class="form-group container">
-            <div class="row justify-content-sm-center">
-              <label for="participants" class="col-form-label color-1 text-center">Número de Participantes:</label>
-            </div>
-            <div class="row justify-content-sm-center">
-              <input type="number" name="participantes" [(ngModel)]="form.participantes" required  class="form-control custom-input bg-color-1 b-color-9 participants" id="participants" >
-            </div>
-          </div>
-          <div class="form-group container">
-            <div class="row justify-content-sm-center">
-              <label class="col-form-label color-1 text-center">Privacidad:</label>
-            </div>
-            <div class="row justify-content-sm-center">
-              <select name="privacidad" [(ngModel)]="form.privacidad" required class="form-control custom-input bg-color-1 b-color-9 w-25">
-                <option value="public">Público</option>
-                <option value="private">Privado</option>
-              </select>
-            </div>
-          </div>
-        </div>
-          <div class="form-group container">
-            <div class="row justify-content-sm-center">
-              <div class="d-flex justify-content-between p-4">
-                <button type="submit" class="btn btn-lg btn-primary color-1 b-color-9 d-flex justify-content-center align-items-center">
-                  <span class="material-symbols-outlined">save_as</span>
-                </button>
-              </div>
-            </div>
-          </div>
-      </form>
+<div class="container">
+  <div class="row">
+    <a routerLink="/main" class="btn bg-color-1 color-7 mt-3 col-md-1 col-sm-3">
+      <b><span class="material-symbols-outlined key">keyboard_return</span></b>
+    </a>
   </div>
+  <div class="row">
+    <h1 class="text-center color-1 mb-4">Crear grupo !</h1>
+  </div>
+  <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" class="row">
+    <div class="alert alert-danger m-1 mb-1" role="alert" *ngIf="f.submitted && noValido">
+      Solicitud no válida, revise el contenido e intente de nuevo.
+    </div>
+    <div class="row form-group">
+      <div class="col-md-6 mb-1 d-flex justify-content-center">
+        <label for="groupName" class="col-form-label color-1 text-center">Codigo de grupo:&nbsp;&nbsp;</label>
+        <input  name="codgrupo" [(ngModel)]="form.codgrupo" required maxlength="10" type="number" class="form-control  col-smd-12 custom-input bg-color-1 b-color-9 w-50" id="groupName">
+      </div>
+      <div class="col-md-6 d-flex justify-content-center">
+        <label for="groupName" class="col-form-label color-1 text-center">Nombre del grupo:&nbsp;&nbsp;</label>
+        <input  name="nombre" [(ngModel)]="form.nombre" required  type="text" class="form-control  col-smd-12 custom-input bg-color-1 b-color-9 w-50" id="groupName">
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-12 d-flex justify-content-center mt-3 mb-3">
+        <label for="game" class="col-form-label color-1 text-center">Juego: &nbsp;&nbsp;</label>
+        <div *ngIf="!isSelected" class="d-flex justify-content-center">
+          <input type="text" class="form-control custom-input bg-color-1 b-color-9" [value]="searchText" (input)="onSearchTextChange($event)" placeholder="Buscar juegos...">
+        </div>
+      </div>
+      <div class="col-md-12 d-flex justify-content-center">
+        <div [ngStyle]="{ 'display': isSelected ? '' : 'none' }">
+          <div class="d-flex justify-content-center">
+            <img [src]="selected.img" alt="{{ selected.img }}" class="imgSelected rounded">
+          </div>
+          <div class="d-flex justify-content-center mt-2">
+            <button class="btn b-color-9 bg-color-6 color-1" (click)="resetSelected()">Seleccionar juego</button>
+          </div>
+        </div>
+          <br>
+          <div class="">           
+            <div class="d-flex flex-wrap justify-content-center">
+              <div *ngFor="let game of games" class="p-2 text-center galeria">
+                <div class="game-item" (mouseenter)="showGameName(game.nombre)" (mouseleave)="hideGameName()">
+                  <button class="btn imgGame" [style.backgroundImage]="'url(' + game.img + ')'" (click)="selectGame(game)"></button>
+                  <div class="game-name" *ngIf="isGameNameVisible && currentGameName === game.nombre">{{ game.nombre }}</div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="!isSelected" class=" mt-3">
+              <div class="d-flex justify-content-center">
+                <button *ngIf="botonP" class="btn b-color-9 bg-color-6 color-1 mx-2 d-flex justify-content-center align-items-center" (click)="previousPage()"><i class="fas fa-arrow-left"></i></button>
+                <button *ngIf="botonN" class="btn b-color-9 bg-color-6 color-1 mx-2 d-flex justify-content-center align-items-center" (click)="nextPage()"><i class="fas fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="row d-flex mt-2">
+      <div class="form-group col-md-6 d-flex justify-content-center mb-2">
+        <label for="participants" class="col-form-label color-1 text-center mb-1">Número de Participantes:&nbsp;&nbsp;</label>
+        <input type="number" name="participantes" [(ngModel)]="form.participantes" required  class="form-control custom-input bg-color-1 b-color-9 participants" id="participants" >
+      </div>
+      <div class="form-group col-md-6 d-flex justify-content-center">
+        <label class="col-form-label color-1 text-center mb-1">Privacidad:&nbsp;&nbsp;</label>
+        <select name="privacidad" [(ngModel)]="form.privacidad" required class="mb-1 form-control custom-input bg-color-1 b-color-9 w-25">
+          <option value="public">Público</option>
+          <option value="private">Privado</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mt-1">
+      <label for="description" class="col-md-12 color-1 text-center d-flex justify-content-center">Descripción:</label>
+      <div class="form-group col-md-12 d-flex justify-content-center">
+        <textarea  name="descripcion" [(ngModel)]="form.descripcion" required  class="form-control custom-input bg-color-1 b-color-9 w-50" id="description" rows="5"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group container">
+        <div class="row justify-content-sm-center">
+          <div class="d-flex justify-content-center p-4">
+            <button type="submit" class="btn btn-lg btn-success d-flex justify-content-center align-items-center">
+              <span class="material-symbols-outlined">save_as</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
