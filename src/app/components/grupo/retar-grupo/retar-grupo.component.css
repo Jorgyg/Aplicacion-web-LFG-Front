@@ -18,9 +18,10 @@ width: 50px;
     .img{
         height: 100px;
     }
+
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     .img{
         height: 50px;
     }
@@ -32,6 +33,8 @@ width: 50px;
     .col-4{
         width: 50px!important;
     }
+
+
 }
 
 @keyframes fightAnimation {
@@ -49,3 +52,4 @@ width: 50px;
   .foot {
     animation: fightAnimation 2s ease infinite; 
   }
+

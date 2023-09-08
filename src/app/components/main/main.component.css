@@ -109,7 +109,6 @@ input:focus{
         margin-bottom: 4px!important;
     }
 
-
     h5{
         font-size: 15px;
     }
@@ -133,7 +132,44 @@ input:focus{
         width: 360px;
     }
 
+    .st-pc{
+        display: none!important;
+    }
+
+    .st-movile{
+        display: flex!important;
+        justify-content: center;
+    }
     
+    .logout{
+        display: flex;
+        justify-content: center!important;
+    }
+
+    .container-fluid, .navbar-collapse{
+        margin-left: 0px!important;
+    }
+}
+
+@media (min-width: 3000px) {
+    .card{
+        min-width: 500px!important;
+        
+    }
+
+    h5{
+        font-size: 60px;
+    }
+
+    p{
+        font-size: 40px;
+    }
+
+    a{
+        width: 100px;
+        height: 60px;
+        font-size: 30px;
+    }
 }
 /* Estilos para los iconos */
 
@@ -166,3 +202,7 @@ input:focus{
     opacity: 0;
     transition: opacity 1s ease-in-out transformZ();
 }
+
+.st-movile{
+    display: none;
+  }
