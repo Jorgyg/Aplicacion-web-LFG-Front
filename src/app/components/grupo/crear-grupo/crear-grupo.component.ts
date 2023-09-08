@@ -4,6 +4,8 @@ import { GamesService } from '../../../services/games.service';
 import { GrupoService } from 'src/app/services/grupo.service';
 import { Router } from '@angular/router';
 import { timeInterval } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-crear-grupo',
@@ -46,6 +48,7 @@ export class CrearGrupoComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private gamesService: GamesService,
               private groupService: GrupoService,
+              private tokenService: TokenStorageService,
               private router: Router) {}
   ngOnInit() {
     this.imagenSeleccionada = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
@@ -167,7 +170,10 @@ export class CrearGrupoComponent implements OnInit {
     data=>{
       console.log(data);
       this.noValido = false;
-      this.router.navigate(['/main']);
+      const user = this.tokenService.getUser();
+      const username = user.infoUser.username;
+      this.groupService.postUsuarioGrupo(codgrupo, username, true).subscribe();
+      this.router.navigate(['/chat']);
     },
     err => {
       console.log(err);

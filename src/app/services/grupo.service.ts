@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 
 const API_URL = 'https://localhost:7082/api/Grupos/';
-
+const API_URL_2 = 'https://localhost:7082/api/UsuariosGrupos/';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -34,7 +34,11 @@ export class GrupoService {
     }, httpOptions)
   }
 
-  postUsuarioGrupo(CodGrupo: string, ):void{
-
+  postUsuarioGrupo(CodGrupo: number, Username: string, esAdmin: Boolean):Observable<any>{
+    return this.http.post(API_URL_2, {
+      CodGrupo,
+      Username,
+      esAdmin
+    }, httpOptions)
   }
 }
