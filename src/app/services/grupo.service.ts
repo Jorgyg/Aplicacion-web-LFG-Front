@@ -22,7 +22,7 @@ export class GrupoService {
     return this.http.get(API_URL);
   }
 
-  postGrupo(CodGrupo: string, Nombre: string, Privacidad: string, Descripcion: string, Participantes: number, Juego: string, FotoGrupo: string): Observable<any>{   
+  postGrupo(CodGrupo: number, Nombre: string, Privacidad: string, Descripcion: string, Participantes: number, Juego: string, FotoGrupo: string): Observable<any>{   
     return this.http.post(API_URL + 'crear', {
       CodGrupo,
       Nombre,
@@ -32,5 +32,9 @@ export class GrupoService {
       Juego,
       FotoGrupo
     }, httpOptions)
+  }
+
+  postUsuarioGrupo(CodGrupo: string, ):void{
+
   }
 }
