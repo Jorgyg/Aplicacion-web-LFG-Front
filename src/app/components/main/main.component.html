@@ -33,7 +33,7 @@
     <!-- Creamos una carta por cada grupo de nuestra base de datos junto con su imagen, el nombre y su descripcion, ademas de un boton para solicitar unirse-->
     <div class="card-container mt-4">
         <div *ngFor="let group of cardData.slice((currentPage-1)*cardsPerPage, currentPage * cardsPerPage); let i = index" class="card bg-color-1 m-2 w-100" [class.fade-out]="firstLinkActivated && selectedCardIndex !== i" [ngClass]="{'enlarged': selectedCardIndex === i}">
-            <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" class="card-img-top" alt="...">
+            <img src={{group.fotoGrupo}} class="card-img-top" alt="...">
             <div class="card-body small-card-body text-adjust">
                 <h5 class="card-title">{{group.nombre}}</h5>
                 <p class="card-text">Miembros: 0 / {{group.participantes}}</p>

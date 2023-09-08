@@ -15,7 +15,9 @@ export class CrearGrupoComponent implements OnInit {
     nombre: null,
     privacidad: null,
     descripcion: null,
-    participantes: null
+    participantes: null,
+    juego: null,
+    fotogrupo: null
   };
 
   imagenSeleccionada: string | null = null;
@@ -117,6 +119,8 @@ export class CrearGrupoComponent implements OnInit {
       nombre: game.nombre,
       img: game.img
     };
+    this.form.juego =  {nombre: game.nombre}.nombre;
+    this.form.fotogrupo = {img: game.img}.img;
   }
 
   resetSelected() {
@@ -151,9 +155,9 @@ export class CrearGrupoComponent implements OnInit {
 
   onSubmit(): void{
 
-    const { codgrupo, nombre, privacidad, descripcion, participantes} = this.form;
+    const { codgrupo, nombre, privacidad, descripcion, participantes, juego, fotogrupo} = this.form;
 
-    this.groupService.postGrupo(codgrupo, nombre, privacidad, descripcion, participantes).subscribe(
+    this.groupService.postGrupo(codgrupo, nombre, privacidad, descripcion, participantes, juego, fotogrupo).subscribe(
 
       data=>{
         console.log(data);
