@@ -135,7 +135,6 @@ export class MainComponent {
   }
 
     //Cerrar sesion
-
     logout(): void{
       alert(window.sessionStorage.getItem('auth-user'));
       this.tokenStorageService.signOut();

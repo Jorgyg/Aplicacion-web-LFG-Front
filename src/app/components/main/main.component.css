@@ -2,6 +2,10 @@
     width: 100px;
 }
 
+.custom-toggler .material-symbols-outlined{
+    color: white;
+}
+
 body{
     margin: 0;
 }
@@ -36,7 +40,7 @@ input:focus{
     justify-content: center;
     align-items: center;
     gap: 10px;
-    max-height: 85vh;
+    max-height: 90vh;
     overflow: auto;
 }
 
@@ -82,8 +86,55 @@ input:focus{
         max-height: 
         60vh;
     }
+
+   
 }
 
+@media (max-width: 800px) {
+    .card{
+        max-width: 150px!important;
+        margin: 0px!important;
+    }
+
+    .small-card-body {
+        padding: 0.25rem; 
+    }
+
+    .btn {
+        padding: 0.2rem 0.5rem!important;
+        font-size: 12px;
+    }
+    
+    .pagination{
+        margin-bottom: 4px!important;
+    }
+
+
+    h5{
+        font-size: 15px;
+    }
+
+    p{
+        font-size: 9px;
+    }
+
+    .navbar-nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+    
+      .navbar-nav .nav-item {
+        margin-right: 10px;
+      }
+
+      input:focus{
+        width: 360px;
+    }
+
+    
+}
 /* Estilos para los iconos */
 
 .logout{
