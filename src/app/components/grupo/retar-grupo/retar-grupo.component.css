@@ -18,9 +18,10 @@ width: 50px;
     .img{
         height: 100px;
     }
+
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     .img{
         height: 50px;
     }
@@ -32,4 +33,23 @@ width: 50px;
     .col-4{
         width: 50px!important;
     }
+
+
 }
+
+@keyframes fightAnimation {
+    0% {
+      transform: translateX(0); 
+    }
+    50% {
+      transform: translateX(90px);
+    }
+    100% {
+      transform: translateX(0); 
+    }
+  }
+
+  .foot {
+    animation: fightAnimation 2s ease infinite; 
+  }
+

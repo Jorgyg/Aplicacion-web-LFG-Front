@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
 
       this.username = user.username;
     } else {
-      this.router.navigate(["/login"]);
+      this.router.navigate(["/home"]);
     }
     
 

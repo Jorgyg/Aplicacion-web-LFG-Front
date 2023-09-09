@@ -4,32 +4,43 @@
             <!-- Seccion del navbar con los iconos para cada accion respectivamente, el logo y un buscador de grupos -->
             <div class="container-fluid">
                 <img class="navbar-brand color-1" routerLink="#" src="./assets/img/logo2.png" class="logo">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="material-symbols-outlined">
+                        menu
+                        </span>
                 </button> 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a routerLink="/crear"  class="color-4 text-decoration-none mx-3"><i class="fas fa-plus i"></i></a> &nbsp;
+                    <!-- Tu lista de elementos del menú -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a routerLink="/crear"  class="color-4 text-decoration-none mx-3"><i class="fas fa-plus i"></i></a> &nbsp;
+                        </li> 
+                        <li class="nav-item">
+                            <a routerLink="/unirse" class="color-4 text-decoration-none mx-3"><span class="i material-symbols-outlined">
+                                group_add
+                                </span></a> &nbsp;
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/perfil" class="color-4 text-decoration-none mx-3"><i class="fas i fa-user"></i></a> &nbsp;
+                        </li>
+                        <li class="nav-item st-movile">
+                            <a (click)="logout()" class="color-4 mx-3 text-decoration-none logout"><span class="material-symbols-outlined">
+                                logout
+                                </span></a> &nbsp;
+                        </li>
+                    </ul>
+                    <form class="d-flex mx-auto" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit"><i class="fas fa-magnifying-glass"></i></button>
+                    </form>
+                    <li class="nav-item st-pc" type="none">
+                        <button (click)="logout()" class="color-4 text-decoration-none logout">Cerrar sesión</button> &nbsp;
                     </li>
-                    <li class="nav-item">
-                        <a routerLink="/unirse" class="color-4 text-decoration-none mx-3"><i class="fas fa-arrow-right-to-bracket i"></i></a> &nbsp;
-                    </li>
-                    <li class="nav-item">
-                        <a routerLink="/perfil" class="color-4 text-decoration-none mx-3"><i class="fas i fa-user"></i></a> &nbsp;
-                    </li>
-                </ul>
-                <form class="d-flex mx-auto" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar grupos..." aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit"><i class="fas fa-magnifying-glass"></i></button>
-                </form>
-                <li class="nav-item" type="none">
-                    <button (click)="logout()" class="color-4 text-decoration-none logout">Cerrar sesión</button> &nbsp;
-                </li>
                 </div>
             </div>
         </nav>
     </div>
+    
     <!-- Creamos una carta por cada grupo de nuestra base de datos junto con su imagen, el nombre y su descripcion, ademas de un boton para solicitar unirse-->
     <div class="card-container mt-4">
         <div *ngFor="let group of cardData.slice((currentPage-1)*cardsPerPage, currentPage * cardsPerPage); let i = index" class="card bg-color-1 m-2 w-100" [class.fade-out]="firstLinkActivated && selectedCardIndex !== i" [ngClass]="{'enlarged': selectedCardIndex === i}">
@@ -41,10 +52,7 @@
                 <a routerLink="#" class="btn bg-color-6 color-1 leave"><i class="fas fa-trash-can"></i></a>
             </div>
         </div>
-    </div>
-    <!-- Botones para navegar entre grupos -->
-    <div class="row">
-        <div class="col-12 d-flex justify-content-center enlarged" [class.fade-out]="firstLinkActivated"> 
+        <div class="col-12 d-flex justify-content-center align-items-end enlarged" [class.fade-out]="firstLinkActivated"> 
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item"><a href="#" class="btn bg-color-6 color-1 btnPag arrow left" (click)="changePage('prev', $event)"><i class="fas fa-angle-left"></i></a></li>
@@ -54,5 +62,7 @@
             </nav>
         </div>
     </div>
+
+    <!-- Botones para navegar entre grupos -->
     
 </div>

@@ -1,27 +1,29 @@
 <div class="container-fluid">
-    <div class="row mx-3 mt-1">
+    <div class="row mx-3 mt-1 top-n">
         <!-- Seccion de opciones del grupo, cada icono representa una opción -->
         <div class="col-md-10">
-            <a routerLink="/retar" class="btn btn-danger m-2 sword">
-                <b><span class="material-symbols-outlined sw">swords</span></b>
-            </a>
-            <a routerLink="/eventos" class="btn m-2 btn-info events">
-                <b><span class="material-symbols-outlined ev">event</span></b>
-            </a> 
+            <div class="btn-container">
+                <a routerLink="/retar" class="btn btn-danger m-2 sword text-center">
+                    <b><span class="material-symbols-outlined sw">swords</span></b>
+                </a>
+                <a routerLink="/eventos" class="btn m-2 btn-info events">
+                    <b><span class="material-symbols-outlined ev">event</span></b>
+                </a> 
                 <a routerLink="/logros" class="btn m-2 btn-warning logros">
                     <b><span class="material-symbols-outlined trp">trophy</span></b>
                 </a>
-                
                 <a routerLink="/miembros" class="btn btn-primary m-2 members">
                     <b><span class="material-symbols-outlined mem">groups</span></b>
                 </a>
                 <a routerLink="/ajustes" class="btn m-2 btn-success setting">
                     <b><span class="material-symbols-outlined set">settings</span></b>
                 </a>
-                
+                <a routerLink="/main" class="align-right btn bg-color-1 color-7 m-2 st-movile"><b><span class="material-symbols-outlined key">
+                    keyboard_return
+                </span></b></a>
+            </div>
         </div>
-        <!-- Volver -->
-        <div class="col-md-2 d-flex justify-content-end">
+        <div class="col-md-2 d-flex justify-content-end st-pc">
             <a routerLink="/main" class="align-right btn bg-color-1 color-7 m-2"><b><span class="material-symbols-outlined key">
                 keyboard_return
                 </span></b></a>
@@ -29,7 +31,7 @@
     </div>
     <div class="row m-3 chat">
         <!-- Seccion del chat, cada div representa un mensaje enviado por una persona. Contiene su foto de perfil, su nombre y el mensaje -->
-        <div class="row my-5">
+        <div class="row my-5"> 
             <div class="col-12 d-flex">
                 <span class="mx-3 color-1">Mensajes de otras personas</span>
                 <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px">
@@ -67,7 +69,7 @@
         </div>
     </div>
     <!-- Input donde el usuario envia su mensaje -->
-    <div class="row m-3 footer">
+    <div class="row m-1 footer">
         <div class="col-12">
             <input class="form-control text-right custom-bg b-color-6" type="textbox">
         </div>

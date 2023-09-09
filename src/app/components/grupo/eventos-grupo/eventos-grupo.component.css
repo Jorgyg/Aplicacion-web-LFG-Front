@@ -36,9 +36,15 @@
     input{
         width: 200px;
     }
+
+    .list-group-item{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
 }
 
-.hover-image {
+.hover-image { 
     position: absolute;
     top: -80px;
     left: 100px;
