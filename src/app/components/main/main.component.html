@@ -24,14 +24,14 @@
                             <a routerLink="/perfil" class="color-4 text-decoration-none mx-3"><i class="fas i fa-user"></i></a> &nbsp;
                         </li>
                         <li class="nav-item st-movile">
-                            <a (click)="logout()" class="color-4 mx-3 text-decoration-none logout"><span class="material-symbols-outlined">
+                            <a class="color-4 mx-3 text-decoration-none logout"><span class="material-symbols-outlined">
                                 logout
                                 </span></a> &nbsp;
                         </li>
                     </ul>
                     <form class="d-flex mx-auto" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit"><i class="fas fa-magnifying-glass"></i></button>
+                        <input id="buscar" (input)="filtrar()" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button (click)="filtrar()" class="btn btn-outline-success" type="submit"><i class="fas fa-magnifying-glass"></i></button>
                     </form>
                     <li class="nav-item st-pc" type="none">
                         <button (click)="logout()" class="color-4 text-decoration-none logout">Cerrar sesión</button> &nbsp;
@@ -42,14 +42,14 @@
     </div>
     
     <!-- Creamos una carta por cada grupo de nuestra base de datos junto con su imagen, el nombre y su descripcion, ademas de un boton para solicitar unirse-->
-    <div class="card-container mt-4">
+    <div class="card-container mt-4" *ngIf="cardData.length > 0">
         <div *ngFor="let group of cardData.slice((currentPage-1)*cardsPerPage, currentPage * cardsPerPage); let i = index" class="card bg-color-1 m-2 w-100" [class.fade-out]="firstLinkActivated && selectedCardIndex !== i" [ngClass]="{'enlarged': selectedCardIndex === i}">
             <img [src]="group.fotoGrupo || 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg'" class="card-img-top" alt="...">
             <div class="card-body small-card-body text-adjust">
                 <h5 class="card-title">{{group.nombre}}</h5>
                 <p class="card-text">Miembros: 0 / {{group.participantes}}</p>
-                <a (click)="enlargeAndNavigate(i)" class="btn btn-success mx-1 enlarged"><i class="fas fa-eye"></i></a>
-                <a routerLink="#" class="btn bg-color-6 color-1 leave"><i class="fas fa-trash-can"></i></a>
+                <a (click)="enlargeAndNavigate(i, group.codGrupo)" class="btn btn-success mx-1 enlarged"><i class="fas fa-eye"></i></a>
+                <a *ngIf="rol == 'admin'" routerLink="#" class="btn bg-color-6 color-1 leave"><i class="fas fa-trash-can"></i></a>
             </div>
         </div>
         <div class="col-12 d-flex justify-content-center align-items-end enlarged" [class.fade-out]="firstLinkActivated"> 
@@ -62,7 +62,10 @@
             </nav>
         </div>
     </div>
-
+    <div class="card-container mt-5 d-flex justify-content-center align-items-center" *ngIf="cardData.length == 0">
+        <h1 class="color-1">Parece que no estás en ningún grupo...</h1>
+        <h2 class="color-2">Puedes buscar por nombre de grupo en el buscador de arriba, <a routerLink="/unirse">unirte</a> a un grupo por codigo o <a routerLink="/crear">crear</a> uno</h2>
+    </div>
     <!-- Botones para navegar entre grupos -->
     
 </div>

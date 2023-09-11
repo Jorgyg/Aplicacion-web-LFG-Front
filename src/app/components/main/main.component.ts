@@ -2,6 +2,7 @@ import { Component, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../../services/token-storage.service';
 import { GrupoService } from 'src/app/services/grupo.service';
+import { UserService } from 'src/app/services/user.service';
 
 interface Group {
   title: string;
@@ -22,85 +23,17 @@ export class MainComponent {
   selectedCardIndex: number | null = null;
   /*Creamos una array para cada grupo. Para casos prácticos, hemos creado cartas "falsas" para comprobar su funcionalidad*/
 
-  constructor(private renderer: Renderer2, private router: Router, private tokenStorageService: TokenStorageService, private groupService: GrupoService) {}
+  constructor(private renderer: Renderer2, private router: Router, private tokenStorageService: TokenStorageService, private groupService: GrupoService, private userService: UserService) {}
   
   cardData: any[] = [];
-  
-  /*cardData: Array<any> = [
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 1',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 2',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 3',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 4',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 5',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 6',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 7',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 8',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 9',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 10',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 11',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 12',
-      description: 'Descripción del grupo',
-    },{
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 11',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 12',
-      description: 'Descripción del grupo',
-    }
-
-  ];*/
+  rol: string = "user";
 
   ngOnInit(){
-    this.groupService.getGrupos().subscribe(
+
+    const usuario = this.tokenStorageService.getUser();
+    const username = usuario.infoUser.username;
+    this.rol = usuario.infoUser.rolApp;
+    this.groupService.getGruposUsuario(username).subscribe(
       (data: any[]) => {
         this.cardData = data;
       },
@@ -127,7 +60,7 @@ export class MainComponent {
 
   firstLinkActivated = false;
 
-  enlargeAndNavigate(index: number) {
+  enlargeAndNavigate(index: number, codigo: number) {
   if (!this.firstLinkActivated) {
     this.firstLinkActivated = true;
   }
@@ -145,14 +78,38 @@ export class MainComponent {
   this.selectedCardIndex = index;
 
   setTimeout(() => {
-    this.router.navigate(['/chat']);
+    this.router.navigate(['/chat', codigo]);
   }, 1000); // Redirige después de 0.3 segundos (300 ms)
 }
+
+  filtrar(): void{
+    try {
+      const input = (document.getElementById('buscar') as HTMLInputElement).value;
+      this.groupService.getGruposLike(input).subscribe(
+        (data: any[]) => {
+          this.cardData = data;
+        }
+      )
+    } catch (error) {
+
+      const usuario = this.tokenStorageService.getUser();
+      const username = usuario.infoUser.username;
+
+      this.groupService.getGruposUsuario(username).subscribe(
+        (data: any[]) => {
+          this.cardData = data;
+        },
+        (error) => {
+          console.error("ERROR: ", error);
+        }
+      )
+    }
+    
+  }
 
   //Cerrar sesion
 
   logout(): void{
-    alert(window.sessionStorage.getItem('auth-user'));
     this.tokenStorageService.signOut();
     this.router.navigate(['/home']);
   }

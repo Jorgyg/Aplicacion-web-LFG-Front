@@ -29,49 +29,25 @@
                 </span></b></a>
         </div>
     </div>
-    <div class="row m-3 chat">
+    <div class="row m-3 chat" #mensajes>
         <!-- Seccion del chat, cada div representa un mensaje enviado por una persona. Contiene su foto de perfil, su nombre y el mensaje -->
-        <div class="row my-5"> 
-            <div class="col-12 d-flex">
-                <span class="mx-3 color-1">Mensajes de otras personas</span>
-                <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px">
-            </div>
-        </div>
-        <div class="row my-5">
-            <div class="col-12 d-flex">
-                <span class="mx-3 color-1">Mensajes de otras personas</span>
-                <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px">
-            </div>
-        </div>
-        <div class="row my-5">
-            <div class="col-12 d-flex">
-                <span class="mx-3 color-1">Mensajes de otras personas</span>
-                <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px">
-            </div>
-        </div>
-        <div class="row my-5">
-            <div class="col-12 d-flex">
-                <span class="mx-3 color-1">Mensajes de otras personas</span>
-                <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px">
-            </div>
-        </div>
-        <div class="row my-5">
-            <div class="col-12 d-flex">
-                <span class="mx-3 color-1">Mensajes de otras personas</span>
-                <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px">
-            </div>
-        </div>
-        <div class="row my-5">
-            <div class="col-12 d-flex justify-content-end">
-                <span class="align-right mx-3 color-1">Mensajes que envio</span>
-                <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px">
+        <div *ngFor="let mensaje of listaMensajes">
+            <div class="row my-5"> 
+                <div class="col-12 d-flex justify-content-end" *ngIf="this.username == mensaje.username">
+                    <span class="mx-3 text-primary">{{mensaje.username}}:</span>
+                    <span class="mx-3 color-1">{{mensaje.contenido}}</span>
+                </div>
+                <div class="col-12 d-flex" *ngIf="this.username != mensaje.username">
+                    <span class="mx-3 text-danger">{{mensaje.username}}:</span><br>
+                    <span class="mx-3 color-1">{{mensaje.contenido}}</span>
+                </div>
             </div>
         </div>
     </div>
     <!-- Input donde el usuario envia su mensaje -->
     <div class="row m-1 footer">
         <div class="col-12">
-            <input class="form-control text-right custom-bg b-color-6" type="textbox">
+            <input id="mensaje" (keyup.enter)="enviarMensaje()" class="form-control text-right custom-bg b-color-6" type="textbox">
         </div>
     </div>
 </div>

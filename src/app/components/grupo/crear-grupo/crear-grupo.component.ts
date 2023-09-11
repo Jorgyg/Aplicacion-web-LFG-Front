@@ -173,7 +173,7 @@ export class CrearGrupoComponent implements OnInit {
       const user = this.tokenService.getUser();
       const username = user.infoUser.username;
       this.groupService.postUsuarioGrupo(codgrupo, username, true).subscribe();
-      this.router.navigate(['/chat']);
+      this.router.navigate(['/chat', codgrupo]);
     },
     err => {
       console.log(err);

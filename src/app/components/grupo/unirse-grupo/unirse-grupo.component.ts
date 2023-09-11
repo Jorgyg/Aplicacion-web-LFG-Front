@@ -22,12 +22,11 @@ export class UnirseGrupoComponent {
     const username = user.infoUser.username;
     this.groupService.postUsuarioGrupo(codgrupo, username, false).subscribe(
       data=>{
-        console.log(data);
-        this.router.navigate(['/chat']);
       },
       err => {
         console.log(err);
       }
     );
+    this.router.navigate(['/chat', codgrupo]);
   }
 }

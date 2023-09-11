@@ -66,12 +66,18 @@ export class AppComponent implements OnInit {
       "/perfil":'/assets/img/bg-5.png',
       "/retar":'/assets/img/bg-10.png'
     };
-    //Comprueba que la url recibida se encuentra en la constante de rutas y le asigna el background que le pertenece
-    if (bg[url]) {
-      this.backgroundUrl = `url(${bg[url]})`;
-    } else {
-      // En caso de no existir se estblecerá un fondo por defecto
-      this.backgroundUrl = '/assets/img/background-about.jpg'; // o establecer algún otro valor predeterminado
+
+    const chat = this.router.url;
+    if(chat.startsWith('/chat')){
+      this.backgroundUrl = `url(${bg['/chat']})`
+    } else{
+      //Comprueba que la url recibida se encuentra en la constante de rutas y le asigna el background que le pertenece
+      if (bg[url]) {
+        this.backgroundUrl = `url(${bg[url]})`;
+      } else {
+        // En caso de no existir se estblecerá un fondo por defecto
+        this.backgroundUrl = '/assets/img/background-about.jpg'; // o establecer algún otro valor predeterminado
+      }
     }
   }  
 
