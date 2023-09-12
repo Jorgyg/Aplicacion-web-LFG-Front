@@ -45,11 +45,11 @@
     width: 100%!important;
   }
   .imgGame{
-    width: 100px!important;
+    width: 80px!important;
   }
 
   .w-25 {
-    width: 50%!important;
+    width: 40%!important;
   }
 
   .game-item{
@@ -67,6 +67,31 @@
 
   span{
     font-size: 20px;
+  }
+
+  .col-md-2, .col-md-6{
+    width: 200px!important;
+  }
+
+  .galeria{
+    padding: 3px!important;
+  }
+
+  .games{
+    width: 100%!important;
+    margin: 0px;
+  }
+
+  .pre-games{
+    width: 100%!important;
+  }
+
+  .w-75{
+    width: 100%!important;
+  }
+
+  .return-div{
+    margin-left: 10px;
   }
 }
 
@@ -119,4 +144,8 @@
 
 .participants {
   width: 15%;
+}
+
+.pre-games {
+  width: 50%;
 }

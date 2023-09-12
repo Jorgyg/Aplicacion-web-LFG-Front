@@ -15,6 +15,7 @@ import { AjustesGrupoComponent } from './components/grupo/ajustes-grupo/ajustes-
 import { RetarGrupoComponent } from './components/grupo/retar-grupo/retar-grupo.component';
 //Rutas a cada vista de la aplicacion
 const routes: Routes = [
+  { path: 'default', component: MainComponent },
   { path: "", component: HomeComponent },
   { path: "home", component: HomeComponent, data:{background: "./assets/img/logo1.png"}},
   { path: "login", component: LoginComponent },
@@ -22,7 +23,7 @@ const routes: Routes = [
   { path: "main", component: MainComponent },
   { path: "crear", component: CrearGrupoComponent },
   { path: "unirse", component: UnirseGrupoComponent },
-  { path: "chat", component: ChatGrupoComponent },
+  { path: "chat/:codigo", component: ChatGrupoComponent },
   { path: "logros", component: LogrosGrupoComponent },
   { path: "miembros", component: MiembrosGrupoComponent },
   { path: "eventos", component: EventosGrupoComponent },

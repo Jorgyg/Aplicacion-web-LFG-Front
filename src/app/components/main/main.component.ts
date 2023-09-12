@@ -1,6 +1,8 @@
 import { Component, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../../services/token-storage.service';
+import { GrupoService } from 'src/app/services/grupo.service';
+import { UserService } from 'src/app/services/user.service';
 
 interface Group {
   title: string;
@@ -20,126 +22,96 @@ export class MainComponent {
   currentPage: number = 1;
   selectedCardIndex: number | null = null;
   /*Creamos una array para cada grupo. Para casos prácticos, hemos creado cartas "falsas" para comprobar su funcionalidad*/
-  cardData: Array<any> = [
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 1',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 2',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 3',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 4',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 5',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 6',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 7',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 8',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 9',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 10',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 11',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 12',
-      description: 'Descripción del grupo',
-    },{
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 11',
-      description: 'Descripción del grupo',
-    },
-    {
-      imageUrl: 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg',
-      title: 'Grupo 12',
-      description: 'Descripción del grupo',
-    }
 
-  ];
+  constructor(private renderer: Renderer2, private router: Router, private tokenStorageService: TokenStorageService, private groupService: GrupoService, private userService: UserService) {}
+  
+  cardData: any[] = [];
+  rol: string = "user";
+
+  ngOnInit(){
+
+    const usuario = this.tokenStorageService.getUser();
+    const username = usuario.infoUser.username;
+    this.rol = usuario.infoUser.rolApp;
+    this.groupService.getGruposUsuario(username).subscribe(
+      (data: any[]) => {
+        this.cardData = data;
+      },
+      (error) => {
+        console.error("ERROR: ", error);
+      }
+    )
+  }
+
   /*Metodo para cambiar la página actual por la pagina destino*/
   showPage(page: number): void {
     this.currentPage = page;
   }
   /*Metodo que se ejecuta al cambiar de pagina donde pasamos el numero de pagina y el evento click*/
   changePage(page: number | string, event: Event): void {
-    /* Evitamos que el enlace nos lleve a otra pagina y no ejecute el script */
-    event.preventDefault();
-    if (page === 'prev' && this.currentPage > 1) {
-        this.showPage(this.currentPage - 1);
-      } else if (page === 'next' && this.currentPage < Math.ceil(this.cardData.length / this.cardsPerPage)) {
-        this.showPage(this.currentPage + 1);
-      }
+  /* Evitamos que el enlace nos lleve a otra pagina y no ejecute el script */
+  event.preventDefault();
+  if (page === 'prev' && this.currentPage > 1) {
+      this.showPage(this.currentPage - 1);
+    } else if (page === 'next' && this.currentPage < Math.ceil(this.cardData.length / this.cardsPerPage)) {
+      this.showPage(this.currentPage + 1);
     }
-
-
-    firstLinkActivated = false;
-  
-    constructor(private renderer: Renderer2, private router: Router, private tokenStorageService: TokenStorageService) {}
-
-    enlargeAndNavigate(index: number) {
-    if (!this.firstLinkActivated) {
-      this.firstLinkActivated = true;
-    }
-
-    const cardElements = document.querySelectorAll('.card');
-
-    cardElements.forEach((cardElement: Element, i: number) => {
-      if (i === index) {
-        this.renderer.addClass(cardElement, 'enlarged-card');
-      } else {
-        this.renderer.removeClass(cardElement, 'enlarged-card');
-      }
-    });
-
-    this.selectedCardIndex = index;
-
-    setTimeout(() => {
-      this.router.navigate(['/chat']);
-    }, 1000); // Redirige después de 0.3 segundos (300 ms)
   }
 
-    //Cerrar sesion
+  firstLinkActivated = false;
 
-    logout(): void{
-      alert(window.sessionStorage.getItem('auth-user'));
-      this.tokenStorageService.signOut();
-      this.router.navigate(['/home']);
+  enlargeAndNavigate(index: number, codigo: number) {
+  if (!this.firstLinkActivated) {
+    this.firstLinkActivated = true;
+  }
+
+  const cardElements = document.querySelectorAll('.card');
+
+  cardElements.forEach((cardElement: Element, i: number) => {
+    if (i === index) {
+      this.renderer.addClass(cardElement, 'enlarged-card');
+    } else {
+      this.renderer.removeClass(cardElement, 'enlarged-card');
     }
+  });
+
+  this.selectedCardIndex = index;
+
+  setTimeout(() => {
+    this.router.navigate(['/chat', codigo]);
+  }, 1000); // Redirige después de 0.3 segundos (300 ms)
+}
+
+  filtrar(): void{
+    try {
+      const input = (document.getElementById('buscar') as HTMLInputElement).value;
+      this.groupService.getGruposLike(input).subscribe(
+        (data: any[]) => {
+          this.cardData = data;
+        }
+      )
+    } catch (error) {
+
+      const usuario = this.tokenStorageService.getUser();
+      const username = usuario.infoUser.username;
+
+      this.groupService.getGruposUsuario(username).subscribe(
+        (data: any[]) => {
+          this.cardData = data;
+        },
+        (error) => {
+          console.error("ERROR: ", error);
+        }
+      )
+    }
+    
+  }
+
+  //Cerrar sesion
+
+  logout(): void{
+    this.tokenStorageService.signOut();
+    this.router.navigate(['/home']);
+  }
 }
 

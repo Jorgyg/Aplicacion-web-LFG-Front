@@ -36,4 +36,22 @@
     input{
         width: 200px;
     }
+
+    .list-group-item{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
+.hover-image { 
+    position: absolute;
+    top: -80px;
+    left: 100px;
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out;
+}
+
+.list-group-item:hover .hover-image {
+    opacity: 1;
 }

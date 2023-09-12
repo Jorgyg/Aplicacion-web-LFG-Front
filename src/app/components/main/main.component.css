@@ -2,6 +2,10 @@
     width: 100px;
 }
 
+.custom-toggler .material-symbols-outlined{
+    color: white;
+}
+
 body{
     margin: 0;
 }
@@ -36,7 +40,7 @@ input:focus{
     justify-content: center;
     align-items: center;
     gap: 10px;
-    max-height: 85vh;
+    max-height: 90vh;
     overflow: auto;
 }
 
@@ -49,6 +53,14 @@ input:focus{
 }
 
 /* Estilos de las cartas que contienen los grupos */
+
+.text-adjust{
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
 
 .card {
     flex: 0 0 calc(18rem - 20px);
@@ -82,8 +94,91 @@ input:focus{
         max-height: 
         60vh;
     }
+
+   
 }
 
+@media (max-width: 800px) {
+    .card{
+        max-width: 150px!important;
+        margin: 0px!important;
+    }
+
+    .small-card-body {
+        padding: 0.25rem; 
+    }
+
+    .btn {
+        padding: 0.2rem 0.5rem!important;
+        font-size: 12px;
+    }
+    
+    .pagination{
+        margin-bottom: 4px!important;
+    }
+
+    h5{
+        font-size: 15px;
+    }
+
+    p{
+        font-size: 9px;
+    }
+
+    .navbar-nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+    
+      .navbar-nav .nav-item {
+        margin-right: 10px;
+      }
+
+      input:focus{
+        width: 360px;
+    }
+
+    .st-pc{
+        display: none!important;
+    }
+
+    .st-movile{
+        display: flex!important;
+        justify-content: center;
+    }
+    
+    .logout{
+        display: flex;
+        justify-content: center!important;
+    }
+
+    .container-fluid, .navbar-collapse{
+        margin-left: 0px!important;
+    }
+}
+
+@media (min-width: 3000px) {
+    .card{
+        min-width: 500px!important;
+        
+    }
+
+    h5{
+        font-size: 60px;
+    }
+
+    p{
+        font-size: 40px;
+    }
+
+    a{
+        width: 100px;
+        height: 60px;
+        font-size: 30px;
+    }
+}
 /* Estilos para los iconos */
 
 .logout{
@@ -115,3 +210,7 @@ input:focus{
     opacity: 0;
     transition: opacity 1s ease-in-out transformZ();
 }
+
+.st-movile{
+    display: none;
+  }

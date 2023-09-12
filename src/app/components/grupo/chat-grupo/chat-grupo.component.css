@@ -27,6 +27,8 @@ body{
     overflow: auto;
     border: none;
     padding: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 2vw;
 }
 
 /* Personalizacion del scrollbar del chat */
@@ -42,4 +44,50 @@ body{
 
 .chat::-webkit-scrollbar-thumb:hover {
     background-color: #D8F3DC; /* Cambia el color al pasar el cursor por encima */
+}
+
+.st-movile{
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .btn {
+        width: 50px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-container {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    .sword {
+        margin-left: 0;
+    }
+
+    .setting {
+        margin-right: 0;
+    }
+
+    a {
+        margin: 2px !important;
+    }
+
+    .top-n {
+        display: flex !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .st-pc{
+        display: none!important;
+    }
+
+    .st-movile{
+        display: flex;
+        justify-content: center;
+
+    }
 }
