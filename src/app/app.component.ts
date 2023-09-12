@@ -78,7 +78,7 @@ export class AppComponent implements OnInit {
         // En caso de no existir se estblecerá un fondo por defecto
         this.backgroundUrl = '/assets/img/background-about.jpg'; // o establecer algún otro valor predeterminado
       }
-    }
+    } 
   }  
 
 }
