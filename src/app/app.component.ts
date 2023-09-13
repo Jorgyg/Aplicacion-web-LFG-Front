@@ -67,9 +67,20 @@ export class AppComponent implements OnInit {
       "/retar":'/assets/img/bg-10.png'
     };
 
-    const chat = this.router.url;
-    if(chat.startsWith('/chat')){
+    const view = this.router.url;
+
+    if(view.startsWith('/chat')){
       this.backgroundUrl = `url(${bg['/chat']})`
+    } else if(view.startsWith('/ajustes')){
+      this.backgroundUrl = `url(${bg['/ajustes']})`
+    } else if(view.startsWith('/retar')){
+      this.backgroundUrl = `url(${bg['/retar']})`
+    } else if(view.startsWith('/miembros')){
+      this.backgroundUrl = `url(${bg['/miembros']})`
+    } else if(view.startsWith('/eventos')){
+      this.backgroundUrl = `url(${bg['/eventos']})`
+    } else if(view.startsWith('/logros')){
+      this.backgroundUrl = `url(${bg['/logros']})`
     } else{
       //Comprueba que la url recibida se encuentra en la constante de rutas y le asigna el background que le pertenece
       if (bg[url]) {
