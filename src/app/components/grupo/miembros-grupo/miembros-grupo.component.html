@@ -1,104 +1,19 @@
 <div class="container-fluid text-center">
     <div class="row">
         <div class="col-md-1 d-flex justify-content-left mb-5 mx-3 m-2">
-            <a routerLink="/chat" class="align-right btn bg-color-1 color-7 m-2"><b><span class="material-symbols-outlined key">
+            <a (click)="volver()" class="align-right btn bg-color-1 color-7 m-2"><b><span class="material-symbols-outlined key">
                 keyboard_return
                 </span></b></a>
         </div>
     </div>
-    <div class="row scroll mt-5 justify-content-center">
-        <div class="col-md-6 col-sm-12 p-3">
+    <div class="row scroll mt-5 justify-content-center menu">
+        <div class="col-md-6 col-sm-12 p-3" *ngFor="let miembro of miembros">
             <div class="align-items-center">
-                <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px" alt="...">
-                <span class="color-1 mx-2">Miembro</span>
-                <span class="color-1 mx-2">@miembro</span>
-                <select name="role" class="mx-2" id="userRole">
-                    <option value="leader">Líder</option>
-                    <option value="user">Miembro</option>
-                </select>
-                <button class="btn btn-danger mx-2"><i class="fas fa-arrow-right-from-bracket"></i></button>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 p-3">
-            <div class="align-items-center">
-                <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px" alt="...">
-                <span class="color-1 mx-2">Miembro</span>
-                <span class="color-1 mx-2">@miembro</span>
-                <select name="role" class="mx-2" id="userRole">
-                    <option value="leader">Líder</option>
-                    <option value="user">Miembro</option>
-                </select>
-                <button class="btn btn-danger mx-2"><i class="fas fa-arrow-right-from-bracket"></i></button>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 p-3">
-            <div class="align-items-center">
-                <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px" alt="...">
-                <span class="color-1 mx-2">Miembro</span>
-                <span class="color-1 mx-2">@miembro</span>
-                <select name="role" class="mx-2" id="userRole">
-                    <option value="leader">Líder</option>
-                    <option value="user">Miembro</option>
-                </select>
-                <button class="btn btn-danger mx-2"><i class="fas fa-arrow-right-from-bracket"></i></button>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 p-3">
-            <div class="align-items-center">
-                <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px" alt="...">
-                <span class="color-1 mx-2">Miembro</span>
-                <span class="color-1 mx-2">@miembro</span>
-                <select name="role" class="mx-2" id="userRole">
-                    <option value="leader">Líder</option>
-                    <option value="user">Miembro</option>
-                </select>
-                <button class="btn btn-danger mx-2"><i class="fas fa-arrow-right-from-bracket"></i></button>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 p-3">
-            <div class="align-items-center">
-                <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px" alt="...">
-                <span class="color-1 mx-2">Miembro</span>
-                <span class="color-1 mx-2">@miembro</span>
-                <select name="role" class="mx-2" id="userRole">
-                    <option value="leader">Líder</option>
-                    <option value="user">Miembro</option>
-                </select>
-                <button class="btn btn-danger mx-2"><i class="fas fa-arrow-right-from-bracket"></i></button>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 p-3">
-            <div class="align-items-center">
-                <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px" alt="...">
-                <span class="color-1 mx-2">Miembro</span>
-                <span class="color-1 mx-2">@miembro</span>
-                <select name="role" class="mx-2" id="userRole">
-                    <option value="leader">Líder</option>
-                    <option value="user">Miembro</option>
-                </select>
-                <button class="btn btn-danger mx-2"><i class="fas fa-arrow-right-from-bracket"></i></button>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 p-3">
-            <div class="align-items-center">
-                <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px" alt="...">
-                <span class="color-1 mx-2">Miembro</span>
-                <span class="color-1 mx-2">@miembro</span>
-                <select name="role" class="mx-2" id="userRole">
-                    <option value="leader">Líder</option>
-                    <option value="user">Miembro</option>
-                </select>
-                <button class="btn btn-danger mx-2"><i class="fas fa-arrow-right-from-bracket"></i></button>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 p-3">
-            <div class="align-items-center">
-                <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" width="100px" alt="...">
-                <span class="color-1 mx-2">Miembro</span>
-                <span class="color-1 mx-2">@miembro</span>
-                <select name="role" class="mx-2" id="userRole">
-                    <option value="leader">Líder</option>
-                    <option value="user">Miembro</option>
+                <span class="color-1 mx-2">{{miembro.usuario.nombre}}</span>
+                <span class="color-1 mx-2">{{miembro.usuario.username}}</span>
+                <select name="role" class="mx-2" id="userRole" aria-readonly="true">
+                    <option [selected]="miembro.esAdmin === true" value="leader">Líder</option>
+                    <option [selected]="miembro.esAdmin === false" value="user">Miembro</option>
                 </select>
                 <button class="btn btn-danger mx-2"><i class="fas fa-arrow-right-from-bracket"></i></button>
             </div>

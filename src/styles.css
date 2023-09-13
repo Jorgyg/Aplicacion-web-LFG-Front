@@ -47,6 +47,10 @@ body{
     background-color: #081C15;
 
 }
+.menu{
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 2vw;
+}
 
 /*Text-color*/
 .color-1{

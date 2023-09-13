@@ -1,5 +1,9 @@
 import { Component, Renderer2 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { GrupoService } from 'src/app/services/grupo.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+
 
 @Component({
   selector: 'app-eventos-grupo',
@@ -15,50 +19,114 @@ export class EventosGrupoComponent {
   selectedEventIndex: number | null = null;
   firstLinkActivated = false;
 
-  /*Creamos una array para cada grupo. Para casos prácticos, hemos creado cartas "falsas" para comprobar su funcionalidad*/
-  eventData: Array<any> = [
-    {
-      title: 'Evento 1', 
-      date: '31/01/2024',
-    },
-    {
-      title: 'Evento 2',
-      date: '30/01/2024',
-    },
-    {
-      title: 'Evento 3',
-      date: '29/01/2024',
-    },
-    {
-      title: 'Evento 4',
-      date: '28/01/2024',
-    },
-    {
-      title: 'Evento 5',
-      date: '27/01/2024',
-    },
-    {
-      title: 'Evento 6',
-      date: '26/01/2024',
-    },
-    {
-      title: 'Evento 7',
-      date: '25/01/2024',
-    },
-    {
-      title: 'Evento 8',
-      date: '24/01/2024',
-    },
-    {
-      title: 'Evento 9',
-      date: '23/01/2024',
-    },
-    {
-      title: 'Evento 10',
-      date: '22/01/2024',
-    }
-  ];
-  constructor(private renderer: Renderer2, private router: Router) {}
+  constructor(private activatedRoute: ActivatedRoute, private tokenService: TokenStorageService ,private renderer: Renderer2, private router: Router, private groupService: GrupoService, private route: ActivatedRoute) {}
+
+  eventos: any = [];
+  form: any = {
+    nombre: null,
+    fecha: null
+  };
+  usuarioEventos: any = [];
+  
+  ngOnInit(){
+    this.route.paramMap.subscribe((params) =>{
+      const codGrupoStr = params.get('codigo');
+      const codGrupoNum = Number(codGrupoStr);
+      const user = this.tokenService.getUser();
+      const username = user.infoUser.username;
+      this.groupService.getEventosGrupo(codGrupoNum + "").subscribe(
+        data=>{
+          console.log(data);
+          this.eventos = data
+        },
+        err => {
+          console.log(err);
+        }
+      );
+      this.groupService.getUsuarioEvento(codGrupoNum, username).subscribe(
+        data => {
+          console.log(data);
+          this.usuarioEventos = data
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    })
+  }
+
+  onSubmit(){
+    this.route.paramMap.subscribe((params) =>{
+      const codGrupoStr = params.get('codigo');
+      const codGrupoNum = Number(codGrupoStr);
+      const {nombre, fecha} = this.form;
+      this.groupService.postEvento(codGrupoNum, nombre, fecha).subscribe(
+        data=>{
+          this.groupService.getEventosGrupo(codGrupoNum + "").subscribe(
+            data=>{
+              console.log(data);
+              this.eventos = data
+            },
+            err => {
+              console.log(err);
+            }
+          );
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    })
+  }
+
+  isAccepted(codEvento: number): boolean {
+    // Busca el evento correspondiente en usuarioEventos
+    const eventoUsuario = this.usuarioEventos.find((evento: any) => evento.codEvento === codEvento);
+  
+    // Si no se encuentra el evento, se considera no aceptado
+    return eventoUsuario ? eventoUsuario.aceptar : false;
+  }
+  
+  isRejected(codEvento: number): boolean {
+    // Busca el evento correspondiente en usuarioEventos
+    const eventoUsuario = this.usuarioEventos.find((evento: any) => evento.codEvento === codEvento);
+  
+    // Si no se encuentra el evento, se considera no rechazado
+    return eventoUsuario ? !eventoUsuario.aceptar : false;
+  }
+
+  elegir(codEvento: number, aceptar: boolean){
+    this.route.paramMap.subscribe((params) =>{
+      const codGrupoStr = params.get('codigo');
+      const codGrupoNum = Number(codGrupoStr);
+      const user = this.tokenService.getUser();
+      const username = user.infoUser.username;
+      this.groupService.postUsuarioEvento(codGrupoNum, codEvento, username, aceptar).subscribe(
+        data=>{
+          this.groupService.getEventosGrupo(codGrupoNum + "").subscribe(
+            data=>{
+              console.log(data);
+              this.eventos = data;
+              location.reload();
+            },
+            err => {
+              console.log(err);
+            }
+          );
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    })
+  }
+
+  volver(){
+    this.route.paramMap.subscribe((params) =>{
+      const codigo = params.get('codigo') + "";
+      this.router.navigate(['/chat', codigo]);
+    })
+  }
 
   /*Metodo para cambiar la página actual por la pagina destino*/
   showPage(page: number): void {
@@ -70,7 +138,7 @@ export class EventosGrupoComponent {
     event.preventDefault();
     if (page === 'prev' && this.currentPage > 1) {
         this.showPage(this.currentPage - 1);
-      } else if (page === 'next' && this.currentPage < Math.ceil(this.eventData.length / this.cardsPerPage)) {
+      } else if (page === 'next' && this.currentPage < Math.ceil(this.eventos.length / this.cardsPerPage)) {
         this.showPage(this.currentPage + 1);
       }
     }

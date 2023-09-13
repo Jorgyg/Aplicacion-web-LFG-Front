@@ -24,12 +24,12 @@ const routes: Routes = [
   { path: "crear", component: CrearGrupoComponent },
   { path: "unirse", component: UnirseGrupoComponent },
   { path: "chat/:codigo", component: ChatGrupoComponent },
-  { path: "logros", component: LogrosGrupoComponent },
-  { path: "miembros", component: MiembrosGrupoComponent },
-  { path: "eventos", component: EventosGrupoComponent },
-  { path: "ajustes", component: AjustesGrupoComponent },
+  { path: "logros/:codigo", component: LogrosGrupoComponent },
+  { path: "miembros/:codigo", component: MiembrosGrupoComponent },
+  { path: "eventos/:codigo", component: EventosGrupoComponent },
+  { path: "ajustes/:codigo", component: AjustesGrupoComponent },
   { path: "perfil", component: PerfilComponent },
-  { path: "retar", component: RetarGrupoComponent },
+  { path: "retar/:codigo", component: RetarGrupoComponent },
 ];
 
 @NgModule({

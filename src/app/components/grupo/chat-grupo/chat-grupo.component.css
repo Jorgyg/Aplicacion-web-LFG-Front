@@ -27,8 +27,6 @@ body{
     overflow: auto;
     border: none;
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 2vw;
 }
 
 /* Personalizacion del scrollbar del chat */

@@ -3,7 +3,7 @@
 
     <div class="row d-flex justify-content-center">
         <div class="col-md-1">
-            <a routerLink="/chat" class="btn bg-color-1 color-7 mt-2"><b><span class="material-symbols-outlined key">
+            <a (click)="volver()" class="btn bg-color-1 color-7 mt-2"><b><span class="material-symbols-outlined key">
                 keyboard_return
                 </span></b></a>
         </div>
@@ -14,34 +14,35 @@
         </div>
     </div>
 
-    <div class="color-1 row d-flex justify-content-center align-items-center"> 
-        <span class="material-symbols-outlined sw col d-flex justify-content-end">swords</span>
-        <h1 class="text-center b-color-9 mb-4 col">Retar a grupo</h1>
-        <span class="material-symbols-outlined sw col d-flex justify-content-start">swords</span>
-    </div>
-    <div class="row d-flex justify-content-center align-items-center">
-        <div class="col-6  mb-5 mt-5 w-25">
-            <label for="nombre" class="form-label color-1">Código de grupo:</label>
-            <input type="text" class="form-control bg-color-1 color-9 mb-3" id="groupCode" value="">
-            <label for="nombre" class="form-label color-1">Mensaje:</label>
-            <input type="textbox" class="form-control bg-color-1 color-9 mb-3" id="message" value="">
+    <form class="menu">
+        <div class="color-1 row d-flex justify-content-center align-items-center"> 
+            <h1 class="text-center b-color-9 mb-4 col">Retar a grupo</h1>
         </div>
-    </div>
-    <!-- Boton para enviar el reto a un grupo -->
-    <div class="row d-flex justify-content-center align-items-center">
-        <div class="col-md-4 col-sm-12">
-            <a routerLink="/retar" class="btn btn-danger m-2 sword">
-                <b><span class="material-symbols-outlined sw">swords</span></b>
-            </a>
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-6  mb-5 mt-5 w-25">
+                <label for="nombre" class="form-label color-1">Código de grupo:</label>
+                <input type="text" class="form-control bg-color-1 color-9 mb-3" id="groupCode" value="">
+                <label for="nombre" class="form-label color-1">Mensaje:</label>
+                <input type="textbox" class="form-control bg-color-1 color-9 mb-3" id="message" value="">
+            </div>
         </div>
-    </div>
-
-    <div  class="row d-flex justify-content-center align-items-center">
-        <div class="col-3 mx-1" >
-            <img class="foot" src="./assets/img/pet6.png" alt="">
+        <!-- Boton para enviar el reto a un grupo -->
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-4 col-sm-12">
+                <a routerLink="/retar" class="btn btn-danger m-2 sword">
+                    <b><span class="material-symbols-outlined sw">swords</span></b>
+                </a>
+            </div>
         </div>
 
-        <div class="col-3 jinx mx-1" >
-            <img class="foot" src="./assets/img/pet6.png" alt="">
+        <div  class="row d-flex justify-content-center align-items-center">
+            <div class="col-3 mx-1" >
+                <img class="foot" src="./assets/img/pet6.png" alt="">
+            </div>
+
+            <div class="col-3 jinx mx-1" >
+                <img class="foot" src="./assets/img/pet6.png" alt="">
+            </div>
         </div>
-    </div>
+    </form>
+</div>

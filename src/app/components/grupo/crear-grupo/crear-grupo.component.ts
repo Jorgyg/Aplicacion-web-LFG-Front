@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, NgModule, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 import { GamesService } from '../../../services/games.service';
 import { GrupoService } from 'src/app/services/grupo.service';
 import { Router } from '@angular/router';

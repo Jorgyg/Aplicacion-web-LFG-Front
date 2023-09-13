@@ -1,8 +1,8 @@
-<div class="container-fluid">
+<div class="container-fluid menu">
     <!-- Volver -->
-    <div class="row m-3">
+    <div class="row m-3 pt-3">
         <div class="col-md-1 mx-4">
-            <a routerLink="/chat" class="align-right btn bg-color-1 color-7 m-2"><b><span class="material-symbols-outlined key">
+            <a (click)="volver()" class="align-right btn bg-color-1 color-7 m-2"><b><span class="material-symbols-outlined key">
                 keyboard_return
                 </span></b></a>
         </div>
@@ -10,12 +10,13 @@
     <!-- Seccion de eventos, cada div representa un evento con sus propiedades -->
     <div class="row px-5 mt-5">
         <ul class="list-group-container">
-            <div *ngFor="let group of eventData.slice((currentPage-1)*cardsPerPage, currentPage * cardsPerPage); let i = index" class="card bg-color-1 m-2" [class.fade-out]="firstLinkActivated && selectedEventIndex !== i" [ngClass]="{'enlarged': selectedEventIndex === i}">
-                <li class="list-group-item bg-color-1" aria-current="true">
-                    <span class="align-left">{{group.title}}</span>
-                    <span class="mx-auto">{{group.date}}</span>
-                    <span class="align-right"><button class="btn btn-primary"><i class="fas fa-check"></i></button>
-                        <button class="mx-1 btn btn-danger cancel"><i class="fas fa-x"></i></button></span>
+            <!-- [ngClass]="{'bg-success': isAccepted(evento.codEvento),'bg-danger': isRejected(evento.codEvento),'fade-out': firstLinkActivated && selectedEventIndex !== i,'enlarged': selectedEventIndex === i}" -->
+            <div *ngFor="let evento of eventos.slice((currentPage-1)*cardsPerPage, currentPage * cardsPerPage); let i = index" class="card bg-color-1 m-2" [class.fade-out]="firstLinkActivated && selectedEventIndex !== i" [ngClass]="{'enlarged': selectedEventIndex === i}">
+                <li [ngClass]="{'bg-primary': isAccepted(evento.codEvento),'bg-danger': isRejected(evento.codEvento)}" class="list-group-item bg-color-1" aria-current="true">
+                    <span class="align-left">{{evento.titulo}}</span>
+                    <span class="mx-auto">{{evento.fechaEvento}}</span>
+                    <span class="align-right"><button *ngIf="!isRejected(evento.codEvento)" (click)="elegir(evento.codEvento, true)" class="btn btn-primary"><i class="fas fa-check"></i></button>
+                    <button *ngIf="!isAccepted(evento.codEvento)" (click)="elegir(evento.codEvento, false)" class="mx-1 btn btn-danger cancel"><i class="fas fa-x"></i></button></span>
                 </li>
             </div>
         </ul>
@@ -31,15 +32,15 @@
     </div>
     <!-- Seccion para crear un evento -->
     <div class="row justify-content-center px-1">
-        <form class="align-items-start p-5 row">
+        <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" class="align-items-start p-5 row">
             <div class="form-group align-items-center py-2 col-md-6 col-sm-12">
-                <input type="text" placeholder="Nombre" class="form-control custom-input bg-color-1 b-color-9 col-sm-8" id="eventName" formControlName="eventName">
+                <input [(ngModel)]="form.nombre" name="nombre" required type="text" placeholder="Nombre" class="form-control custom-input bg-color-1 b-color-9 col-sm-8" id="eventName">
             </div>
             <div class="form-group align-items-center py-2 col-md-6 col-sm-12">
-                <input type="date" placeholder="" class="form-control custom-input bg-color-1 b-color-9 col-sm-8" id="eventDate" formControlName="eventDate">
+                <input [(ngModel)]="form.fecha" name="fecha" required type="date" placeholder="" class="form-control custom-input bg-color-1 b-color-9 col-sm-8" id="eventDate">
             </div>
             <div class="justify-content-between py-2">
-                <button type="button" class="btn btn-lg btn-success px-4 mr-3">Crear evento</button>
+                <button type="submit" class="btn btn-lg btn-success px-4 mr-3">Crear evento</button>
             </div>
         </form>
     </div>

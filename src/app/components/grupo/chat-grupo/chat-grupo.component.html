@@ -3,19 +3,19 @@
         <!-- Seccion de opciones del grupo, cada icono representa una opción -->
         <div class="col-md-10">
             <div class="btn-container">
-                <a routerLink="/retar" class="btn btn-danger m-2 sword text-center">
+                <a (click)='retarGrupo()' class="btn btn-danger m-2 sword text-center">
                     <b><span class="material-symbols-outlined sw">swords</span></b>
                 </a>
-                <a routerLink="/eventos" class="btn m-2 btn-info events">
+                <a (click)='eventosGrupo()' class="btn m-2 btn-info events">
                     <b><span class="material-symbols-outlined ev">event</span></b>
                 </a> 
-                <a routerLink="/logros" class="btn m-2 btn-warning logros">
+                <a (click)='logrosGrupo()' class="btn m-2 btn-warning logros">
                     <b><span class="material-symbols-outlined trp">trophy</span></b>
                 </a>
-                <a routerLink="/miembros" class="btn btn-primary m-2 members">
+                <a (click)='miembrosGrupo()' class="btn btn-primary m-2 members">
                     <b><span class="material-symbols-outlined mem">groups</span></b>
                 </a>
-                <a routerLink="/ajustes" class="btn m-2 btn-success setting">
+                <a (click)='ajustesGrupo()' class="btn m-2 btn-success setting">
                     <b><span class="material-symbols-outlined set">settings</span></b>
                 </a>
                 <a routerLink="/main" class="align-right btn bg-color-1 color-7 m-2 st-movile"><b><span class="material-symbols-outlined key">
@@ -29,7 +29,7 @@
                 </span></b></a>
         </div>
     </div>
-    <div class="row m-3 chat" #mensajes>
+    <div class="row m-3 chat menu" #mensajes>
         <!-- Seccion del chat, cada div representa un mensaje enviado por una persona. Contiene su foto de perfil, su nombre y el mensaje -->
         <div *ngFor="let mensaje of listaMensajes">
             <div class="row my-5"> 
