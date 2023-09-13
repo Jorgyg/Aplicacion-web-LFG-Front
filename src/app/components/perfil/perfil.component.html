@@ -10,52 +10,50 @@
     <!-- Seccion de usuario donde introduces tu nombre y tu foto de perfil-->
     <div class="row">
         <h1 class="text-center color-1 mb-4">Mi perfil</h1>
-        <div class="col-md-4 col-sm-12 mt-5" >
-            <img src="https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg" alt="...">
-        </div>
-        <div class="col-md-4 col-sm-12 mt-5" >
-            <input class="form-control custom-input bg-color-1 b-color-9" type="file" name="src-file1" aria-label="Archivo">
-        </div>
-        <div class="col-md-4 col-sm-12 mt-4">
-            <span class="color-1">Usuario:</span> <input class="form-control custom-input bg-color-1 b-color-9" value={{currentUser.infoUser.nombre}} type="text" name="" id="">
-        </div>
     </div>
-    <!-- Seccion donde seleccionas un juego de los disponibles en la api como tu favorito -->
-    <div class="row">
-        <div class="col-md-4 col-sm-12 mt-5">
-        <span class="color-1">Juego favorito:</span>
-        <select class="form-select bg-color-1 color-9" name="juego" id="">
-            <option *ngFor="let juego of games" [value]="juego">{{ juego }}</option>
-        </select>  <br>
-        <!-- Hacer que tu perfil sea público o privado -->
-        <span class="color-1">Perfil:</span>
-        <select class="form-select bg-color-1 color-9" name="perfil" id="privacidad">
-            <option class="txt" value="publico">Publico</option>
-            <option class="txt" value="privado">Privado</option>
-        </select>  
+    <form class="menu" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" >
+        <!-- Seccion donde seleccionas un juego de los disponibles en la api como tu favorito -->
+        <div class="row mt-1">
+            <div class="col-md-6 mx-auto">
+                <span class="color-1">Usuario:</span> <input [(ngModel)]="form.nombre" required name="nombre" class="form-control custom-input bg-color-1 b-color-9" value={{currentUser.infoUser.nombre}} type="text" id="">
+            </div>
         </div>
-        <!-- Descripcion del grupo -->
-        <div class="col-md-4 col-sm-12 mt-5">
-            <span class="color-1">Descripción</span><br>
-            <textarea value={{currentUser.infoUser.descripcion}} class="form-control bg-color-1" name="" id="" cols="40" rows="10"></textarea>
+        <div class="row mt-3">
+            <div class="col-md-6 mx-auto">
+                <span class="color-1 mt-4">Juego favorito:</span>
+                <select [(ngModel)]="form.juego" required name="juego" class="form-select bg-color-1 color-9 mt-2" id="">
+                    <option *ngFor="let juego of games" [value]="juego">{{ juego }}</option>
+                </select> 
+            </div>
         </div>
-        <!-- Conexiones de la api -->
-        <div class="col-md-4 col-sm-12 mt-5">
-            <span class="color-1">Conexiones:</span><br>
+        <div class="row mt-3">
+            <div class="col-md-6 mx-auto">
+                <span class="color-1">Perfil:</span>
+                <select [(ngModel)]="form.perfil" required name="perfil" class="form-select bg-color-1 color-9" id="privacidad">
+                    <option class="txt" value="publico">Publico</option>
+                    <option class="txt" value="privado">Privado</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <!-- Guardar los cambios -->
-        <div class="col-6">
-            <button class="btn btn-success color-1"><span class="material-symbols-outlined">
-                save_as
-                </span></button>
+        <div class="row mt-3">
+            <div class="col-md-6 mx-auto">
+                <span class="color-1">Descripción:</span><br>
+                <textarea [(ngModel)]="form.descripcion" required name="descripcion" value={{currentUser.infoUser.descripcion}} class="form-control bg-color-1" id="" cols="40" rows="10"></textarea>
+            </div>
         </div>
-        <!-- Cancelar los cambios y reestablecer los inputs a default -->
-        <div class="col-6 ">
-            <button class="btn color-1 cancel"><span class="material-symbols-outlined ">
-                cancel
-                </span></button>
-        </div>        
-    </div>
+        <div class="row mt-3">
+            <!-- Guardar los cambios -->
+            <div class="col-6">
+                <button type="submit" class="btn btn-success color-1"><span class="material-symbols-outlined">
+                    save_as
+                    </span></button>
+            </div>
+            <!-- Cancelar los cambios y reestablecer los inputs a default -->
+            <div class="col-6 ">
+                <button class="btn color-1 cancel"><span class="material-symbols-outlined ">
+                    cancel
+                    </span></button>
+            </div>        
+        </div>
+    </form>
 </div>

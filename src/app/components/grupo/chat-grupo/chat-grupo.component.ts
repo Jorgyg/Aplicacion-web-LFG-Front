@@ -65,6 +65,14 @@ export class ChatGrupoComponent {
     }) 
   }
 
+  comprobarMensaje(mensaje: string): Boolean{
+    if(mensaje.match("EL GRUPO HA SIDO RETADO POR EL GRUPO")){
+      return true;
+    } else{
+      return false;
+    }
+  }
+
   private desplazar(){
     setTimeout(() => {
       if(this.mensajeContainer){

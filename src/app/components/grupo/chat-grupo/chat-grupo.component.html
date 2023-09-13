@@ -33,13 +33,16 @@
         <!-- Seccion del chat, cada div representa un mensaje enviado por una persona. Contiene su foto de perfil, su nombre y el mensaje -->
         <div *ngFor="let mensaje of listaMensajes">
             <div class="row my-5"> 
-                <div class="col-12 d-flex justify-content-end" *ngIf="this.username == mensaje.username">
+                <div class="col-12 d-flex justify-content-end" *ngIf="this.username == mensaje.username && !(comprobarMensaje(mensaje.contenido))">
                     <span class="mx-3 text-primary">{{mensaje.username}}:</span>
                     <span class="mx-3 color-1">{{mensaje.contenido}}</span>
                 </div>
-                <div class="col-12 d-flex" *ngIf="this.username != mensaje.username">
-                    <span class="mx-3 text-danger">{{mensaje.username}}:</span><br>
+                <div class="col-12 d-flex" *ngIf="this.username != mensaje.username && !(comprobarMensaje(mensaje.contenido)) ">
+                    <span class="mx-3 text-primary">{{mensaje.username}}:</span><br>
                     <span class="mx-3 color-1">{{mensaje.contenido}}</span>
+                </div>
+                <div class="col-12 d-flex bg-danger justify-content-center" *ngIf="this.username != mensaje.username && comprobarMensaje(mensaje.contenido) ">
+                    <span class="mx-3 text-white">{{mensaje.contenido}}</span>
                 </div>
             </div>
         </div>

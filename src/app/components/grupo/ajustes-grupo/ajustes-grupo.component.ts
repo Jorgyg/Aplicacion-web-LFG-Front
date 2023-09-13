@@ -11,7 +11,6 @@ import { GrupoService } from 'src/app/services/grupo.service';
 
 export class AjustesGrupoComponent {
   constructor(private router: Router, private groupService: GrupoService, private route: ActivatedRoute){}
-  
   datosGrupo: any;
   form: any = {
     nombre: null,

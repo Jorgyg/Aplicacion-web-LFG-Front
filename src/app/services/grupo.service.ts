@@ -8,6 +8,10 @@ const API_URL_2 = 'https://localhost:7082/api/UsuariosGrupos/';
 const API_URL_3 = 'https://localhost:7082/api/Mensajes/';
 const API_URL_4 = 'https://localhost:7082/api/Eventos/';
 const API_URL_5 = 'https://localhost:7082/api/UsuariosEventos/';
+const API_URL_6 = 'https://localhost:7082/api/Logros/';
+const API_URL_7 = 'https://localhost:7082/api/GruposLogros/';
+
+
 
 
 
@@ -111,5 +115,13 @@ export class GrupoService {
 
   getUsuarioEvento(CodGrupo: number, Username: string){
     return this.http.get(`${API_URL_5}${CodGrupo}/${Username}`);
+  }
+
+  getLogrosEvento(){
+    return this.http.get(API_URL_6);
+  }
+
+  getProgresoLogro(codLogro: number, codGrupo: number): Observable<any> {
+    return this.http.get(`${API_URL_7}Logros/${codLogro}/${codGrupo}`);
   }
 }
