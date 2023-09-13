@@ -107,6 +107,18 @@ export class MainComponent {
     
   }
 
+  borrar(codGrupo: number){
+    this.groupService.deleteGrupo(codGrupo).subscribe(
+      (data) => {
+        alert("Grupo eliminado correctamente.");
+        location.reload();
+      },
+      (error) => {
+        console.error("ERROR: ", error);
+      }
+    )
+  }
+
   //Cerrar sesion
 
   logout(): void{

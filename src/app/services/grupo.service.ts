@@ -72,6 +72,10 @@ export class GrupoService {
     }, httpOptions)
   }
 
+  deleteGrupo(CodGrupo: number){
+    return this.http.delete(`${API_URL}${CodGrupo}`)
+  }
+
   postUsuarioGrupo(CodGrupo: number, Username: string, esAdmin: Boolean):Observable<any>{
     return this.http.post(API_URL_2, {
       CodGrupo,
