@@ -41,42 +41,9 @@ export class AppComponent implements OnInit {
 
       this.username = user.username;
     } 
-     else {
-       this.router.navigate(["/home"]);
-     }
-    
-
-  }
-
-  //Metodo para cambiar el fondo segun la ruta
-  private cambiarFondo(url: string): void {
-    //Creamos una constante con cada ruta de la app y el background que le pertenece
-    const bg: { [key: string]: string } = {
-      '/': '/assets/img/bg-1.png',
-      '/home': '/assets/img/bg-1.png',
-      "/login":'/assets/img/bg-2.png',
-      "/register":'/assets/img/bg-3.png',
-      "/main":'/assets/img/bg-4.png',
-      "/crear":'/assets/img/bg-6.png',
-      "/unirse":'/assets/img/bg-7.png',
-      "/chat": '/assets/img/bg-1.png',
-      "/logros":'/assets/img/bg-1.png',
-      "/miembros": '/assets/img/bg-8.png',
-      "/eventos":'/assets/img/bg-9.png',
-      "/ajustes":'/assets/img/bg-5.png',
-      "/perfil":'/assets/img/bg-5.png',
-      "/retar":'/assets/img/bg-10.png'
-    };
-
-    const view = this.router.url;
-
-    if(view.startsWith('/chat')){
-      this.backgroundUrl = `url(${bg['/chat']})`
-    } else if(view.startsWith('/ajustes')){
-      this.backgroundUrl = `url(${bg['/ajustes']})`
-    } else if(view.startsWith('/retar')){
-      this.backgroundUrl = `url(${bg['/retar']})`
-    } else if(view.startsWith('/miembros')){
+     //else {
+      // this.router.navigate(["/home"]);
+     // else if(view.startsWith('/miembros')){
       this.backgroundUrl = `url(${bg['/miembros']})`
     } else if(view.startsWith('/eventos')){
       this.backgroundUrl = `url(${bg['/eventos']})`
