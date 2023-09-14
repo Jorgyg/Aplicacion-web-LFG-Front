@@ -125,7 +125,7 @@ export class GrupoService {
     return this.http.get(API_URL_6);
   }
 
-  getProgresoLogro(codLogro: number, codGrupo: number): Observable<any> {
-    return this.http.get(`${API_URL_7}Logros/${codLogro}/${codGrupo}`);
+  getProgresoLogro(codGrupo: number): Observable<any> {
+    return this.http.get(`${API_URL_7}Logros/${codGrupo}`);
   }
 }

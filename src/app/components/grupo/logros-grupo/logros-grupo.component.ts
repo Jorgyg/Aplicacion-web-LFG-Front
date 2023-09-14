@@ -19,11 +19,28 @@ export class LogrosGrupoComponent {
       data=>{
         console.log(data);
         this.listaLogros = data;
+        this.mostrarAlcanzado();
       },
       err => {
         console.log(err);
       }
     );
+  }
+
+  mostrarAlcanzado(){
+    this.route.paramMap.subscribe((params) =>{
+      const codGrupoStr = params.get('codigo');
+      const codGrupoNum = Number(codGrupoStr);
+      this.groupService.getProgresoLogro(codGrupoNum).subscribe(
+        data=>{
+          console.log(data);
+          this.progresoGrupo = data;
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    })
   }
 
   volver(){
