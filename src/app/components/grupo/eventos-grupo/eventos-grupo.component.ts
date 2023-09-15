@@ -38,6 +38,7 @@ export class EventosGrupoComponent {
         data=>{
           console.log(data);
           this.eventos = data
+          console.log(this.eventos);
         },
         err => {
           console.log(err);
@@ -47,6 +48,7 @@ export class EventosGrupoComponent {
         data => {
           console.log(data);
           this.usuarioEventos = data
+          console.log(this.usuarioEventos);
         },
         err => {
           console.log(err);
@@ -80,20 +82,20 @@ export class EventosGrupoComponent {
   }
 
   isAccepted(codEvento: number): boolean {
-    // Busca el evento correspondiente en usuarioEventos
-    const eventoUsuario = this.usuarioEventos.find((evento: any) => evento.codEvento === codEvento);
-  
-    // Si no se encuentra el evento, se considera no aceptado
-    return eventoUsuario ? eventoUsuario.aceptar : false;
+    if (this.usuarioEventos) {
+      const eventoUsuario = this.usuarioEventos.find((evento: any) => evento.codEvento === codEvento);
+      return eventoUsuario ? eventoUsuario.aceptar : false;
+    }
+    return false;
   }
   
   isRejected(codEvento: number): boolean {
-    // Busca el evento correspondiente en usuarioEventos
-    const eventoUsuario = this.usuarioEventos.find((evento: any) => evento.codEvento === codEvento);
-  
-    // Si no se encuentra el evento, se considera no rechazado
-    return eventoUsuario ? !eventoUsuario.aceptar : false;
-  }
+    if (this.usuarioEventos) {
+      const eventoUsuario = this.usuarioEventos.find((evento: any) => evento.codEvento === codEvento);
+      return eventoUsuario ? !eventoUsuario.aceptar : false;
+    }
+    return false;
+  }  
 
   elegir(codEvento: number, aceptar: boolean){
     this.route.paramMap.subscribe((params) =>{
