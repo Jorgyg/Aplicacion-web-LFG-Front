@@ -11,11 +11,6 @@ const API_URL_5 = 'https://partyholic-api-production.up.railway.app/api/Usuarios
 const API_URL_6 = 'https://partyholic-api-production.up.railway.app/api/Logros/';
 const API_URL_7 = 'https://partyholic-api-production.up.railway.app/api/GruposLogros/';
 
-
-
-
-
-
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -109,7 +104,7 @@ export class GrupoService {
   }
 
   postUsuarioEvento(CodGrupo: number, CodEvento: number, Username: string, Aceptar: boolean): Observable<any>{   
-    return this.http.post(API_URL_5, {
+    return this.http.post(API_URL_5 + 'crear', {
       CodGrupo,
       CodEvento,
       Username,
