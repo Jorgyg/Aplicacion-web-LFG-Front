@@ -48,6 +48,10 @@ body{
     display: none;
 }
 
+.img{
+    width: 50px;
+}
+
 @media (max-width: 768px) {
     .btn {
         width: 50px;
