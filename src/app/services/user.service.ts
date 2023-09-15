@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 
 
-const API_URL = 'https://localhost:7082/api/Usuarios/';
+const API_URL = 'https://partyholic-api-production.up.railway.app/api/Usuarios/';
 
 
 const httpOptions = {

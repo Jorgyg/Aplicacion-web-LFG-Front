@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 
-const API_URL = 'https://localhost:7082/api/Grupos/';
-const API_URL_2 = 'https://localhost:7082/api/UsuariosGrupos/';
-const API_URL_3 = 'https://localhost:7082/api/Mensajes/';
-const API_URL_4 = 'https://localhost:7082/api/Eventos/';
-const API_URL_5 = 'https://localhost:7082/api/UsuariosEventos/';
-const API_URL_6 = 'https://localhost:7082/api/Logros/';
-const API_URL_7 = 'https://localhost:7082/api/GruposLogros/';
+const API_URL = 'https://partyholic-api-production.up.railway.app/api/Grupos/';
+const API_URL_2 = 'https://partyholic-api-production.up.railway.app/api/UsuariosGrupos/';
+const API_URL_3 = 'https://partyholic-api-production.up.railway.app/api/Mensajes/';
+const API_URL_4 = 'https://partyholic-api-production.up.railway.app/api/Eventos/';
+const API_URL_5 = 'https://partyholic-api-production.up.railway.app/api/UsuariosEventos/';
+const API_URL_6 = 'https://partyholic-api-production.up.railway.app/api/Logros/';
+const API_URL_7 = 'https://partyholic-api-production.up.railway.app/api/GruposLogros/';
 
 
 

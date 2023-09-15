@@ -33,8 +33,8 @@ export class LogrosGrupoComponent {
       const codGrupoNum = Number(codGrupoStr);
       this.groupService.getProgresoLogro(codGrupoNum).subscribe(
         data=>{
-          console.log(data);
           this.progresoGrupo = data;
+          console.log(this.progresoGrupo);
         },
         err => {
           console.log(err);
