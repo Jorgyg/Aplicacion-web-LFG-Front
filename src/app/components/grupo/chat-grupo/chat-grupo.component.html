@@ -34,12 +34,19 @@
         <div *ngFor="let mensaje of listaMensajes">
             <div class="row my-5"> 
                 <div class="col-12 d-flex justify-content-end" *ngIf="this.username == mensaje.username && !(comprobarMensaje(mensaje.contenido))">
-                    <span class="mx-3 text-primary">{{mensaje.username}}:</span>
-                    <span class="mx-3 color-1">{{mensaje.contenido}}</span>
+                    <div class="d-flex flex-column">
+                        <span class="mx-3 text-primary">{{ mensaje.username }}:</span>
+                        <span class="mx-3 color-1">{{mensaje.contenido}}</span>
+                    </div>
+                    <img class="img" [src]="mensaje.fotoPerfil" alt="">
+
                 </div>
                 <div class="col-12 d-flex" *ngIf="this.username != mensaje.username && !(comprobarMensaje(mensaje.contenido)) ">
-                    <span class="mx-3 text-primary">{{mensaje.username}}:</span><br>
-                    <span class="mx-3 color-1">{{mensaje.contenido}}</span>
+                    <img class="img" [src]="mensaje.fotoPerfil" alt="">
+                    <div class="d-flex flex-column">
+                        <span class="mx-3 text-primary">{{ mensaje.username }}:</span>
+                        <span class="mx-3 color-1">{{mensaje.contenido}}</span>
+                    </div>
                 </div>
                 <div class="col-12 d-flex bg-danger justify-content-center" *ngIf="this.username != mensaje.username && comprobarMensaje(mensaje.contenido) ">
                     <span class="mx-3 text-white">{{mensaje.contenido}}</span>
