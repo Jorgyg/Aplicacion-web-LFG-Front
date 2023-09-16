@@ -104,7 +104,7 @@ export class GrupoService {
   }
 
   postUsuarioEvento(CodGrupo: number, CodEvento: number, Username: string, Aceptar: boolean): Observable<any>{   
-    return this.http.post(API_URL_5 + 'crear', {
+    return this.http.post(API_URL_5, {
       CodGrupo,
       CodEvento,
       Username,
