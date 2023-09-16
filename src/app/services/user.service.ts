@@ -22,6 +22,7 @@ export class UserService {
     getPublishContent(): Observable<any>{
       return this.http.get(API_URL + '', {responseType: 'text'});
     }
+    
 
     getUserBoard(): Observable<any>{
       return this.http.get(API_URL + 'user', {responseType: 'text'});
@@ -29,6 +30,10 @@ export class UserService {
 
     getAdminBoard(): Observable<any>{
       return this.http.get(API_URL + 'admin', {responseType: 'text'});
+    }
+
+    getUserByUsername(username: string): Observable<any> {
+      return this.http.get(API_URL + `username/${username}`, { responseType: 'json' });
     }
 
     putUser(Username: string, Nombre: string, JuegoFavorito: string, Privacidad: string, Descripcion: string, Email: string, Passwd: string): Observable<any>{   

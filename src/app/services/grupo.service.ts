@@ -30,7 +30,7 @@ export class GrupoService {
 
   getGrupos(): Observable<any>{
     return this.http.get(API_URL);
-  }
+  } 
 
   getGrupo(codigo: string): Observable<any>{
     return this.http.get(`${API_URL}${codigo}`)

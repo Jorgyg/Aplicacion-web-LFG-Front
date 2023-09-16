@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GrupoService } from 'src/app/services/grupo.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-chat-grupo',
@@ -11,55 +12,18 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class ChatGrupoComponent {
   
   
-  constructor(private router: Router, private route: ActivatedRoute, private groupService: GrupoService, private tokenService: TokenStorageService){}
+  constructor(private router: Router, private route: ActivatedRoute, private groupService: GrupoService, private tokenService: TokenStorageService, private userService: UserService) {}
   @ViewChild('mensajes') private mensajeContainer: ElementRef | undefined;
   
   listaMensajes: any[] = [];
   user = this.tokenService.getUser();
   username = this.user.infoUser.username;
   codigo = "";
-  users: any[] = [];
-  userImage: any[] = [];
-  fotosPerfil = [
-    "https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_green_lantern_hero_comic-256.png",
-    "https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_superman_hero_comic-512.png",
-    "https://cdn2.iconfinder.com/data/icons/halloween-emojis-vol3/128/halloween_frankenstein-stare-face-512.png",
-    "https://cdn0.iconfinder.com/data/icons/halloween-emojis/128/halloween__lantern-pumpkin-stare-15-128.png",
-    "https://cdn2.iconfinder.com/data/icons/heroes/128/superhero_captain_hero_comic-128.png",
-    "https://cdn4.iconfinder.com/data/icons/hipster-8/128/hipster_man-mustache-aviator-128.png",
-    "https://cdn3.iconfinder.com/data/icons/halloween-emojis-mega-pack/128/halloween-2_cauldron-angry-kawaii_13-512.png",
-    "https://cdn0.iconfinder.com/data/icons/pokemon-go-vol-2/135/_snorlax-64.png",
-    "https://cdn0.iconfinder.com/data/icons/freebies-2/24/video-game-mario-3-64.png",
-    "https://cdn3.iconfinder.com/data/icons/legend-of-zelda-nes/46/11-64.png",
-    "https://cdn3.iconfinder.com/data/icons/chess-7/100/black_king-64.png",
-    "https://cdn0.iconfinder.com/data/icons/video-games-8/24/video_game_play_sims-64.png"
-  ];
+
   ngOnInit(){
     this.route.paramMap.subscribe((params) =>{
       const codigo = params.get('codigo');
-      this.groupService.getUsuariosGrupo(codigo + "").subscribe(
-        data=>{
-          for (let i = 0; i < data.length; i++) {
-            this.users.push(data[i].usuario.username);      
-          }
-          console.log(this.users);
-
-          for (let i = 0; i < this.users.length; i++) {
-            var name = this.users[i];
-            this.userImage.push({
-              name: name,
-              img: this.obtenerFotoPerfilAleatoria(),
-              change: true
-            })
-            
-          }
-        },
-        err => {
-          console.log(err);
-        }
-      );
       this.cargarMensajes(codigo + "");
-
       this.desplazar();
     })
 
@@ -72,28 +36,33 @@ export class ChatGrupoComponent {
 
   }
 
-  obtenerFotoPerfilAleatoria(): string {
-      const indiceAleatorio = Math.floor(Math.random() * this.fotosPerfil.length);
-      var avatar = this.fotosPerfil[indiceAleatorio];
-    return avatar;
-  }
+  profileImagesMap: Map<string, string> = new Map();
 
-  cargarMensajes(codigo: string):void{
+  cargarMensajes(codigo: string): void {
     this.groupService.getMensajesGrupo(codigo).subscribe(
       (data: any[]) => {
-        for (let i = 0; i < data.length; i++) {
-          for (let c = 0; c < this.users.length; c++) {
-            if(data[i].username == this.users[c]){
-              data[i].fotoPerfil = this.fotosPerfil[c]
-            }        
-          }          
-        }
         this.listaMensajes = data;
+  
+        this.listaMensajes.forEach((mensaje, index) => {
+          if (!this.profileImagesMap.has(mensaje.username)) {
+            this.userService.getUserByUsername(mensaje.username).subscribe(
+              (userData: any) => {
+                this.profileImagesMap.set(mensaje.username, userData.fotoPerfil);
+                this.listaMensajes[index].fotoPerfil = userData.fotoPerfil;
+              },
+              (error) => {
+                console.error("ERROR al obtener datos de usuario: ", error);
+              }
+            );
+          } else {
+            this.listaMensajes[index].fotoPerfil = this.profileImagesMap.get(mensaje.username);
+          }
+        });
       },
       (error) => {
         console.error("ERROR: ", error);
       }
-    )
+    );
   }
 
   enviarMensaje(): void{
