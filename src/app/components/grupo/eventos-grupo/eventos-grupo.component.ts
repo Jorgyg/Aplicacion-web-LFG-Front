@@ -1,16 +1,15 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component, Renderer2, OnInit  } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GrupoService } from 'src/app/services/grupo.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
-
 
 @Component({
   selector: 'app-eventos-grupo',
   templateUrl: './eventos-grupo.component.html',
   styleUrls: ['./eventos-grupo.component.css']
 })
-export class EventosGrupoComponent {
+export class EventosGrupoComponent implements OnInit  {
   /* Elemento que utilizaremos para cambiar el estilo de cualquier etiqueta del html */
   elementStyle: { [key: string]: string } = {};
   /*Se indica el numero de grupos que habrá por pagina y la pagina actual, que por defecto será la primera*/

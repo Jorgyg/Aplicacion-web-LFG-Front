@@ -53,3 +53,53 @@ width: 50px;
     animation: fightAnimation 2s ease infinite; 
   }
 
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    max-height: 90vh;
+    overflow: auto;
+}
+
+.card{
+    max-width: 200px;
+    padding: 0!important;
+}
+
+/* Estilos de las cartas que contienen los grupos */
+
+.text-adjust{
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
+
+.card {
+    flex: 0 0 calc(18rem - 20px);
+    transition: transform 0.3s ease-in-out, opacity 1s ease-in-out;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+
+}
+
+.card:hover{
+    will-change: transform !important;
+    transform: scale(1.04);
+}
+
+.card-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.card-container::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Cambia el color de la barra de desplazamiento */
+    border-radius: 5px;
+}
+
+.card-container::-webkit-scrollbar-thumb:hover {
+    background-color: transparent; /* Cambia el color al pasar el cursor por encima */
+}
