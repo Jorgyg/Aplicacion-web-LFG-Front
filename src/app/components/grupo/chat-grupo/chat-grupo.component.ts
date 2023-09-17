@@ -112,6 +112,9 @@ export class ChatGrupoComponent {
           })
         }
       )
+      this.groupService.putGruposLogros(codigo, 1).subscribe();
+      this.groupService.putGruposLogros(codigo, 2).subscribe();
+      this.groupService.putGruposLogros(codigo, 3).subscribe();
     }) 
   }
 

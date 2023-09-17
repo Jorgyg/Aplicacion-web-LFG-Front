@@ -103,7 +103,7 @@ export class GrupoService {
     }, httpOptions)
   }
 
-  postUsuarioEvento(CodGrupo: number, CodEvento: number, Username: string, Aceptar: boolean): Observable<any>{   
+  postUsuarioEvento(CodGrupo: number, CodEvento: number, Username: string, Aceptar: boolean, Id: number): Observable<any>{   
     return this.http.post(API_URL_5, {
       CodGrupo,
       CodEvento,
@@ -122,5 +122,16 @@ export class GrupoService {
 
   getProgresoLogro(codGrupo: number): Observable<any> {
     return this.http.get(`${API_URL_7}Logros/${codGrupo}`);
+  }
+
+  postLogrosGrupo(CodGrupo: number): Observable<any>{
+    return this.http.post(API_URL_7, {
+      CodGrupo
+    });
+  }
+
+  putGruposLogros(codGrupo: string, codLogro: number): Observable<any> {
+    const url = `${API_URL_7}${codGrupo}/${codLogro}/increment`;
+    return this.http.put(url, null);
   }
 }

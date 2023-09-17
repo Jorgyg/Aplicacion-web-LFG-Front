@@ -8,7 +8,7 @@
         </div>
     </div>
     <!-- Seccion de eventos, cada div representa un evento con sus propiedades -->
-    <div class="row px-5 mt-5">
+    <div class="row px-5 mt-3">
         <ul class="list-group-container">
             <!-- [ngClass]="{'bg-success': isAccepted(evento.codEvento),'bg-danger': isRejected(evento.codEvento),'fade-out': firstLinkActivated && selectedEventIndex !== i,'enlarged': selectedEventIndex === i}" -->
             <div *ngFor="let evento of eventos.slice((currentPage-1)*cardsPerPage, currentPage * cardsPerPage); let i = index" class="card bg-color-1 m-2" [class.fade-out]="firstLinkActivated && selectedEventIndex !== i" [ngClass]="{'enlarged': selectedEventIndex === i}">
