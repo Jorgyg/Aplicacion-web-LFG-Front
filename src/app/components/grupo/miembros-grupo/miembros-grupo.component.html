@@ -6,16 +6,38 @@
                 </span></b></a>
         </div>
     </div>
-    <div class="row scroll mt-5 justify-content-center menu">
-        <div class="col-md-6 col-sm-12 p-3" *ngFor="let miembro of miembros">
-            <div class="align-items-center">
-                <span class="color-1 mx-2">{{miembro.usuario.nombre}}</span>
-                <span class="color-1 mx-2">{{miembro.usuario.username}}</span>
-                <select name="role" class="mx-2" id="userRole" aria-readonly="true">
-                    <option [selected]="miembro.esAdmin === true" value="leader">Líder</option>
-                    <option [selected]="miembro.esAdmin === false" value="user">Miembro</option>
-                </select>
-                <button class="btn btn-danger mx-2"><i class="fas fa-arrow-right-from-bracket"></i></button>
+    <div class="row mt-5">
+        <div class="col-md-6 col-sm-12 mx-auto">
+            <div class="table-responsive" style="border-radius: 15px;">
+                <table class="table table-striped-columns">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-success">Username</th>
+                            <th scope="col" class="text-success">Nombre</th>
+                            <th scope="col" class="text-success">Rol</th>
+                            <th scope="col" class="text-success">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody class="color-9">
+                        <tr *ngFor="let miembro of miembros">
+                            <td><span class="color-1">{{miembro.usuario.username}}</span></td>
+                            <td><span class="color-1">{{miembro.usuario.nombre}}</span></td>
+                            <td>
+                                <select (change)="cambiarRol($event, miembro.usuario.username)" *ngIf="miembroUser && miembroUser[0].esAdmin && miembro.usuario.username !== miembroUser[0].username" name="role" class="mx-2" id="userRole">
+                                    <option [selected]="miembro.esAdmin === true" value="true">Líder</option>
+                                    <option [selected]="miembro.esAdmin === false" value="false">Miembro</option>
+                                </select>
+                                <span class="color-1" *ngIf="miembroUser[0].esAdmin == false || user.infoUser.username == miembro.usuario.username">
+                                    <span *ngIf="miembro.esAdmin" class="text-danger">Admin</span>
+                                    <span *ngIf="miembro.esAdmin == false" class="text-primary">Miembro</span>
+                                </span>
+                            </td>
+                            <td>
+                                <button (click)="salir(miembro.usuario.username)" *ngIf="miembroUser && miembroUser[0].esAdmin && miembro.usuario.username !== miembroUser[0].username || miembroUser[0].esAdmin == false && miembro.usuario.username == miembroUser[0].username" class="btn btn-danger"><i class="fas fa-arrow-right-from-bracket"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

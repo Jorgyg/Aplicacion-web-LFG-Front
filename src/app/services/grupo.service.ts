@@ -35,8 +35,16 @@ export class GrupoService {
     return this.http.get(`${API_URL_2}getGruposUsuario/${username}`);
   }
 
+  getUsuarioGrupo(username: string, codGrupo: string): Observable<any>{
+    return this.http.get(`${API_URL_2}getUsuarioGrupo/${username}/${codGrupo}`);
+  }
+
   getUsuariosGrupo(codgrupo: string): Observable<any>{
     return this.http.get(`${API_URL_2}getUsuarios/${codgrupo}`);
+  }
+  
+  deleteUsuarioGrupo(codGrupo: string, username: string): Observable<any>{
+    return this.http.delete(`${API_URL_2}${codGrupo}/${username}`);
   }
 
   getGruposLike(input: string): Observable<any>{
