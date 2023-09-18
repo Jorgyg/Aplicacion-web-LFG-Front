@@ -26,6 +26,7 @@ export class EventosGrupoComponent implements OnInit  {
     fecha: null
   };
   usuarioEventos: any = [];
+  Math: any = Math;
   
   ngOnInit(){
     this.route.paramMap.subscribe((params) =>{
@@ -33,6 +34,25 @@ export class EventosGrupoComponent implements OnInit  {
       const codGrupoNum = Number(codGrupoStr);
       const user = this.tokenService.getUser();
       const username = user.infoUser.username;
+      this.groupService.getUsuariosGrupo(codGrupoStr + "").subscribe(
+        (usuarioEnGrupo) => {
+          var isInGroup = false;
+          for (let i = 0; i < usuarioEnGrupo.length; i++) {
+
+            if(usuarioEnGrupo[i].usuario.username == username){ 
+              isInGroup = true;
+            }  
+
+          }
+          if(!isInGroup){
+            this.router.navigate(['/main']);
+          }
+
+        },
+      (error) => {
+        console.error("Error al verificar la pertenencia al grupo: ", error);
+      }
+    );
       this.groupService.getEventosGrupo(codGrupoNum + "").subscribe(
         data=>{
           console.log(data);

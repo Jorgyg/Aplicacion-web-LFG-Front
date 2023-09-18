@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { GrupoService } from 'src/app/services/grupo.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-logros-grupo',
@@ -12,9 +13,32 @@ export class LogrosGrupoComponent {
   listaLogros: any = [];
   progresoGrupo: any[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private groupService: GrupoService){}
+  constructor(private route: ActivatedRoute, private router: Router,  private tokenService: TokenStorageService, private groupService: GrupoService){}
   
   ngOnInit(){
+    this.route.paramMap.subscribe((params) =>{
+    const codigo = params.get('codigo');
+    const user = this.tokenService.getUser();
+    const username = user.infoUser.username;
+    this.groupService.getUsuariosGrupo(codigo + "").subscribe(
+      (usuarioEnGrupo) => {
+        var isInGroup = false;
+        for (let i = 0; i < usuarioEnGrupo.length; i++) {
+
+          if(usuarioEnGrupo[i].usuario.username == username){ 
+            isInGroup = true;
+          }  
+
+        }
+        if(!isInGroup){
+          this.router.navigate(['/main']);
+        }
+
+      },
+    (error) => {
+      console.error("Error al verificar la pertenencia al grupo: ", error);
+    }
+  );
     this.groupService.getLogrosEvento().subscribe(
       data=>{
         console.log(data);
@@ -25,7 +49,8 @@ export class LogrosGrupoComponent {
         console.log(err);
       }
     );
-  }
+  });
+}
 
   mostrarAlcanzado(){
     this.route.paramMap.subscribe((params) =>{

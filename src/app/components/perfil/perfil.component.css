@@ -12,3 +12,18 @@ textarea {
   .cancel{
     background-color: red;
   }
+
+  .minicancel{
+    background-color: red;
+    height: 36px;
+
+  }
+
+  .material-icons {
+    display: flex;
+    align-items: center;
+  }
+
+  .edit{
+    font-size: 20px;
+  }

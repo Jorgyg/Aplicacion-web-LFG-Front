@@ -25,6 +25,27 @@ export class ChatGrupoComponent {
       const codigo = params.get('codigo');
       this.cargarMensajes(codigo + "");
       this.desplazar();
+      const user = this.tokenService.getUser();
+      const username = user.infoUser.username;
+      this.groupService.getUsuariosGrupo(codigo + "").subscribe(
+        (usuarioEnGrupo) => {
+          var isInGroup = false;
+          for (let i = 0; i < usuarioEnGrupo.length; i++) {
+
+            if(usuarioEnGrupo[i].usuario.username == username){ 
+              isInGroup = true;
+            }  
+
+          }
+          if(!isInGroup){
+            this.router.navigate(['/main']);
+          }
+
+        },
+      (error) => {
+        console.error("Error al verificar la pertenencia al grupo: ", error);
+      }
+    );
     })
 
     setInterval(() => {
