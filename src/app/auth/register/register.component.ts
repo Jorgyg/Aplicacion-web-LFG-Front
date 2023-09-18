@@ -43,6 +43,7 @@ export class RegisterComponent {
     return avatar;
   }
 
+  
 
   onSubmit(): void{
 
