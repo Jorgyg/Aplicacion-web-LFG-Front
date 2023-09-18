@@ -18,15 +18,15 @@
                     <span class="align-right"><button *ngIf="!isRejected(evento.codEvento)" (click)="elegir(evento.codEvento, true)" class="btn btn-primary"><i class="fas fa-check"></i></button>
                     <button *ngIf="!isAccepted(evento.codEvento)" (click)="elegir(evento.codEvento, false)" class="mx-1 btn btn-danger cancel"><i class="fas fa-x"></i></button></span>
                 </li>
-            </div>
+            </div> 
         </ul>
     </div>
     <!-- Botones para navegar entre eventos -->
     <div class="row px-5">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <li class="page-item"><a href="#" class="btn btn-success mx-3 btnPag arrow"  (click)="changePage('prev', $event)"><i class="fas fa-angle-left"></i></a></li>
-                <li class="page-item"><a href="#" class="btn btn-success btnPag arrow"  (click)="changePage('next', $event)"><i class="fas fa-angle-right"></i></a></li>
+                <li class="page-item"><a href="#" class="btn btn-success mx-3 btnPag arrow"  *ngIf="currentPage > 1"  (click)="changePage('prev', $event)"><i class="fas fa-angle-left" ></i></a></li>
+                <li class="page-item"><a href="#" class="btn btn-success btnPag arrow"  (click)="changePage('next', $event)" *ngIf="currentPage < Math.ceil(eventos.length / cardsPerPage)"><i class="fas fa-angle-right"></i></a></li>
             </ul>
         </nav>
     </div>

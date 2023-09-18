@@ -15,6 +15,7 @@ interface Group {
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
+  Math: any = Math;
   /* Elemento que utilizaremos para cambiar el estilo de cualquier etiqueta del html */
   elementStyle: { [key: string]: string } = {};
   /*Se indica el numero de grupos que habrá por pagina y la pagina actual, que por defecto será la primera*/
@@ -43,13 +44,12 @@ export class MainComponent {
     )
   }
 
-  /*Metodo para cambiar la página actual por la pagina destino*/
   showPage(page: number): void {
     this.currentPage = page;
   }
-  /*Metodo que se ejecuta al cambiar de pagina donde pasamos el numero de pagina y el evento click*/
+
+
   changePage(page: number | string, event: Event): void {
-  /* Evitamos que el enlace nos lleve a otra pagina y no ejecute el script */
   event.preventDefault();
   if (page === 'prev' && this.currentPage > 1) {
       this.showPage(this.currentPage - 1);
@@ -84,27 +84,31 @@ export class MainComponent {
 
   filtrar(): void{
     try {
+      this.cardData = [];
       const input = (document.getElementById('buscar') as HTMLInputElement).value;
-      this.groupService.getGruposLike(input).subscribe(
-        (data: any[]) => {
-          this.cardData = data;
-        }
-      )
+      if (input.trim() === '') {
+       
+        this.ngOnInit();
+      } else {
+        this.groupService.getGruposLike(input).subscribe(
+          (data: any[]) => {
+
+            for (let i = 0; i < data.length; i++) {
+              if ((data[i].nombre.toLowerCase().includes(input.toLowerCase()) ||
+                  data[i].juego.toLowerCase().includes(input.toLowerCase())) && data[i].privacidad == 'public'){
+                    this.cardData.push(data[i]);
+              }
+              
+            }
+            console.log(this.cardData);
+          }
+        )
+      }
     } catch (error) {
 
-      const usuario = this.tokenStorageService.getUser();
-      const username = usuario.infoUser.username;
-
-      this.groupService.getGruposUsuario(username).subscribe(
-        (data: any[]) => {
-          this.cardData = data;
-        },
-        (error) => {
-          console.error("ERROR: ", error);
-        }
-      )
+     console.log(error);
     }
-    
+
   }
 
   borrar(codGrupo: number){

@@ -40,7 +40,7 @@
             </div>
         </nav>
     </div>
-    
+     
     <!-- Creamos una carta por cada grupo de nuestra base de datos junto con su imagen, el nombre y su descripcion, ademas de un boton para solicitar unirse-->
     <div class="card-container mt-4" *ngIf="cardData.length > 0">
         <div *ngFor="let group of cardData.slice((currentPage-1)*cardsPerPage, currentPage * cardsPerPage); let i = index" class="card bg-color-1 m-2 w-100" [class.fade-out]="firstLinkActivated && selectedCardIndex !== i" [ngClass]="{'enlarged': selectedCardIndex === i}">
@@ -52,12 +52,12 @@
                 <a *ngIf="rol == 'admin'" (click)="borrar(group.codGrupo)" class="btn bg-color-6 color-1 leave"><i class="fas fa-trash-can"></i></a>
             </div>
         </div>
-        <div class="col-12 d-flex justify-content-center align-items-end enlarged" [class.fade-out]="firstLinkActivated"> 
+        <div class="col-12 d-flex justify-content-center align-items-end enlarged" [class.fade-out]="firstLinkActivated && (cardData.length / cardsPerPage > 1)"> 
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                    <li class="page-item"><a href="#" class="btn bg-color-6 color-1 btnPag arrow left" (click)="changePage('prev', $event)"><i class="fas fa-angle-left"></i></a></li>
+                    <li class="page-item"><a href="#" class="btn bg-color-6 color-1 btnPag arrow left" (click)="changePage('prev', $event)" *ngIf="currentPage > 1"><i class="fas fa-angle-left"></i></a></li>
                     &nbsp;&nbsp;&nbsp;
-                    <li class="page-item"><a href="#" class="btn bg-color-6 color-1 btnPag arrow right" (click)="changePage('next', $event)"><i class="fas fa-angle-right"></i></a></li>
+                    <li class="page-item"><a href="#" class="btn bg-color-6 color-1 btnPag arrow right" (click)="changePage('next', $event)" *ngIf="currentPage < Math.ceil(cardData.length / cardsPerPage)"><i class="fas fa-angle-right"></i></a></li>
                 </ul>
             </nav>
         </div>

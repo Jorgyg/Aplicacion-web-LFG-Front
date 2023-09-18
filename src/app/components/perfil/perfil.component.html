@@ -7,53 +7,103 @@
                 </span></b></a>
         </div>
     </div>
-    <!-- Seccion de usuario donde introduces tu nombre y tu foto de perfil-->
     <div class="row">
         <h1 class="text-center color-1 mb-4">Mi perfil</h1>
     </div>
-    <form class="menu" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" >
-        <!-- Seccion donde seleccionas un juego de los disponibles en la api como tu favorito -->
+    <form class="menu" #f="ngForm" >
         <div class="row mt-1">
             <div class="col-md-6 mx-auto">
-                <span class="color-1">Usuario:</span> <input [(ngModel)]="form.nombre" required name="nombre" class="form-control custom-input bg-color-1 b-color-9" value={{currentUser.infoUser.nombre}} type="text" id="">
+                <h5 class="color-1">Nickname:</h5>
+                <ng-container *ngIf="!isEditingNombre; else editNombre">
+                    <div class="">
+                        <div class="color-2">{{ currentUser.infoUser.nombre || 'N/A' }}</div>
+                        <button class="btn btn-link" (click)="isEditingNombre = true"><span class="material-symbols-outlined key edit">edit</span></button>
+                    </div>
+                </ng-container>
+                <ng-template #editNombre>
+                    <div>
+                        <input [(ngModel)]="form.nombre" required name="nombre" class="form-control custom-input bg-color-1 b-color-9" type="text" id="">
+                        <button class="btn btn-success color-1" (click)="guardarNombre()"><span class="material-symbols-outlined key">save</span></button>
+                        <button class="btn btn-link color-1 cancel" (click)="isEditingNombre = false"><span class="material-symbols-outlined key">cancel</span></button>
+                    </div>
+                </ng-template>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-md-6 mx-auto">
-                <span class="color-1 mt-4">Juego favorito:</span>
-                <select [(ngModel)]="form.juego" required name="juego" class="form-select bg-color-1 color-9 mt-2" id="">
-                    <option *ngFor="let juego of games" [value]="juego">{{ juego }}</option>
-                </select> 
+                <h5 class="color-1">Juego favorito:</h5 >
+                <ng-container *ngIf="!isEditingJuego; else editJuego">
+                    <div>
+                        <div class="color-2">{{ currentUser.infoUser.juego || 'Elige tu juego favorito' }}</div>
+                        <button class="btn btn-link" (click)="isEditingJuego = true"><span class="material-symbols-outlined key edit">edit</span></button>
+                    </div>
+                </ng-container>
+                <ng-template #editJuego>
+                    <div>
+                        <select [(ngModel)]="form.juego" required name="juego" class="form-select bg-color-1 color-9 mt-2" id="">
+                            <option *ngFor="let juego of games" [value]="juego">{{ juego }}</option>
+                        </select>
+                        <button class="btn btn-success color-1" (click)="guardarJuego()"><span class="material-symbols-outlined key">save</span></button>
+                        <button class="btn btn-link color-1 cancel" (click)="isEditingJuego = false"><span class="material-symbols-outlined key">cancel</span></button>
+                    </div>
+                </ng-template>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-md-6 mx-auto">
-                <span class="color-1">Perfil:</span>
-                <select [(ngModel)]="form.perfil" required name="perfil" class="form-select bg-color-1 color-9" id="privacidad">
-                    <option class="txt" value="publico">Publico</option>
-                    <option class="txt" value="privado">Privado</option>
-                </select>
+                <h5 class="color-1">Perfil:</h5>
+                <ng-container *ngIf="!isEditingPerfil; else editPerfil">
+                    <div>
+                        <div class="color-2">{{ currentUser.infoUser.perfil || 'Publico' }}</div>
+                        <button class="btn btn-link" (click)="isEditingPerfil = true"><span class="material-symbols-outlined key edit">edit</span></button>
+                    </div>
+                </ng-container>
+                <ng-template #editPerfil>
+                    <div>
+                        <select [(ngModel)]="form.perfil" required name="privacidad" class="form-select bg-color-1 color-9" id="privacidad">
+                            <option class="txt" value="publico">Publico</option>
+                            <option class="txt" value="privado">Privado</option>
+                        </select>
+                        <button class="btn btn-success color-1" (click)="guardarPerfil()"><span class="material-symbols-outlined key">save</span></button>
+                        <button class="btn btn-link color-1 cancel" (click)="isEditingPerfil = false"><span class="material-symbols-outlined key">cancel</span></button>
+                    </div>
+                </ng-template>
             </div>
-        </div>
+        </div>          
         <div class="row mt-3">
             <div class="col-md-6 mx-auto">
-                <span class="color-1">Descripción:</span><br>
-                <textarea [(ngModel)]="form.descripcion" required name="descripcion" value={{currentUser.infoUser.descripcion}} class="form-control bg-color-1" id="" cols="40" rows="10"></textarea>
+                <h5 class="color-1">Descripción:</h5><br>
+                <ng-container *ngIf="!isEditingDescripcion; else editDescripcion">
+                    <div>
+                        <div class="color-2">{{ currentUser.infoUser.descripcion || 'Añade una descripcion' }}</div>
+                        <button class="btn btn-link" (click)="isEditingDescripcion = true"><span class="material-symbols-outlined key edit">edit</span></button>
+                    </div>
+                </ng-container>
+                <ng-template #editDescripcion>
+                    <div>
+                        <textarea [(ngModel)]="form.descripcion" required name="descripcion" class="form-control bg-color-1" id="" cols="40" rows="10"></textarea>
+                        <button class="btn btn-success color-1" (click)="guardarDescripcion()"><span class="material-symbols-outlined key">save</span></button>
+                        <button class="btn btn-link color-1 cancel" (click)="isEditingDescripcion = false"><span class="material-symbols-outlined key">cancel</span></button>
+                    </div>
+                </ng-template>
             </div>
         </div>
-        <div class="row mt-3">
-            <!-- Guardar los cambios -->
-            <div class="col-6">
-                <button type="submit" class="btn btn-success color-1"><span class="material-symbols-outlined">
+        <div class="row mt-3 d-flex justify-content-between">
+            <div class="col-5">
+                <button type="submit" class="btn btn-success color-1" (click)="onSubmit()"><span class="material-symbols-outlined">
                     save_as
                     </span></button>
             </div>
-            <!-- Cancelar los cambios y reestablecer los inputs a default -->
-            <div class="col-6 ">
-                <button class="btn color-1 cancel"><span class="material-symbols-outlined ">
+            <div class="alert alert-success col-2" *ngIf="showSuccessMessage">
+                Cambios guardados correctamente
+            </div>
+            <div class="col-5">
+                <button class="btn color-1 cancel"  (click)="cancelarCambios()"><span class="material-symbols-outlined ">
                     cancel
                     </span></button>
             </div>        
         </div>
+
+        
     </form>
 </div>

@@ -26,6 +26,7 @@ export class EventosGrupoComponent implements OnInit  {
     fecha: null
   };
   usuarioEventos: any = [];
+  Math: any = Math;
   
   ngOnInit(){
     this.route.paramMap.subscribe((params) =>{
