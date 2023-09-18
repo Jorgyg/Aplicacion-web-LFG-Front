@@ -19,14 +19,20 @@ export class MiembrosGrupoComponent {
   ngOnInit(){
     this.route.paramMap.subscribe((params) =>{
       const codigo = params.get('codigo') + "";
-      const user = this.tokenService.getUser();
-      const username = user.infoUser.username;
+      this.user = this.tokenService.getUser();
+      const username = this.user.infoUser.username;
+      this.groupService.getUsuarioGrupo(this.user.infoUser.username, codigo).subscribe(
+        data=>{
+          this.miembroUser = data;
+        } 
+      );
+      console.log(this.miembroUser);
       this.groupService.getUsuariosGrupo(codigo + "").subscribe(
-        (usuarioEnGrupo) => {
+        data=>{
           var isInGroup = false;
-          for (let i = 0; i < usuarioEnGrupo.length; i++) {
+          for (let i = 0; i < data.length; i++) {
   
-            if(usuarioEnGrupo[i].usuario.username == username){ 
+            if(data[i].usuario.username == username){ 
               isInGroup = true;
             }  
   
@@ -34,20 +40,12 @@ export class MiembrosGrupoComponent {
           if(!isInGroup){
             this.router.navigate(['/main']);
           }
-  
-        },
-      (error) => {
-        console.error("Error al verificar la pertenencia al grupo: ", error);
-      }
-    );
-      this.groupService.getUsuariosGrupo(codigo + "").subscribe(
-        data=>{
+          console.log(data);
           this.miembros = data;
         },
         err => {
           console.log(err);
-        }
-      );
+        })
     })
   }
 

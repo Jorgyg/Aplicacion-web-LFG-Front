@@ -27,25 +27,28 @@ export class ChatGrupoComponent {
       this.desplazar();
       const user = this.tokenService.getUser();
       const username = user.infoUser.username;
-      this.groupService.getUsuariosGrupo(codigo + "").subscribe(
-        (usuarioEnGrupo) => {
-          var isInGroup = false;
-          for (let i = 0; i < usuarioEnGrupo.length; i++) {
-
-            if(usuarioEnGrupo[i].usuario.username == username){ 
-              isInGroup = true;
-            }  
-
+      setTimeout(() => {
+        
+        this.groupService.getUsuariosGrupo(codigo + "").subscribe(
+          (usuarioEnGrupo) => {
+            var isInGroup = false;
+            for (let i = 0; i < usuarioEnGrupo.length; i++) {
+  
+              if(usuarioEnGrupo[i].usuario.username == username){ 
+                isInGroup = true;
+              }  
+  
+            }
+            if(!isInGroup){
+              this.router.navigate(['/main']);
+            }
+  
+          },
+          (error) => {
+            console.error("Error al verificar la pertenencia al grupo: ", error);
           }
-          if(!isInGroup){
-            this.router.navigate(['/main']);
-          }
-
-        },
-      (error) => {
-        console.error("Error al verificar la pertenencia al grupo: ", error);
-      }
-    );
+        );
+      }, 1000);
     })
 
     setInterval(() => {
