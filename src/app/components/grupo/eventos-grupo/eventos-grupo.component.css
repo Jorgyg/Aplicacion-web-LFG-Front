@@ -55,3 +55,7 @@
 .list-group-item:hover .hover-image {
     opacity: 1;
 }
+
+.bg-primary, .bg-danger{
+    color: white;
+}

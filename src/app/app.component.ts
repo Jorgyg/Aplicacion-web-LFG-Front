@@ -40,7 +40,8 @@ export class AppComponent implements OnInit {
       //this.showAdminBoard = this.roles.includes('admin');
 
       this.username = user.username;
-    } else {
+    } 
+    else {
       this.router.navigate(["/home"]);
     }
     

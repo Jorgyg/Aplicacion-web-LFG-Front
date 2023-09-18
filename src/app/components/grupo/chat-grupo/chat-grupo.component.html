@@ -29,17 +29,26 @@
                 </span></b></a>
         </div>
     </div>
-    <div class="row m-3 chat menu" #mensajes>
+    <div class="row m-3 mx-4 mx-auto chat menu" #mensajes>
         <!-- Seccion del chat, cada div representa un mensaje enviado por una persona. Contiene su foto de perfil, su nombre y el mensaje -->
         <div *ngFor="let mensaje of listaMensajes">
             <div class="row my-5"> 
-                <div class="col-12 d-flex justify-content-end" *ngIf="this.username == mensaje.username">
-                    <span class="mx-3 text-primary">{{mensaje.username}}:</span>
-                    <span class="mx-3 color-1">{{mensaje.contenido}}</span>
+                <div class="col-12 d-flex justify-content-end" *ngIf="this.username == mensaje.username && !(comprobarMensaje(mensaje.contenido))">
+                    <div class="d-flex flex-column">
+                        <span class="mx-3 text-primary">{{ mensaje.username }}:</span>
+                        <span class="mx-3 color-1">{{mensaje.contenido}}</span>
+                    </div>
+                    <img class="img" [src]="mensaje.fotoPerfil" alt="">
                 </div>
-                <div class="col-12 d-flex" *ngIf="this.username != mensaje.username">
-                    <span class="mx-3 text-danger">{{mensaje.username}}:</span><br>
-                    <span class="mx-3 color-1">{{mensaje.contenido}}</span>
+                <div class="col-12 d-flex" *ngIf="this.username != mensaje.username && !(comprobarMensaje(mensaje.contenido)) ">
+                    <img class="img" [src]="mensaje.fotoPerfil" alt="">
+                    <div class="d-flex flex-column">
+                        <span class="mx-3 text-primary">{{ mensaje.username }}:</span>
+                        <span class="mx-3 color-1">{{mensaje.contenido}}</span>
+                    </div>
+                </div>
+                <div class="col-12 d-flex bg-danger justify-content-center" *ngIf="this.username != mensaje.username && comprobarMensaje(mensaje.contenido) ">
+                    <span class="mx-3 text-white">{{mensaje.contenido}}</span>
                 </div>
             </div>
         </div>
@@ -47,7 +56,7 @@
     <!-- Input donde el usuario envia su mensaje -->
     <div class="row m-1 footer">
         <div class="col-12">
-            <input id="mensaje" (keyup.enter)="enviarMensaje()" class="form-control text-right custom-bg b-color-6" type="textbox">
+            <input id="mensaje" placeholder="Enviar mensaje..." (keyup.enter)="enviarMensaje()" class="form-control text-right custom-bg b-color-6" type="textbox">
         </div>
     </div>
 </div>

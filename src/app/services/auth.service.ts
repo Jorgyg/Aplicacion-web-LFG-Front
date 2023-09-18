@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const AUTH_API = 'https://localhost:7082/api/Usuarios/auth/';
+const AUTH_API = 'https://partyholic-api-production.up.railway.app/api/Usuarios/auth/';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -22,11 +22,12 @@ export class AuthService {
     }, httpOptions);
   }
 
-  register(username: string, email: string, passwd: string): Observable<any>{
+  register(username: string, email: string, passwd: string, FotoPerfil: string): Observable<any>{
     return this.http.post(AUTH_API + 'signup', {
       username,
       email,
-      passwd
+      passwd,
+      FotoPerfil 
     }, httpOptions)
   }
 

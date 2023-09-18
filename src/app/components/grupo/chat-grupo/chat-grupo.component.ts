@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GrupoService } from 'src/app/services/grupo.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-chat-grupo',
@@ -11,7 +12,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class ChatGrupoComponent {
   
   
-  constructor(private router: Router, private route: ActivatedRoute, private groupService: GrupoService, private tokenService: TokenStorageService){}
+  constructor(private router: Router, private route: ActivatedRoute, private groupService: GrupoService, private tokenService: TokenStorageService, private userService: UserService) {}
   @ViewChild('mensajes') private mensajeContainer: ElementRef | undefined;
   
   listaMensajes: any[] = [];
@@ -35,15 +36,32 @@ export class ChatGrupoComponent {
 
   }
 
-  cargarMensajes(codigo: string):void{
+  profileImagesMap: Map<string, string> = new Map();
+
+  cargarMensajes(codigo: string): void {
     this.groupService.getMensajesGrupo(codigo).subscribe(
       (data: any[]) => {
         this.listaMensajes = data;
+        this.listaMensajes.forEach((mensaje, index) => {
+          if (!this.profileImagesMap.has(mensaje.username)) {
+            this.userService.getUserByUsername(mensaje.username).subscribe(
+              (userData: any) => {
+                this.profileImagesMap.set(mensaje.username, userData.fotoPerfil);
+                this.listaMensajes[index].fotoPerfil = userData.fotoPerfil;
+              },
+              (error) => {
+                console.error("ERROR al obtener datos de usuario: ", error);
+              }
+            );
+          } else {
+            this.listaMensajes[index].fotoPerfil = this.profileImagesMap.get(mensaje.username);
+          }
+        });
       },
       (error) => {
         console.error("ERROR: ", error);
       }
-    )
+    );
   }
 
   enviarMensaje(): void{
@@ -62,7 +80,18 @@ export class ChatGrupoComponent {
           })
         }
       )
+      this.groupService.putGruposLogros(codigo, 1).subscribe();
+      this.groupService.putGruposLogros(codigo, 2).subscribe();
+      this.groupService.putGruposLogros(codigo, 3).subscribe();
     }) 
+  }
+
+  comprobarMensaje(mensaje: string): Boolean{
+    if(mensaje.match("EL GRUPO HA SIDO RETADO POR EL GRUPO")){
+      return true;
+    } else{
+      return false;
+    }
   }
 
   private desplazar(){

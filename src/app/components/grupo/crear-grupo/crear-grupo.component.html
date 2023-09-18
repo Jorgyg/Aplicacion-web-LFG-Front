@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="row">
-    <a routerLink="/main" class="btn bg-color-1 color-7 mt-3 col-md-1 col-sm-3">
-      <b><span class="material-symbols-outlined key">keyboard_return</span></b>
-    </a>
-  </div>
-  <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" class="row mt-3">
+  <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" class="row mt-3 menu">
+    <div class="row">
+      <a routerLink="/main" class="btn bg-color-1 color-7 mt-3 col-md-1 col-sm-3">
+        <b><span class="material-symbols-outlined key">keyboard_return</span></b>
+      </a>
+    </div>
     <div class="alert alert-danger m-1 mb-1" role="alert" *ngIf="f.submitted && noValido">
       Solicitud no válida, revise el contenido e intente de nuevo.
     </div>

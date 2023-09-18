@@ -47,9 +47,9 @@
             <img [src]="group.fotoGrupo || 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg'" class="card-img-top" alt="...">
             <div class="card-body small-card-body text-adjust">
                 <h5 class="card-title">{{group.nombre}}</h5>
-                <p class="card-text">Miembros: 0 / {{group.participantes}}</p>
+                <p class="card-text">{{group.descripcion}}</p>
                 <a (click)="enlargeAndNavigate(i, group.codGrupo)" class="btn btn-success mx-1 enlarged"><i class="fas fa-eye"></i></a>
-                <a *ngIf="rol == 'admin'" routerLink="#" class="btn bg-color-6 color-1 leave"><i class="fas fa-trash-can"></i></a>
+                <a *ngIf="rol == 'admin'" (click)="borrar(group.codGrupo)" class="btn bg-color-6 color-1 leave"><i class="fas fa-trash-can"></i></a>
             </div>
         </div>
         <div class="col-12 d-flex justify-content-center align-items-end enlarged" [class.fade-out]="firstLinkActivated"> 
@@ -62,7 +62,7 @@
             </nav>
         </div>
     </div>
-    <div class="card-container mt-5 d-flex justify-content-center align-items-center" *ngIf="cardData.length == 0">
+    <div class="card-container mt-5 d-flex justify-content-center align-items-center text-center menu" *ngIf="cardData.length == 0">
         <h1 class="color-1">Parece que no estás en ningún grupo...</h1>
         <h2 class="color-2">Puedes buscar por nombre de grupo en el buscador de arriba, <a routerLink="/unirse">unirte</a> a un grupo por codigo o <a routerLink="/crear">crear</a> uno</h2>
     </div>

@@ -166,14 +166,24 @@ export class CrearGrupoComponent implements OnInit {
     const { codgrupo, nombre, privacidad, descripcion, participantes, juego, fotogrupo} = this.form;
 
     this.groupService.postGrupo(codgrupo, nombre, privacidad, descripcion, participantes, juego, fotogrupo).subscribe(
-
     data=>{
       console.log(data);
       this.noValido = false;
       const user = this.tokenService.getUser();
       const username = user.infoUser.username;
-      this.groupService.postUsuarioGrupo(codgrupo, username, true).subscribe();
-      this.router.navigate(['/chat', codgrupo]);
+      this.groupService.postUsuarioGrupo(codgrupo, username, true).subscribe(
+        data => {
+          this.groupService.postLogrosGrupo(codgrupo).subscribe(
+            data =>{
+              this.groupService.postMensajeGrupo(codgrupo, username, username + " ha creado el grupo " + nombre).subscribe(
+                data =>{
+                  this.router.navigate(['/chat', codgrupo]);
+                }
+              )
+            }
+          );
+        }
+      );
     },
     err => {
       console.log(err);

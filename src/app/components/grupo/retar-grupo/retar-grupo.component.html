@@ -14,35 +14,61 @@
         </div>
     </div>
 
-    <form class="menu">
-        <div class="color-1 row d-flex justify-content-center align-items-center"> 
-            <h1 class="text-center b-color-9 mb-4 col">Retar a grupo</h1>
-        </div>
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-6  mb-5 mt-5 w-25">
-                <label for="nombre" class="form-label color-1">Código de grupo:</label>
-                <input type="text" class="form-control bg-color-1 color-9 mb-3" id="groupCode" value="">
-                <label for="nombre" class="form-label color-1">Mensaje:</label>
-                <input type="textbox" class="form-control bg-color-1 color-9 mb-3" id="message" value="">
-            </div>
-        </div>
-        <!-- Boton para enviar el reto a un grupo -->
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-4 col-sm-12">
-                <a routerLink="/retar" class="btn btn-danger m-2 sword">
-                    <b><span class="material-symbols-outlined sw">swords</span></b>
-                </a>
-            </div>
-        </div>
-
-        <div  class="row d-flex justify-content-center align-items-center">
-            <div class="col-3 mx-1" >
-                <img class="foot" src="./assets/img/pet6.png" alt="">
+    <div class="color-1 row d-flex justify-content-center align-items-center"> 
+        <h1 class="text-center b-color-9 mb-4 col">Retar a grupo</h1>
+    </div>
+    <form (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" >
+        <div class="menu">
+            <div *ngIf="showFormView">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-6 mt-5 w-25">
+                        <label for="nombre" class="form-label color-1">Código de grupo:</label>
+                        <input [(ngModel)]="form.retado" name="retado" required  type="text" class="form-control bg-color-1 color-9 mb-3" id="groupCode" value="">
+                        <label for="nombre" class="form-label color-1">Mensaje:</label>
+                        <input [(ngModel)]="form.mensaje" name="mensaje" required  type="textbox" class="form-control bg-color-1 color-9 mb-3" id="message" value="">
+                    </div>
+                </div>
+                <!-- Boton para enviar el reto a un grupo -->
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-md-4 col-sm-12">
+                        <button type="submit" class="btn btn-danger m-2 sword">
+                            <b><span class="material-symbols-outlined sw">swords</span></b>
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <div class="col-3 jinx mx-1" >
-                <img class="foot" src="./assets/img/pet6.png" alt="">
+            <div *ngIf="!showFormView">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div *ngFor="let group of getPaginatedData(); let i = index" class="card bg-color-1 m-2">
+                        <img [src]="group.fotoGrupo || 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg'" class="card-img-top w-100" alt="...">
+                        <div class="card-body small-card-body text-adjust">
+                            <h5 class="card-title">{{group.nombre}}</h5>
+                            <button type="button" class="btn btn-danger m-2 sword" (click)="enviarSolicitudReto(group.codGrupo)">
+                                <b><span class="material-symbols-outlined sw">swords</span></b>
+                              </button>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center align-items-end enlarged">
+                        <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a href="#" class="btn bg-color-6 color-1 btnPag arrow left" (click)="changePage('prev', $event)"><i class="fas fa-angle-left"></i></a></li>
+                            &nbsp;&nbsp;&nbsp;
+                            <li class="page-item"><a href="#" class="btn bg-color-6 color-1 btnPag arrow right" (click)="changePage('next', $event)"><i class="fas fa-angle-right"></i></a></li>
+                        </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-md-4 col-sm-12">
+                  <button type="button" class="btn btn-primary m-2 sword" (click)="toggleView()">
+                    {{ showFormView ? 'Ver Tarjetas' : 'Ver Formulario' }}
+                  </button>
+                </div>
             </div>
         </div>
     </form>
+
+    
 </div>
