@@ -87,16 +87,28 @@ export class MainComponent {
       this.cardData = [];
       const input = (document.getElementById('buscar') as HTMLInputElement).value;
       if (input.trim() === '') {
-       
         this.ngOnInit();
       } else {
         this.groupService.getGruposLike(input).subscribe(
           (data: any[]) => {
-
             for (let i = 0; i < data.length; i++) {
               if ((data[i].nombre.toLowerCase().includes(input.toLowerCase()) ||
                   data[i].juego.toLowerCase().includes(input.toLowerCase())) && data[i].privacidad == 'public'){
-                    this.cardData.push(data[i]);
+                  console.log(data[i]);
+
+                  //Comprovaremos si estan llenos
+                  this.groupService.getUsuariosGrupo(data[i].codGrupo + "").subscribe(
+                    (usuarioEnGrupo) => {
+                      var numUsuarios = 0;
+                      for (let c = 0; c < usuarioEnGrupo.length; c++) {
+                        numUsuarios++;                 
+                      }
+                      if(numUsuarios < data[i].participantes){
+                        this.cardData.push(data[i]);
+                      }
+
+                    }
+                  );
               }
               
             }
