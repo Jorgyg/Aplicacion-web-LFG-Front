@@ -23,7 +23,7 @@ export class MainComponent {
   currentPage: number = 1;
   selectedCardIndex: number | null = null;
   /*Creamos una array para cada grupo. Para casos prácticos, hemos creado cartas "falsas" para comprobar su funcionalidad*/
-
+  canJoin= false;
   constructor(private renderer: Renderer2, private router: Router, private tokenStorageService: TokenStorageService, private groupService: GrupoService, private userService: UserService) {}
   
   cardData: any[] = [];
@@ -88,7 +88,9 @@ export class MainComponent {
       const input = (document.getElementById('buscar') as HTMLInputElement).value;
       if (input.trim() === '') {
         this.ngOnInit();
+        this.canJoin = false;
       } else {
+        this.canJoin = true;
         this.groupService.getGruposLike(input).subscribe(
           (data: any[]) => {
             for (let i = 0; i < data.length; i++) {
@@ -121,6 +123,22 @@ export class MainComponent {
      console.log(error);
     }
 
+  }
+
+  onSubmit(codgrupo: number): void {
+    const user = this.tokenStorageService.getUser();
+    const username = user.infoUser.username;
+
+        this.groupService.postUsuarioGrupo(codgrupo, username, false).subscribe(
+          (data) => {},
+          (err) => {
+            console.log(err);
+          }
+        );
+    setTimeout(() => {
+        
+        this.router.navigate(['/chat', codgrupo]);
+    }, 1000);
   }
 
   borrar(codGrupo: number){

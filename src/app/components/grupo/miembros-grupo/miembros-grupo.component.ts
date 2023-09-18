@@ -51,6 +51,8 @@ export class MiembrosGrupoComponent {
     })
   }
 
+  
+
   salir(username: string){
     this.route.paramMap.subscribe((params) =>{
       const codigo = params.get('codigo') + "";
