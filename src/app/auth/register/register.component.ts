@@ -37,6 +37,8 @@ export class RegisterComponent {
 
   }
 
+  
+
   obtenerFotoPerfilAleatoria(): string {
     const indiceAleatorio = Math.floor(Math.random() * this.fotosPerfil.length);
     var avatar = this.fotosPerfil[indiceAleatorio];
@@ -61,6 +63,9 @@ export class RegisterComponent {
       err => {
         console.log(err);
         this.errorMessage = err.error.message;
+        if(this.errorMessage == undefined){
+          this.errorMessage = "El nombre de usuario ya existe"
+        }
         this.isSignUpFailed = true;
       }
 

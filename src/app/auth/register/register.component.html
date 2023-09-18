@@ -13,15 +13,19 @@
         <div class="form-group">
           <label for="password" class="color-1 py-3"><i class="fas fa-lock"></i> Contraseña:</label>
           <input name="passwd" type="password" [(ngModel)]="form.passwd" required minlength="6" #passwd="ngModel"  class="form-control custom-input bg-color-1 b-color-9" id="password" placeholder="Introduce tu contraseña">
+          <div *ngIf="passwd.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</div>
         </div>
+        
         <a routerLink="/login" class="d-block text-center py-2 color-1">Ya tengo una cuenta...</a>
         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-          Ha ocurrido un error al registrarse! <br />
+          {{errorMessage}}  <br />
         </div>
         <div class="alert alert-success" *ngIf="f.submitted && !isSignUpFailed">
           Te has registrado, ya puedes <a routerLink="/login">iniciar sesion!</a> <br />
         </div>
-        <button type="submit" class="btn btn-primary color-1 b-color-9 btn-block w-50 mx-auto">Registrarse</button>
+        <button type="submit" class="btn btn-primary color-1 b-color-9 btn-block w-50 mx-auto" [ngClass]="{'btn-secondary': !f.form.valid}" [disabled]="!f.form.valid">
+          Registrarse
+        </button>
       </form>
     </div>
   </div>
