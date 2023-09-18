@@ -10,18 +10,52 @@
     <!-- Seccion de logros, donde todos los grupos tienen los mismos logros. Se muestra el objetivo, el progreso actual y la recompensa -->
     <div class="row px-2 d-flex justify-content-center">
         <div class="col-md-6 col-sm-12 ">
-            <img class="hover-image" src="./assets/img/pet4.png" width="100px">
             <ul class="list-group p-4 mx-auto">
-                <li class="list-group-item bg-color-1" aria-current="true">Enviar 50 mensajes para recibir <b>Eventos de grupo</b><span class="d-flex justify-content-end align-middle">0/50</span></li>
-                <li class="list-group-item bg-color-2">Enviar 100 mensajes para recibir el sticker <b>Olic hablando</b><span class="d-flex justify-content-end align-middle">0/100</span></li>
-                <li class="list-group-item bg-color-3">Enviar 150 mensajes para recibir el sticker <b>Parlanchines</b><span class="d-flex justify-content-end align-middle">0/200</span></li>
-                <li class="list-group-item bg-color-1">Crea 5 eventos para recibir el <b>Retar grupos</b><span class="d-flex justify-content-end align-middle">0/5</span></li>
-                <li class="list-group-item bg-color-2">Crea 10 eventos para recibir el sticker <b>Reunión</b><span class="d-flex justify-content-end align-middle">0/10</span></li>
-                <li class="list-group-item bg-color-3">Crea 15 eventos para recibir el sticker <b>Planificadores</b><span class="d-flex justify-content-end align-middle">0/20</span></li>
-                <li class="list-group-item bg-color-1">Reta a 5 grupos para recibir el sticker <b>Olic de bronce</b><span class="d-flex justify-content-end align-middle">0/5</span></li>
-                <li class="list-group-item bg-color-2">Reta a 10 grupos para recibir el sticker <b>Olic de plata</b><span class="d-flex justify-content-end align-middle">0/10</span></li>
-                <li class="list-group-item bg-color-3">Reta a 15 grupos para recibir el sticker <b>Olic de oro</b><span class="d-flex justify-content-end align-middle">0/20</span></li>
+                <li [ngClass]="{'bg-warning': progresoGrupo[0].actual == 50}" class="list-group-item bg-color-1">Enviar 50 mensajes para recibir <b>Eventos de grupo</b> y el sticker <b>Eventos</b><span class="d-flex justify-content-end align-middle">{{ progresoGrupo[0].actual}}/50</span></li>
+                <li [ngClass]="{'bg-warning': progresoGrupo[1].actual == 100}" class="list-group-item bg-color-2">Enviar 100 mensajes para recibir el sticker <b>Olic hablando</b><span class="d-flex justify-content-end align-middle">{{ progresoGrupo[1].actual}}/100</span></li>
+                <li [ngClass]="{'bg-warning': progresoGrupo[2].actual == 150}" class="list-group-item bg-color-3">Enviar 150 mensajes para recibir el sticker <b>Parlanchines</b><span class="d-flex justify-content-end align-middle">{{ progresoGrupo[2].actual}}/150</span></li>
+                <li [ngClass]="{'bg-warning': progresoGrupo[3].actual == 5}" class="list-group-item bg-color-1">Crea 5 eventos para recibir el <b>Retar grupos</b> y el sticker <b>Retar</b><span class="d-flex justify-content-end align-middle">{{ progresoGrupo[3].actual}}/5</span></li>
+                <li [ngClass]="{'bg-warning': progresoGrupo[4].actual == 10}" class="list-group-item bg-color-2">Crea 10 eventos para recibir el sticker <b>Reunión</b><span class="d-flex justify-content-end align-middle">{{ progresoGrupo[4].actual}}/10</span></li>
+                <li [ngClass]="{'bg-warning': progresoGrupo[5].actual == 15}" class="list-group-item bg-color-3">Crea 15 eventos para recibir el sticker <b>Planificadores</b><span class="d-flex justify-content-end align-middle">{{ progresoGrupo[5].actual}}/15</span></li>
+                <li [ngClass]="{'bg-warning': progresoGrupo[6].actual == 5}" class="list-group-item bg-color-1">Reta a 5 grupos para recibir el sticker <b>Olic de bronce</b><span class="d-flex justify-content-end align-middle">{{ progresoGrupo[6].actual}}/5</span></li>
+                <li [ngClass]="{'bg-warning': progresoGrupo[7].actual == 10}" class="list-group-item bg-color-2">Reta a 10 grupos para recibir el sticker <b>Olic de plata</b><span class="d-flex justify-content-end align-middle">{{ progresoGrupo[7].actual}}/10</span></li>
+                <li [ngClass]="{'bg-warning': progresoGrupo[8].actual == 15}" class="list-group-item bg-color-3">Reta a 15 grupos para recibir el sticker <b>Olic de oro</b><span class="d-flex justify-content-end align-middle">{{ progresoGrupo[8].actual}}/15</span></li>
             </ul>
+        </div>
+        <div class="col-md-6 col-sm-12 d-flex flex-column menu">
+            <div class="row">
+                <div class="col-md-4">
+                    <img [src]="progresoGrupo[0].actual < 50 ? 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg' : './assets/img/pet4.png'" class="img-fluid" style="max-width: 98%;">
+                </div>
+                <div class="col-md-4">
+                    <img [src]="progresoGrupo[1].actual < 100 ? 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg' : './assets/img/pet4.png'" class="img-fluid" style="max-width: 98%;">
+                </div>
+                <div class="col-md-4">
+                    <img [src]="progresoGrupo[2].actual < 150 ? 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg' : './assets/img/pet4.png'" class="img-fluid" style="max-width: 98%;">
+                </div>
+            </div>    
+            <div class="row">
+                <div class="col-md-4">
+                    <img [src]="progresoGrupo[3].actual < 5 ? 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg' : './assets/img/pet4.png'" class="img-fluid" style="max-width: 98%;">
+                </div>
+                <div class="col-md-4">
+                    <img [src]="progresoGrupo[4].actual < 10 ? 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg' : './assets/img/pet4.png'" class="img-fluid" style="max-width: 98%;">
+                </div>
+                <div class="col-md-4">
+                    <img [src]="progresoGrupo[5].actual < 15 ? 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg' : './assets/img/pet4.png'" class="img-fluid" style="max-width: 98%;">
+                </div>
+            </div>    
+            <div class="row">
+                <div class="col-md-4">
+                    <img [src]="progresoGrupo[6].actual < 5 ? 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg' : './assets/img/pet4.png'" class="img-fluid" style="max-width: 98%;">
+                </div>
+                <div class="col-md-4">
+                    <img [src]="progresoGrupo[7].actual < 10 ? 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg' : './assets/img/pet4.png'" class="img-fluid" style="max-width: 98%;">
+                </div>
+                <div class="col-md-4">
+                    <img [src]="progresoGrupo[8].actual < 15 ? 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg' : './assets/img/pet4.png'" class="img-fluid" style="max-width: 98%;">
+                </div>
+            </div>    
         </div>
     </div>
 </div>

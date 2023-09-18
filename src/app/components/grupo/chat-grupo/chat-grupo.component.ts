@@ -63,7 +63,6 @@ export class ChatGrupoComponent {
     this.groupService.getMensajesGrupo(codigo).subscribe(
       (data: any[]) => {
         this.listaMensajes = data;
-  
         this.listaMensajes.forEach((mensaje, index) => {
           if (!this.profileImagesMap.has(mensaje.username)) {
             this.userService.getUserByUsername(mensaje.username).subscribe(
@@ -102,6 +101,9 @@ export class ChatGrupoComponent {
           })
         }
       )
+      this.groupService.putGruposLogros(codigo, 1).subscribe();
+      this.groupService.putGruposLogros(codigo, 2).subscribe();
+      this.groupService.putGruposLogros(codigo, 3).subscribe();
     }) 
   }
 

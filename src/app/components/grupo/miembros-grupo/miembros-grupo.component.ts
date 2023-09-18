@@ -10,8 +10,11 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class MiembrosGrupoComponent {
   miembros: any;
-  
+
   constructor(private router: Router,  private tokenService: TokenStorageService, private groupService: GrupoService, private route: ActivatedRoute){}
+
+  user: any;
+  miembroUser: any;
 
   ngOnInit(){
     this.route.paramMap.subscribe((params) =>{
@@ -39,11 +42,33 @@ export class MiembrosGrupoComponent {
     );
       this.groupService.getUsuariosGrupo(codigo + "").subscribe(
         data=>{
-          console.log(data);
-          this.miembros = data
+          this.miembros = data;
         },
         err => {
           console.log(err);
+        }
+      );
+    })
+  }
+
+  salir(username: string){
+    this.route.paramMap.subscribe((params) =>{
+      const codigo = params.get('codigo') + "";
+      this.groupService.deleteUsuarioGrupo(codigo + "", username).subscribe(
+        data=>{
+          location.reload();
+        }
+      );
+    })
+  }
+
+  cambiarRol(event: any, username: string){
+    const admin = event.target.value;
+    this.route.paramMap.subscribe((params) =>{
+      const codigo = params.get('codigo') + "";
+      this.groupService.putAdmin(admin, username, codigo).subscribe(
+        data=>{
+          location.reload();
         }
       );
     })

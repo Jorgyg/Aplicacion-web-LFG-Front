@@ -22,7 +22,14 @@
                 <div class="col-4"></div>
                 <div class="col-md-8 col-sm-12 mx-auto">
                     <button type="submit" class="btn btn-lg btn-primary"><i class="fas fa-arrow-right-to-bracket"></i></button>
+                </div>  
+                <div class="col-md-4 col-sm-12 mt-4 mx-auto alert alert-warning" *ngIf="grupoLleno; else elseBlock">
+                    El grupo está lleno, busca otro que este vacío.
                 </div>
+                <ng-template #elseBlock>                    
+                </ng-template>              
         </div>
-    </form>
+    </form>  
 </div>
+
+

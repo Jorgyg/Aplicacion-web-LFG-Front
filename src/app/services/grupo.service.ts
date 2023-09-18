@@ -11,11 +11,6 @@ const API_URL_5 = 'https://partyholic-api-production.up.railway.app/api/Usuarios
 const API_URL_6 = 'https://partyholic-api-production.up.railway.app/api/Logros/';
 const API_URL_7 = 'https://partyholic-api-production.up.railway.app/api/GruposLogros/';
 
-
-
-
-
-
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -40,8 +35,20 @@ export class GrupoService {
     return this.http.get(`${API_URL_2}getGruposUsuario/${username}`);
   }
 
+  getUsuarioGrupo(username: string, codGrupo: string): Observable<any>{
+    return this.http.get(`${API_URL_2}getUsuarioGrupo/${username}/${codGrupo}`);
+  }
+
   getUsuariosGrupo(codgrupo: string): Observable<any>{
     return this.http.get(`${API_URL_2}getUsuarios/${codgrupo}`);
+  }
+
+  putAdmin(esAdmin: boolean, username: string, codGrupo: string): Observable<any> {
+    return this.http.put(`${API_URL_2}${codGrupo}/${username}/${esAdmin}`, {});
+  }
+  
+  deleteUsuarioGrupo(codGrupo: string, username: string): Observable<any>{
+    return this.http.delete(`${API_URL_2}${codGrupo}/${username}`);
   }
 
   getGruposLike(input: string): Observable<any>{
@@ -108,7 +115,7 @@ export class GrupoService {
     }, httpOptions)
   }
 
-  postUsuarioEvento(CodGrupo: number, CodEvento: number, Username: string, Aceptar: boolean): Observable<any>{   
+  postUsuarioEvento(CodGrupo: number, CodEvento: number, Username: string, Aceptar: boolean, Id: number): Observable<any>{   
     return this.http.post(API_URL_5, {
       CodGrupo,
       CodEvento,
@@ -129,5 +136,14 @@ export class GrupoService {
     return this.http.get(`${API_URL_7}Logros/${codGrupo}`);
   }
 
+  postLogrosGrupo(CodGrupo: number): Observable<any>{
+    return this.http.post(API_URL_7, {
+      CodGrupo
+    });
+  }
 
+  putGruposLogros(codGrupo: string, codLogro: number): Observable<any> {
+    const url = `${API_URL_7}${codGrupo}/${codLogro}/increment`;
+    return this.http.put(url, null);
+  }
 }

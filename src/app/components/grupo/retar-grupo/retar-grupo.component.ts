@@ -82,24 +82,18 @@ toggleView(): void {
       const { retado, mensaje } = this.form;
       const user = this.tokenService.getUser();
       const username = user.infoUser.username;
-      this.groupService
-        .postMensajeGrupo(
-          retado,
-          username,
-          "¡EL GRUPO HA SIDO RETADO POR EL GRUPO " +
-            codGrupoNum +
-            "! | " +
-            mensaje
-        )
-        .subscribe(
-          (data) => {
-            alert("¡El grupo " + retado + " ha sido retado!");
-          },
-          (err) => {
-            console.log(err);
-          }
-        );
-    });
+      this.groupService.postMensajeGrupo(retado, username, "¡EL GRUPO HA SIDO RETADO POR EL GRUPO " + codGrupoNum + "! | " + mensaje).subscribe(
+        data=>{
+          alert("¡El grupo " + retado + " ha sido retado!");
+          this.groupService.putGruposLogros(codGrupoStr + "", 7).subscribe();
+          this.groupService.putGruposLogros(codGrupoStr + "", 8).subscribe();
+          this.groupService.putGruposLogros(codGrupoStr + "", 9).subscribe();
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    })
   }
 
   enviarSolicitudReto(codGrupoRetado: string) {
@@ -118,6 +112,9 @@ toggleView(): void {
         .subscribe(
           (data) => {
             alert("¡El grupo " + codGrupoRetado + " ha sido retado!");
+            this.groupService.putGruposLogros(codGrupoStr + "", 7).subscribe();
+            this.groupService.putGruposLogros(codGrupoStr + "", 8).subscribe();
+            this.groupService.putGruposLogros(codGrupoStr + "", 9).subscribe();
           },
           (err) => {
             console.log(err);

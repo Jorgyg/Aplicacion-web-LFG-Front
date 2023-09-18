@@ -57,6 +57,7 @@ export class EventosGrupoComponent implements OnInit  {
         data=>{
           console.log(data);
           this.eventos = data
+          console.log(this.eventos);
         },
         err => {
           console.log(err);
@@ -66,6 +67,7 @@ export class EventosGrupoComponent implements OnInit  {
         data => {
           console.log(data);
           this.usuarioEventos = data
+          console.log(this.usuarioEventos);
         },
         err => {
           console.log(err);
@@ -84,7 +86,10 @@ export class EventosGrupoComponent implements OnInit  {
           this.groupService.getEventosGrupo(codGrupoNum + "").subscribe(
             data=>{
               console.log(data);
-              this.eventos = data
+              this.eventos = data;
+              this.groupService.putGruposLogros(codGrupoStr + "", 4).subscribe();
+              this.groupService.putGruposLogros(codGrupoStr + "", 5).subscribe();
+              this.groupService.putGruposLogros(codGrupoStr + "", 6).subscribe();
             },
             err => {
               console.log(err);
@@ -99,20 +104,20 @@ export class EventosGrupoComponent implements OnInit  {
   }
 
   isAccepted(codEvento: number): boolean {
-    // Busca el evento correspondiente en usuarioEventos
-    const eventoUsuario = this.usuarioEventos.find((evento: any) => evento.codEvento === codEvento);
-  
-    // Si no se encuentra el evento, se considera no aceptado
-    return eventoUsuario ? eventoUsuario.aceptar : false;
+    if (this.usuarioEventos) {
+      const eventoUsuario = this.usuarioEventos.find((evento: any) => evento.codEvento === codEvento);
+      return eventoUsuario ? eventoUsuario.aceptar : false;
+    }
+    return false;
   }
   
   isRejected(codEvento: number): boolean {
-    // Busca el evento correspondiente en usuarioEventos
-    const eventoUsuario = this.usuarioEventos.find((evento: any) => evento.codEvento === codEvento);
-  
-    // Si no se encuentra el evento, se considera no rechazado
-    return eventoUsuario ? !eventoUsuario.aceptar : false;
-  }
+    if (this.usuarioEventos) {
+      const eventoUsuario = this.usuarioEventos.find((evento: any) => evento.codEvento === codEvento);
+      return eventoUsuario ? !eventoUsuario.aceptar : false;
+    }
+    return false;
+  }  
 
   elegir(codEvento: number, aceptar: boolean){
     this.route.paramMap.subscribe((params) =>{
@@ -120,7 +125,8 @@ export class EventosGrupoComponent implements OnInit  {
       const codGrupoNum = Number(codGrupoStr);
       const user = this.tokenService.getUser();
       const username = user.infoUser.username;
-      this.groupService.postUsuarioEvento(codGrupoNum, codEvento, username, aceptar).subscribe(
+      console.log(codGrupoNum, username, codEvento, aceptar);
+      this.groupService.postUsuarioEvento(codGrupoNum, codEvento, username, aceptar, 0).subscribe(
         data=>{
           this.groupService.getEventosGrupo(codGrupoNum + "").subscribe(
             data=>{
