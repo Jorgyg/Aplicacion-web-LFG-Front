@@ -12,6 +12,10 @@ table{
     border-radius: 10px !important;
 }
 
+.bg-danger, .bg-primary{
+    color: white !important;
+}
+
 thead{
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px !important;

@@ -23,9 +23,9 @@
                             <td><span class="color-1">{{miembro.usuario.username}}</span></td>
                             <td><span class="color-1">{{miembro.usuario.nombre}}</span></td>
                             <td>
-                                <select (change)="cambiarRol($event, miembro.usuario.username)" *ngIf="miembroUser && miembroUser[0].esAdmin && miembro.usuario.username !== miembroUser[0].username" name="role" class="mx-2" id="userRole">
-                                    <option [selected]="miembro.esAdmin === true" value="true">Líder</option>
-                                    <option [selected]="miembro.esAdmin === false" value="false">Miembro</option>
+                                <select (change)="cambiarRol($event, miembro.usuario.username)" [ngClass]="{'bg-danger': miembro.esAdmin === true,'bg-primary t-white': miembro.esAdmin === false}" (change)="cambiarRol($event, miembro.usuario.username)" *ngIf="miembroUser && miembroUser[0].esAdmin && miembro.usuario.username !== miembroUser[0].username" name="role" class="form-control text-center" id="userRole">
+                                    <option class="bg-white text-black" [selected]="miembro.esAdmin === true" value="true">Líder</option>
+                                    <option class="bg-white text-black" [selected]="miembro.esAdmin === false" value="false">Miembro</option>
                                 </select>
                                 <span class="color-1" *ngIf="miembroUser[0].esAdmin == false || user.infoUser.username == miembro.usuario.username">
                                     <span *ngIf="miembro.esAdmin" class="text-danger">Admin</span>

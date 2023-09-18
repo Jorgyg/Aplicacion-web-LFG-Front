@@ -50,6 +50,14 @@ export class MiembrosGrupoComponent {
 
   cambiarRol(event: any, username: string){
     const admin = event.target.value;
+    this.route.paramMap.subscribe((params) =>{
+      const codigo = params.get('codigo') + "";
+      this.groupService.putAdmin(admin, username, codigo).subscribe(
+        data=>{
+          location.reload();
+        }
+      );
+    })
   }
 
   volver(){

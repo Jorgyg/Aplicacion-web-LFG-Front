@@ -42,6 +42,10 @@ export class GrupoService {
   getUsuariosGrupo(codgrupo: string): Observable<any>{
     return this.http.get(`${API_URL_2}getUsuarios/${codgrupo}`);
   }
+
+  putAdmin(esAdmin: boolean, username: string, codGrupo: string): Observable<any> {
+    return this.http.put(`${API_URL_2}${codGrupo}/${username}/${esAdmin}`, {});
+  }
   
   deleteUsuarioGrupo(codGrupo: string, username: string): Observable<any>{
     return this.http.delete(`${API_URL_2}${codGrupo}/${username}`);
