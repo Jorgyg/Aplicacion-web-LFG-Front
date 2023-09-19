@@ -1,7 +1,7 @@
 <div class="container d-flex align-items-center" style="min-height: 100vh;">
     <div class="w-100 menu pt-3 pb-3">
       <h1 class="text-center color-1 mb-4">Registrarse</h1>
-      <form class="w-25 mx-auto" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <form class="w-50 mx-auto" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
         <div class="form-group">
           <label for="username" class="color-1 py-3"><i class="fas fa-user"></i> Username:</label>
           <input name="username" [(ngModel)]="form.username" required minlength="3" maxlength="20" #username="ngModel" type="text" class="form-control custom-input bg-color-1 b-color-9" id="username" placeholder="Introduce tu username">

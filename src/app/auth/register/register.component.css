@@ -1,0 +1,9 @@
+@media (max-width: 1100px) {
+ .W-50{
+    width: 100%!important;
+ }
+ 
+ input{
+    width: 100%!important;
+ }
+}
