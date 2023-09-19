@@ -22,32 +22,35 @@ export class MainComponent {
   cardsPerPage: number = 8;
   currentPage: number = 1;
   selectedCardIndex: number | null = null;
-  /*Creamos una array para cada grupo. Para casos prácticos, hemos creado cartas "falsas" para comprobar su funcionalidad*/
   canJoin= false;
+  /* Servicios que vamos a utilizar */
   constructor(private renderer: Renderer2, private router: Router, private tokenStorageService: TokenStorageService, private groupService: GrupoService, private userService: UserService) {}
-  
+  /* Variable para guardar los grupos en cartas */
   cardData: any[] = [];
   rol: string = "user";
-
+  /* Al iniciar... */
   ngOnInit(){
-
+    /* Guardamos los datos del usuario y su rol */
     const usuario = this.tokenStorageService.getUser();
     const username = usuario.infoUser.username;
     this.rol = usuario.infoUser.rolApp;
+    /* Obtenemos todos los grupos del usuario y los guardamos en la variable para mostrar como cartas */
     this.groupService.getGruposUsuario(username).subscribe(
       (data: any[]) => {
         this.cardData = data;
-      },
-      (error) => {
-        console.error("ERROR: ", error);
       }
     )
+    setTimeout(() => {
+      const nadaDiv = document.querySelector('#nada') as HTMLElement;
+      if (nadaDiv) {
+        nadaDiv.classList.remove('d-none');
+      }
+    }, 1000);
   }
-
+  /* Métodos de paginación */
   showPage(page: number): void {
     this.currentPage = page;
   }
-
 
   changePage(page: number | string, event: Event): void {
   event.preventDefault();
@@ -59,7 +62,7 @@ export class MainComponent {
   }
 
   firstLinkActivated = false;
-
+  /* Método de animacion para entrar a un grupo */
   enlargeAndNavigate(index: number, codigo: number) {
   if (!this.firstLinkActivated) {
     this.firstLinkActivated = true;
@@ -79,13 +82,16 @@ export class MainComponent {
 
   setTimeout(() => {
     this.router.navigate(['/chat', codigo]);
-  }, 1000); // Redirige después de 0.3 segundos (300 ms)
+  }, 1000); /* Redirigimos pasado un segundo */
 }
-
+  /* Método para filtrar segun los datos introducidos en el buscador */
   filtrar(): void{
     try {
+      /* Vaciamos la array de grupo */
       this.cardData = [];
+      /* Obtenemos la cadena de texto introducida */
       const input = (document.getElementById('buscar') as HTMLInputElement).value;
+      /* Si no se introduce nada volvemos a llamar a obtener todos los grupos */
       if (input.trim() === '') {
         this.ngOnInit();
         this.canJoin = false;
@@ -97,8 +103,7 @@ export class MainComponent {
               if ((data[i].nombre.toLowerCase().includes(input.toLowerCase()) ||
                   data[i].juego.toLowerCase().includes(input.toLowerCase())) && data[i].privacidad == 'public'){
                   console.log(data[i]);
-
-                  //Comprovaremos si estan llenos
+                  /* Si el grupo está lleno no se mostrará en la lista */
                   this.groupService.getUsuariosGrupo(data[i].codGrupo + "").subscribe(
                     (usuarioEnGrupo) => {
                       var numUsuarios = 0;
@@ -108,53 +113,42 @@ export class MainComponent {
                       if(numUsuarios < data[i].participantes){
                         this.cardData.push(data[i]);
                       }
-
                     }
-                  );
+                );
               }
-              
             }
-            console.log(this.cardData);
           }
         )
       }
     } catch (error) {
-
-     console.log(error);
+      console.log(error);
     }
-
   }
-
+  /* Al unirse a un grupo... */
   onSubmit(codgrupo: number): void {
+    /* Obtenemos los datos del usuario */
     const user = this.tokenStorageService.getUser();
     const username = user.infoUser.username;
-
-        this.groupService.postUsuarioGrupo(codgrupo, username, false).subscribe(
-          (data) => {},
-          (err) => {
-            console.log(err);
-          }
-        );
+    /* Asignamos al usuario en ese grupo */
+    this.groupService.postUsuarioGrupo(codgrupo, username, false).subscribe(
+      (data) => {}
+    );
+    /* Esperamos para redirigrlo */
     setTimeout(() => {
         
         this.router.navigate(['/chat', codgrupo]);
     }, 1000);
   }
-
+  /* Si eres administrador de la api podrás eliminar grupo */
   borrar(codGrupo: number){
     this.groupService.deleteGrupo(codGrupo).subscribe(
       (data) => {
         alert("Grupo eliminado correctamente.");
         location.reload();
-      },
-      (error) => {
-        console.error("ERROR: ", error);
       }
     )
   }
-
-  //Cerrar sesion
-
+  /* Método para cerrar sesión */
   logout(): void{
     this.tokenStorageService.signOut();
     this.router.navigate(['/home']);

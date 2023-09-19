@@ -97,3 +97,7 @@ body{
 
     }
 }
+
+.v-center{
+    vertical-align: middle;
+}

@@ -9,13 +9,13 @@ export class HomeComponent {
   isEnlarged: boolean = false;
 
   constructor(private renderer: Renderer2, private router: Router) {}
-  // Animacion al entrar a login y register para el logo
+  /* Método para la animacion del logo */
   enlargeAndNavigate(route: string) {
     this.isEnlarged = true;
 
     setTimeout(() => {
       this.router.navigate([route]);
-    }, 1000); // Ajusta el tiempo según tus necesidades
+    }, 1000); /* Tiempo de carga de ruta */
   }
 }
 

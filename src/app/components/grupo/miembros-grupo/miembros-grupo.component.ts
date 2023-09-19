@@ -9,50 +9,45 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   styleUrls: ['./miembros-grupo.component.css']
 })
 export class MiembrosGrupoComponent {
+  /* Variable para guardar los miembros del grupo */
   miembros: any;
-
+  /* Constructor con los servicios que vamos a utilizar */
   constructor(private router: Router,  private tokenService: TokenStorageService, private groupService: GrupoService, private route: ActivatedRoute){}
-
+  /* Variables para guardar los datos del usuario y los de su perfil en ese grupo */
   user: any;
   miembroUser: any;
-
+  /* Al iniciar... */
   ngOnInit(){
+    /* Guaramos el codigo de grupo y los datos del usuario */
     this.route.paramMap.subscribe((params) =>{
       const codigo = params.get('codigo') + "";
-      const user = this.tokenService.getUser();
-      const username = user.infoUser.username;
+      this.user = this.tokenService.getUser();
+      const username = this.user.infoUser.username;
+      /* Obtenemos los usuarios del grupo y comprobamos que el usuario se encuentre en él, de otra forma se le redirige al main */
+      this.groupService.getUsuarioGrupo(this.user.infoUser.username, codigo).subscribe(
+        data=>{
+          this.miembroUser = data;
+        } 
+      );
+      console.log(this.miembroUser);
       this.groupService.getUsuariosGrupo(codigo + "").subscribe(
-        (usuarioEnGrupo) => {
+        data=>{
           var isInGroup = false;
-          for (let i = 0; i < usuarioEnGrupo.length; i++) {
-  
-            if(usuarioEnGrupo[i].usuario.username == username){ 
+          for (let i = 0; i < data.length; i++) {
+            if(data[i].usuario.username == username){ 
               isInGroup = true;
             }  
-  
           }
           if(!isInGroup){
             this.router.navigate(['/main']);
           }
-  
-        },
-      (error) => {
-        console.error("Error al verificar la pertenencia al grupo: ", error);
-      }
-    );
-      this.groupService.getUsuariosGrupo(codigo + "").subscribe(
-        data=>{
+          /* Guardamos los miembros del grupo */
           this.miembros = data;
-        },
-        err => {
-          console.log(err);
-        }
-      );
+        })
     })
   }
 
-  
-
+  /* Método para salirse del grupo o expulsar a un miembro si eres admin del grupo */
   salir(username: string){
     this.route.paramMap.subscribe((params) =>{
       const codigo = params.get('codigo') + "";
@@ -63,7 +58,7 @@ export class MiembrosGrupoComponent {
       );
     })
   }
-
+  /* Método para cambiar de rol a un usuario en caso de ser admin del grupo */
   cambiarRol(event: any, username: string){
     const admin = event.target.value;
     this.route.paramMap.subscribe((params) =>{
@@ -75,7 +70,7 @@ export class MiembrosGrupoComponent {
       );
     })
   }
-
+  /* Método para regresar al main */
   volver(){
     this.route.paramMap.subscribe((params) =>{
       const codigo = params.get('codigo') + "";
