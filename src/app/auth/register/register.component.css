@@ -6,4 +6,8 @@
  input{
     width: 100%!important;
  }
+
+ .btn{
+    width: 30px!important;
+ }
 }
