@@ -60,6 +60,5 @@ export class UnirseGrupoComponent {
         },3000);
       });
 
-
   }
 }
