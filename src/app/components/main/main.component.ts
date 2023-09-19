@@ -100,8 +100,7 @@ export class MainComponent {
         this.groupService.getGruposLike(input).subscribe(
           (data: any[]) => {
             for (let i = 0; i < data.length; i++) {
-              if ((data[i].nombre.toLowerCase().includes(input.toLowerCase()) ||
-                  data[i].juego.toLowerCase().includes(input.toLowerCase())) && data[i].privacidad == 'public'){
+              if (data[i].nombre.toLowerCase().includes(input.toLowerCase()) && data[i].privacidad == 'public'){
                   console.log(data[i]);
                   /* Si el grupo está lleno no se mostrará en la lista */
                   this.groupService.getUsuariosGrupo(data[i].codGrupo + "").subscribe(
