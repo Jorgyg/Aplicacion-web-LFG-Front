@@ -36,7 +36,7 @@ export class UserService {
       return this.http.get(API_URL + `username/${username}`, { responseType: 'json' });
     }
 
-    putUser(Username: string, Nombre: string, JuegoFavorito: string, Privacidad: string, Descripcion: string, Email: string, Passwd: string): Observable<any>{   
+    putUser(Username: string, Nombre: string, JuegoFavorito: string, Privacidad: string, Descripcion: string, Email: string, Passwd: string, FotoPerfil: string): Observable<any>{   
       return this.http.put(`${API_URL}${Username}`, {
         Username,
         Nombre, 
@@ -44,7 +44,8 @@ export class UserService {
         Privacidad,
         Descripcion,
         Email,
-        Passwd
+        Passwd,
+        FotoPerfil
       }, httpOptions)
     }
 }

@@ -43,9 +43,10 @@ export class PerfilComponent implements OnInit {
     const username = user.infoUser.username;
     const email = user.infoUser.email;
     const passwd = user.infoUser.passwd;
+    const fotoPerfil = user.infoUser.fotoPerfil;
     const { nombre, juego, perfil, descripcion } = this.form;
     /* Actualizamos los cambios */
-    this.userService.putUser(username, nombre, juego, perfil, descripcion, email, passwd).subscribe(
+    this.userService.putUser(username, nombre, juego, perfil, descripcion, email, passwd, fotoPerfil).subscribe(
       data => {
         this.showSuccessMessage = true;
         const newUserInfo = { ...user.infoUser, nombre, juego, perfil, descripcion };
