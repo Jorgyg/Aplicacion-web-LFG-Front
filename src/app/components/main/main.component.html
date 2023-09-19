@@ -46,8 +46,8 @@
         <div *ngFor="let group of cardData.slice((currentPage-1)*cardsPerPage, currentPage * cardsPerPage); let i = index" class="card bg-color-1 m-2 w-100" [class.fade-out]="firstLinkActivated && selectedCardIndex !== i" [ngClass]="{'enlarged': selectedCardIndex === i}">
             <img [src]="group.fotoGrupo || 'https://miro.medium.com/v2/resize:fit:804/1*ixB4YI9uQXBMymH2aUvZ4Q.jpeg'" class="card-img-top" alt="...">
             <div class="card-body small-card-body text-adjust">
-              <h5 class="card-title">{{group.nombre}}</h5>
-              <p class="card-text">{{group.descripcion}}</p>
+                <h5 class="card-title">{{group.nombre}}</h5>
+                <p class="card-text">{{group.descripcion}}</p>
               <a *ngIf="canJoin" (click)="onSubmit(group.codGrupo)" class="btn btn-success enlarged"><span class="i material-symbols-outlined p-0 m-0">
                 group_add
                 </span></a>
@@ -65,7 +65,7 @@
             </nav>
         </div>
     </div>
-    <div class="card-container mt-5 d-flex justify-content-center align-items-center text-center menu" *ngIf="cardData.length == 0">
+    <div id="nada" class="d-none card-container mt-5 d-flex justify-content-center align-items-center text-center menu" *ngIf="cardData.length == 0">
         <h1 class="color-1">Parece que no estás en ningún grupo...</h1>
         <h2 class="color-2">Puedes buscar por nombre de grupo en el buscador de arriba, <a routerLink="/unirse">unirte</a> a un grupo por codigo o <a routerLink="/crear">crear</a> uno</h2>
     </div>

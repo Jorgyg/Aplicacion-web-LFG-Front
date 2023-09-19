@@ -40,6 +40,12 @@ export class MainComponent {
         this.cardData = data;
       }
     )
+    setTimeout(() => {
+      const nadaDiv = document.querySelector('#nada') as HTMLElement;
+      if (nadaDiv) {
+        nadaDiv.classList.remove('d-none');
+      }
+    }, 1000);
   }
   /* Métodos de paginación */
   showPage(page: number): void {
