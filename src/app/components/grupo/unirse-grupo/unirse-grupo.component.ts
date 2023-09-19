@@ -42,11 +42,16 @@ export class UnirseGrupoComponent {
         setTimeout(() => {
           if (this.maxParticipantes > this.cantidadUsers) {
             this.groupService.postUsuarioGrupo(codgrupo, username, false).subscribe(
-              (data) => {},
+              (data) => {
+
+              },
               (err) => {
                 console.log(err);
               }
+
             );
+            this.router.navigate(['/chat', codgrupo]);
+
           } else {
             this.grupoLleno = true;
           }
@@ -59,6 +64,7 @@ export class UnirseGrupoComponent {
 
         },3000);
       });
+
 
   }
 }
