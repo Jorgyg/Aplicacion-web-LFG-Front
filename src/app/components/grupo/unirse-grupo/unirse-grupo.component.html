@@ -26,6 +26,9 @@
                 <div class="col-md-4 col-sm-12 mt-4 mx-auto alert alert-warning" *ngIf="grupoLleno; else elseBlock">
                     El grupo está lleno, busca otro que este vacío.
                 </div>
+                <div class="col-md-4 col-sm-12 mt-4 mx-auto alert alert-warning" *ngIf="grupoNoExiste; else elseBlock">
+                    El grupo que has indicado no existe.
+                </div>
                 <ng-template #elseBlock>                    
                 </ng-template>              
         </div>
