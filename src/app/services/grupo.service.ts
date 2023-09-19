@@ -107,6 +107,11 @@ export class GrupoService {
     return this.http.get(`${API_URL_4}CodGrupo/${codGrupo}`);
   }
 
+  getEventoGrupo(codGrupo: string, codEvento: number): Observable<any>{
+    return this.http.get(`${API_URL_4}CodGrupoEvento/${codGrupo}/${codEvento}`);
+  }
+
+
   postEvento(CodGrupo: number, Titulo: string, FechaEvento: string): Observable<any>{   
     return this.http.post(API_URL_4, {
       CodGrupo,

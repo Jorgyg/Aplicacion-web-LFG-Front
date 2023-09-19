@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GrupoService } from 'src/app/services/grupo.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
-
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-eventos-grupo',
   templateUrl: './eventos-grupo.component.html',
@@ -88,9 +88,13 @@ export class EventosGrupoComponent implements OnInit  {
               this.groupService.putGruposLogros(codGrupoStr + "", 6).subscribe();
             }
           );
+          const user = this.tokenService.getUser();
+          const username = user.infoUser.username;
+          this.groupService.postMensajeGrupo(codGrupoStr + "", username, "¡HA CREADO UN NUEVO EVENTO!").subscribe(data=>{
+          });
         }
-      );
-    })
+      );    
+    });
   }
   /* Variables asignadas a los dos botones, aceptar o rechazar la participacion en el evento respectivamente */
   isAccepted(codEvento: number): boolean {
@@ -100,6 +104,31 @@ export class EventosGrupoComponent implements OnInit  {
     }
     return false;
   }
+
+  message(codEvento: number, mess: string) {
+    this.route.paramMap.subscribe((params) => {
+      const codGrupoStr = params.get('codigo');
+      const user = this.tokenService.getUser();
+      const username = user.infoUser.username;
+      
+      this.groupService.getEventoGrupo(codGrupoStr + "", codEvento).subscribe(
+        data => {
+          this.groupService.postMensajeGrupo(
+            
+            codGrupoStr + "",
+            username,
+            "HA " + mess + " EL EVENTO " + data.titulo
+          ).subscribe((response: any) => {
+            // Manejar la respuesta si es necesario
+          });
+        },
+        (error) => {
+          console.error("Error al obtener eventos:", error);
+        }
+      );
+    });
+  }
+  
   
   isRejected(codEvento: number): boolean {
     if (this.usuarioEventos) {
@@ -116,6 +145,12 @@ export class EventosGrupoComponent implements OnInit  {
       const codGrupoNum = Number(codGrupoStr);
       const user = this.tokenService.getUser();
       const username = user.infoUser.username;
+      if(aceptar){
+        this.message(codEvento, "ACEPTADO");
+      } else {
+        this.message(codEvento, "RECHAZADO");
+
+      }
       /* Enviamos la informacion junto a nuestra decision de participar en el evento */
       this.groupService.postUsuarioEvento(codGrupoNum, codEvento, username, aceptar, 0).subscribe(
         data=>{

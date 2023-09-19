@@ -24,30 +24,41 @@ export class UnirseGrupoComponent {
   maxParticipantes: any;
   cantidadUsers: any;
   grupoLleno: boolean = false;
+  grupoNoExiste = false;
+
   /* Al enviar el formulario... */
   onSubmit(): void {
     /* Obtenemos el codigo de grupo y los datos del usuario */
     const { codgrupo } = this.form;
     const user = this.userService.getUser();
     const username = user.infoUser.username;
-    /* Obtenemos la cantidad maxima de participantes y el numero de participantes actuales del grupo */
-    this.groupService.getGrupo(codgrupo).subscribe((data) => {
-      this.maxParticipantes = data.participantes;
-    });
-    this.groupService.getUsuariosGrupo(codgrupo).subscribe((data) => {
-      this.cantidadUsers = data.length;
-    });
-    /* SI esta cantidad no excede la máxima, el usuario se une al grupo, si la excede se avisa con un boolean para mostrar un mensaje de advertencia */
-    setTimeout(() => {
-      if (this.maxParticipantes > this.cantidadUsers) {
-        this.groupService.postUsuarioGrupo(codgrupo, username, false).subscribe(
-          (data) => {}
-        );
-        /* Reenviamos al usuario al chat */
-        this.router.navigate(['/chat', codgrupo]);
-      } else {
-        this.grupoLleno = true;
-      }
-    }, 1000);
+    this.groupService.getGrupo(codgrupo).subscribe(
+      (data) => {
+        this.maxParticipantes = data.participantes;
+        console.log(this.maxParticipantes);
+        this.groupService.getUsuariosGrupo(codgrupo).subscribe((data) => {
+          this.cantidadUsers = data.length;
+        });
+        setTimeout(() => {
+          if (this.maxParticipantes > this.cantidadUsers) {
+            this.groupService.postUsuarioGrupo(codgrupo, username, false).subscribe(
+              (data) => {},
+              (err) => {
+                console.log(err);
+              }
+            );
+          } else {
+            this.grupoLleno = true;
+          }
+        }, 1000);
+      },
+      (error) => {
+        this.grupoNoExiste = true;
+        setTimeout(() =>{
+        this.grupoNoExiste = false;
+
+        },3000);
+      });
+
   }
 }
