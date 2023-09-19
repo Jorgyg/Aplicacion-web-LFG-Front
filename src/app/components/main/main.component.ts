@@ -16,6 +16,7 @@ interface Group {
 })
 export class MainComponent {
   Math: any = Math;
+  nombre: any = "";
   /* Elemento que utilizaremos para cambiar el estilo de cualquier etiqueta del html */
   elementStyle: { [key: string]: string } = {};
   /*Se indica el numero de grupos que habrá por pagina y la pagina actual, que por defecto será la primera*/
@@ -34,6 +35,7 @@ export class MainComponent {
     const usuario = this.tokenStorageService.getUser();
     const username = usuario.infoUser.username;
     this.rol = usuario.infoUser.rolApp;
+    this.nombre = username;
     /* Obtenemos todos los grupos del usuario y los guardamos en la variable para mostrar como cartas */
     this.groupService.getGruposUsuario(username).subscribe(
       (data: any[]) => {
