@@ -23,15 +23,11 @@ export class RegisterComponent {
     "./assets/img/icon1.png",
     "./assets/img/icon2.png",
     "./assets/img/icon3.png",
-    "./assets/img/icon1.png",
-    "./assets/img/icon1.png",
-    "./assets/img/icon1.png",
-    "./assets/img/icon1.png",
-    "./assets/img/icon1.png",
-    "./assets/img/icon1.png",
-    "./assets/img/icon1.png",
-    "./assets/img/icon1.png",
-    "./assets/img/icon1.png"
+    "./assets/img/icon4.png",
+    "./assets/img/icon5.png",
+    "./assets/img/icon6.png",
+    "./assets/img/icon7.png",
+    "./assets/img/icon8.png"
   ];
   /* Constructor con todos los servicios necesarios*/
   constructor(private authService: AuthService){}
