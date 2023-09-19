@@ -54,14 +54,18 @@ export class RetarGrupoComponent {
       this.groupService.getGrupo(codGrupoStr + "").subscribe((data) => {
         this.juego = data.juego;
       });
+
+      setTimeout(() => {
       /* Obtenemos los datos de todos los grupos y los asignamos a una carta */
       this.groupService.getGrupos().subscribe((data) => {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].juego == this.juego && data[i].codGrupo != codGrupoStr + "") {
-            this.cardData.push(data[i]);
+          for (let i = 0; i < data.length; i++) {
+            if (data[i].juego == this.juego && data[i].codGrupo != codGrupoStr + "") {
+              this.cardData.push(data[i]);
+            }
           }
-        }
-      });
+        });
+
+      }, 1000);
     });
   }
 
