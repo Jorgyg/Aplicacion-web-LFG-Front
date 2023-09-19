@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
+  /* Variables que vamos a utilizar para controlar los juegos y los datos del usuario */
   games: any [] = [];
   currentUser: any;
   form: any = {
@@ -24,8 +25,9 @@ export class PerfilComponent implements OnInit {
   isEditingPerfil = false;
   isEditingDescripcion= false;
   showSuccessMessage = false;
+  /* Constructor con todos los servicios que vamos a utilizar */
   constructor(private userService: UserService, private tokenService: TokenStorageService, private route: ActivatedRoute, private formBuilder: FormBuilder, private gamesService: GamesService, private token: TokenStorageService) {}
-  //Crea una array con todos los juegos disponibles en la base de datos
+  /* Crea una array con todos los juegos disponibles */
   ngOnInit() {
     let game = this.gamesService.return();
     let lenght = this.gamesService.return().length;
@@ -33,37 +35,30 @@ export class PerfilComponent implements OnInit {
       this.games.push(game[i].name);
     }
     this.currentUser = this.token.getUser();
-    console.log(this.currentUser);
-
   }
-
+  /* Al enviar el formulario... */
   onSubmit(){
+    /* Obtenemos los datos del usuario y de los datos introducidos en el form */
     const user = this.tokenService.getUser();
     const username = user.infoUser.username;
     const email = user.infoUser.email;
     const passwd = user.infoUser.passwd;
     const { nombre, juego, perfil, descripcion } = this.form;
+    /* Actualizamos los cambios */
     this.userService.putUser(username, nombre, juego, perfil, descripcion, email, passwd).subscribe(
       data => {
-        console.log(data);
         this.showSuccessMessage = true;
         const newUserInfo = { ...user.infoUser, nombre, juego, perfil, descripcion };
         user.infoUser = newUserInfo;
+        /* Guardamos los nuevos datos en local */
         this.tokenService.saveUser(user);
-  
         setTimeout(() => {
           this.showSuccessMessage = false;
         }, 5000);
-      },
-      err => {
-        console.log(err);
       }
     );
   }
-
-  
-  
-  
+  /* Método para eliminar los datos introducidos en el formulario */
   cancelarCambios() {
     this.form = {
       nombre: this.currentUser.infoUser.nombre,
@@ -76,7 +71,7 @@ export class PerfilComponent implements OnInit {
     this.isEditingPerfil = false;
     this.isEditingDescripcion = false;
   }
-
+  /* Métodos para guardar los datos de cada campo */
   guardarNombre() {
     this.currentUser.infoUser.nombre = this.form.nombre;
     this.isEditingNombre = false;
@@ -96,7 +91,7 @@ export class PerfilComponent implements OnInit {
     this.currentUser.infoUser.descripcion = this.form.descripcion;
     this.isEditingDescripcion = false;
   }
-
+  /* Método para actualizar los datos del formulario */
   private updateFormValues() {
     this.form = {
       nombre: this.currentUser.infoUser.nombre,

@@ -17,23 +17,26 @@ export class EventosGrupoComponent implements OnInit  {
   currentPage: number = 1;
   selectedEventIndex: number | null = null;
   firstLinkActivated = false;
-
+  /* Constructor con todos los servicios que vamos a utilizar */
   constructor(private activatedRoute: ActivatedRoute, private tokenService: TokenStorageService ,private renderer: Renderer2, private router: Router, private groupService: GrupoService, private route: ActivatedRoute) {}
-
+  /* Variable para guardar los eventos y el formulario de creacion de eventos */
   eventos: any = [];
   form: any = {
     nombre: null,
     fecha: null
   };
+  /* Variable para guardar la seleccion de acepto de cada evento por usuario */
   usuarioEventos: any = [];
   Math: any = Math;
-  
+  /* Al iniciar... */
   ngOnInit(){
+    /* Guardamos el codigo de grupo y los datos del usuario logeado */
     this.route.paramMap.subscribe((params) =>{
       const codGrupoStr = params.get('codigo');
       const codGrupoNum = Number(codGrupoStr);
       const user = this.tokenService.getUser();
       const username = user.infoUser.username;
+      /* Obtenemos los usuarios de ese grupo para comprobar que el usuario logeado se encuentra en él, de otra forma se le reenvia al menu principal */
       this.groupService.getUsuariosGrupo(codGrupoStr + "").subscribe(
         (usuarioEnGrupo) => {
           var isInGroup = false;
@@ -48,61 +51,48 @@ export class EventosGrupoComponent implements OnInit  {
             this.router.navigate(['/main']);
           }
 
-        },
-      (error) => {
-        console.error("Error al verificar la pertenencia al grupo: ", error);
-      }
+        }
     );
+    /* Obtenemos los eventos del grupo y los guardamos */
       this.groupService.getEventosGrupo(codGrupoNum + "").subscribe(
         data=>{
-          console.log(data);
           this.eventos = data
-          console.log(this.eventos);
-        },
-        err => {
-          console.log(err);
         }
       );
+      /* Obtenemos las decisiones de evento del usuario y lo guardamos */
       this.groupService.getUsuarioEvento(codGrupoNum, username).subscribe(
         data => {
-          console.log(data);
           this.usuarioEventos = data
-          console.log(this.usuarioEventos);
-        },
-        err => {
-          console.log(err);
         }
       );
     })
   }
-
+  /* Al enviar le formulario... */
   onSubmit(){
+    /* Obtenemos el codigo de grupo */
     this.route.paramMap.subscribe((params) =>{
       const codGrupoStr = params.get('codigo');
       const codGrupoNum = Number(codGrupoStr);
+      /* Guardamos los datos introducidos en el formulario */
       const {nombre, fecha} = this.form;
+      /* Enviamos los datos para crear el evento */
       this.groupService.postEvento(codGrupoNum, nombre, fecha).subscribe(
         data=>{
+          /* Al mismo tiempo llamamos a los eventos para acutalizar la lista */
           this.groupService.getEventosGrupo(codGrupoNum + "").subscribe(
             data=>{
-              console.log(data);
+              /* Añadimos una unidad a los logros relacionados con crear eventos y guardamos los datos de los eventos en una variable */
               this.eventos = data;
               this.groupService.putGruposLogros(codGrupoStr + "", 4).subscribe();
               this.groupService.putGruposLogros(codGrupoStr + "", 5).subscribe();
               this.groupService.putGruposLogros(codGrupoStr + "", 6).subscribe();
-            },
-            err => {
-              console.log(err);
             }
           );
-        },
-        err => {
-          console.log(err);
         }
       );
     })
   }
-
+  /* Variables asignadas a los dos botones, aceptar o rechazar la participacion en el evento respectivamente */
   isAccepted(codEvento: number): boolean {
     if (this.usuarioEventos) {
       const eventoUsuario = this.usuarioEventos.find((evento: any) => evento.codEvento === codEvento);
@@ -118,34 +108,29 @@ export class EventosGrupoComponent implements OnInit  {
     }
     return false;
   }  
-
+  /* Dependiendo de nuestra eleccion... */
   elegir(codEvento: number, aceptar: boolean){
+    /* Guardamos el codigo de grupo y los datos del usuario */
     this.route.paramMap.subscribe((params) =>{
       const codGrupoStr = params.get('codigo');
       const codGrupoNum = Number(codGrupoStr);
       const user = this.tokenService.getUser();
       const username = user.infoUser.username;
-      console.log(codGrupoNum, username, codEvento, aceptar);
+      /* Enviamos la informacion junto a nuestra decision de participar en el evento */
       this.groupService.postUsuarioEvento(codGrupoNum, codEvento, username, aceptar, 0).subscribe(
         data=>{
+          /* Obtenemos los eventos del grupo para comprobar que se ha añadido correctamente y recargamos */
           this.groupService.getEventosGrupo(codGrupoNum + "").subscribe(
             data=>{
-              console.log(data);
               this.eventos = data;
               location.reload();
-            },
-            err => {
-              console.log(err);
             }
           );
-        },
-        err => {
-          console.log(err);
         }
       );
     })
   }
-
+  /* Método para volver */
   volver(){
     this.route.paramMap.subscribe((params) =>{
       const codigo = params.get('codigo') + "";
