@@ -92,28 +92,32 @@ export class ChatGrupoComponent {
   }
   /* Creamos un método para enviar los mensajes */
   enviarMensaje(): void{
-    this.route.paramMap.subscribe((params) =>{
-      /* Obtenemos todos los datos necesario */
-      const codigo = params.get('codigo')+"";
-      const input = (document.getElementById('mensaje') as HTMLInputElement).value;
-      const user = this.tokenService.getUser();
-      const username = user.infoUser.username;
-      /* Enviamos el mensaje con estos datos y nos desplazamos hasta el último mensaje, es decir, este */
-      this.groupService.postMensajeGrupo(codigo, username, input).subscribe(
-        (data: any[]) => {
-          this.route.paramMap.subscribe((params) =>{
-            const codigo = params.get('codigo');
-            this.cargarMensajes(codigo + "");
-            this.desplazar();
-            (document.getElementById('mensaje') as HTMLInputElement).value = "";
-          })
-        }
-      )
-      /* Actualizamos los logros relacionados con enviar mensajes */
-      this.groupService.putGruposLogros(codigo, 1).subscribe();
-      this.groupService.putGruposLogros(codigo, 2).subscribe();
-      this.groupService.putGruposLogros(codigo, 3).subscribe();
-    }) 
+    /* Comprobamos que el usuario no haya escrito un mensaje en blanco o con espacios */
+    const input = (document.getElementById('mensaje') as HTMLInputElement).value;
+    const regexp = /^(?!\s).+(?<!\s)$/gm;
+    if(input.match(regexp)){
+      this.route.paramMap.subscribe((params) =>{
+        /* Obtenemos todos los datos necesario */
+        const codigo = params.get('codigo')+"";
+        const user = this.tokenService.getUser();
+        const username = user.infoUser.username;
+        /* Enviamos el mensaje con estos datos y nos desplazamos hasta el último mensaje, es decir, este */
+        this.groupService.postMensajeGrupo(codigo, username, input).subscribe(
+          (data: any[]) => {
+            this.route.paramMap.subscribe((params) =>{
+              const codigo = params.get('codigo');
+              this.cargarMensajes(codigo + "");
+              this.desplazar();
+              (document.getElementById('mensaje') as HTMLInputElement).value = "";
+            })
+          }
+        )
+        /* Actualizamos los logros relacionados con enviar mensajes */
+        this.groupService.putGruposLogros(codigo, 1).subscribe();
+        this.groupService.putGruposLogros(codigo, 2).subscribe();
+        this.groupService.putGruposLogros(codigo, 3).subscribe();
+      }) 
+    }
   }
   /* Comprobamos si el mensaje es un reto */
   comprobarMensaje(mensaje: string): Boolean{
